@@ -90,15 +90,130 @@ h6 {
   font-size: inherit;
   font-weight: inherit;
 }
+/*--------------------*/
+/*Базовые стили*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg-dark: #000000;
+  --logo: #f1cdb3;
+  --white: #ffffff;
+  --normal: #cdcdcd;
+  --header-font: Georgia, sans-serif;
+  --basic-font: Arial, sans-serif;
+  --regular-font: 15px;
+
+  /* --bold-font: 60px;
+    --h2-font: 40px;
+    --small-font: 16px; */
+}
 
 /*--------------------*/
+html {
+  background: #f6f6f6;
+}
 body {
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+  font-family: Arial, sans-serif;
 }
+/*--------------------*/
+/*header*/
+.container-header {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  font-size: 32px;
+  line-height: 35.2px;
+  color: var(--logo);
+  letter-spacing: 0.06em;
+}
+
+.logo-text {
+  font-size: 13px;
+  line-height: 14.95px;
+  font-family: var(--basic-font);
+  color: var(--white);
+  padding-top: 10px;
+  text-align: justify;
+  letter-spacing: 0.1em;
+}
+
+span {
+  width: 100%;
+  display: inline-block;
+}
+.nav {
+  align-self: center;
+}
+
+.nav-list {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+.nav-item a {
+  color: var(--normal);
+  cursor: pointer;
+  font-size: var(--regular-font);
+  line-height: 24px;
+  margin-left: 35px;
+}
+.nav-item a:active {
+  color: var(--white);
+}
+.nav-item a:hover {
+  color: var(--white);
+  border-bottom: 3px solid var(--logo);
+}
+
+/*--------------------*/
 .container {
   box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
+}
+.not-only {
+  height: 788px;
+  /* background-image: url(../../../assets/images/start-screen-puppy.png) no-repeat; */
+}
+.not-only::before {
+  background: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%)
+    #211f20;
+  position: absolute;
+  content: '';
+  background-repeat: no-repeat;
+  background-position: center 0;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 908px;
+  top: 0;
+  margin-left: -40px;
+  z-index: -1;
+}
+
+#about,
+#help {
+  background: green;
+}
+.about {
+  min-height: 588px;
 }
