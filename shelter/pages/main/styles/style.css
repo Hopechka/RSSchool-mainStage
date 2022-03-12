@@ -257,11 +257,43 @@ button > span {
 .start-puppy {
   align-self: flex-end;
 }
-
+/*--------------------*/
+/* about */
 #about,
 #help {
-  background: green;
+  background: var(--white);
 }
 .about {
   min-height: 588px;
+  display: flex;
+  justify-content: center;
+  column-gap: 120px;
+  padding-bottom: 20px;
+}
+
+.pic-about {
+  align-self: center;
+}
+.about-content {
+  align-self: center;
+}
+h3 {
+  font-size: 35px;
+  line-height: 45.5px;
+  color: #545454;
+  font-family: var(--header-font);
+  letter-spacing: 0.06em;
+}
+.h3 {
+  width: 370px;
+}
+.text-about {
+  width: 430px;
+  margin-top: 25px;
+}
+.text-about > p {
+  font-size: var(--regular-font);
+  line-height: 24px;
+  color: #4c4c4c;
+  font-family: var(--basic-font);
 }
