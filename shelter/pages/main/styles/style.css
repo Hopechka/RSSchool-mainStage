@@ -111,10 +111,6 @@ h6 {
   --header-font: Georgia, sans-serif;
   --basic-font: Arial, sans-serif;
   --regular-font: 15px;
-
-  /* --bold-font: 60px;
-    --h2-font: 40px;
-    --small-font: 16px; */
 }
 
 /*--------------------*/
@@ -379,4 +375,63 @@ h3 {
 
 .vitamins {
   margin-left: 84px;
+}
+/*--------------------*/
+/* donation */
+.donation {
+  display: flex;
+  justify-content: center;
+  min-height: 462px;
+}
+.pic-donation {
+  align-self: center;
+  width: 44.51%;
+  padding-bottom: 16px;
+}
+
+.donation-content {
+  width: 380px;
+}
+.donation-content > h3 {
+  padding-top: 80px;
+}
+.donation-content > p {
+  color: #545454;
+  font-family: var(--header-font);
+  font-size: var(--regular-font);
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  padding: 20px 0;
+}
+.donation-content > p:last-child {
+  color: #b2b2b2;
+  font-style: italic;
+  font-family: var(--basic-font);
+  font-size: 12px;
+  line-height: 18px;
+  padding-top: 20px;
+  letter-spacing: normal;
+}
+.card-num {
+  display: flex;
+  height: 43px;
+  width: 349px;
+  background: var(--logo);
+  border-radius: 9px;
+  padding: 10px 0;
+}
+.pic-card {
+  padding: 0 15px;
+}
+.pic-card img {
+  width: 30px;
+  height: 23px;
+  color: #292929;
+}
+.card-num > span {
+  color: #545454;
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
 }
