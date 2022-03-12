@@ -107,6 +107,7 @@ h6 {
   --logo: #f1cdb3;
   --white: #ffffff;
   --normal: #cdcdcd;
+  --active-button: #fddcc4;
   --header-font: Georgia, sans-serif;
   --basic-font: Arial, sans-serif;
   --regular-font: 15px;
@@ -127,7 +128,8 @@ body {
   font-family: Arial, sans-serif;
 }
 /*--------------------*/
-/*header*/
+
+/* header */
 .container-header {
   box-sizing: border-box;
   max-width: 1200px;
@@ -186,6 +188,7 @@ span {
 }
 
 /*--------------------*/
+/* not-only */
 .container {
   box-sizing: border-box;
   max-width: 1200px;
@@ -193,6 +196,8 @@ span {
 }
 .not-only {
   height: 788px;
+  display: flex;
+  justify-content: space-between;
   /* background-image: url(../../../assets/images/start-screen-puppy.png) no-repeat; */
 }
 .not-only::before {
@@ -208,6 +213,49 @@ span {
   top: 0;
   margin-left: -40px;
   z-index: -1;
+}
+.start-content {
+  align-self: center;
+}
+h2 {
+  font-size: 44px;
+  line-height: 57.2px;
+  color: var(--white);
+  font-family: var(--header-font);
+}
+div.h2 {
+  width: 310px;
+}
+.start-content > div.text {
+  width: 460px;
+  margin: 42px 0;
+}
+.text > p {
+  font-size: var(--regular-font);
+  color: var(--normal);
+  line-height: 24px;
+}
+.start-content > button {
+  width: 207px;
+  height: 52px;
+  background: var(--logo);
+  color: #292929;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+button > span {
+  color: #292929;
+  font-size: 17px;
+  line-height: 22.1px;
+  font-family: var(--header-font);
+  letter-spacing: 0.06em;
+}
+.start-content > button:hover {
+  background: var(--active-button);
+}
+.start-puppy {
+  align-self: flex-end;
 }
 
 #about,
