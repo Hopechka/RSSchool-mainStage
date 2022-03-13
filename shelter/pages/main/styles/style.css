@@ -154,7 +154,7 @@ h1 {
   letter-spacing: 0.1em;
 }
 
-span {
+.logo span {
   width: 100%;
   display: inline-block;
 }
@@ -434,4 +434,71 @@ h3 {
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 0.06em;
+}
+
+/*--------------------*/
+/* footer */
+footer {
+  background: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%)
+    #211f20;
+}
+.footer {
+  min-height: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* column-gap: 159px; */
+}
+.footer > div {
+  width: 26.6%;
+}
+.h3-questions {
+  width: 279px;
+}
+.questions,
+.visit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 204px;
+  padding-bottom: 18px;
+}
+.visit {
+  width: 302px;
+}
+.footer h3 {
+  color: var(--white);
+  padding-top: 56px;
+}
+
+.footer p {
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: var(--logo);
+  vertical-align: middle;
+}
+
+.questions img,
+.visit img {
+  float: left;
+  margin-right: 20px;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.pic-footer {
+  align-self: flex-end;
+}
+.pic-footer img {
+  float: right;
+}
+.block {
+  display: flex;
+  align-content: center;
+}
+.email {
+  padding: 3px 0;
 }
