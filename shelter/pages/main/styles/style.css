@@ -420,6 +420,10 @@ h3 {
   background: var(--logo);
   border-radius: 9px;
   padding: 10px 0;
+  cursor: pointer;
+}
+.card-num:hover {
+  background: var(--active-button);
 }
 .pic-card {
   padding: 0 15px;
@@ -429,7 +433,7 @@ h3 {
   height: 23px;
   color: #292929;
 }
-.card-num > span {
+.card-num > a {
   color: #545454;
   font-family: var(--header-font);
   font-size: 20px;
@@ -502,4 +506,7 @@ footer {
 }
 .email {
   padding: 3px 0;
+}
+.pin-first {
+  padding-right: 20px;
 }
