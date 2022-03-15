@@ -207,8 +207,8 @@ h1 {
   max-width: 1280px;
   min-height: 908px;
   top: 0;
-  left: 0;
-  /* margin-left: -40px; */
+  /* left: 0; */
+  margin-left: -40px;
   z-index: -1;
 }
 .start-content {
