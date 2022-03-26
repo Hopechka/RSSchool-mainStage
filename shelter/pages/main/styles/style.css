@@ -326,7 +326,7 @@ h3 {
 }
 .btn-light {
   border: 2px solid var(--logo);
-  background: #f6f6f6;
+  background: #fafafa;
   cursor: pointer;
 }
 .btn-light:hover {
@@ -337,6 +337,7 @@ h3 {
   width: 52px;
   height: 52px;
   padding-top: 9px;
+  background: none;
 }
 .prev {
   order: -1;

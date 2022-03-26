@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: 1px solid red;
-}
+} */
 
 /*Обнуление*/
 * {
@@ -191,19 +191,116 @@ h1 {
 /*--------------------*/
 /* pets-content */
 #pets-content {
-  height: 1342px;
+  min-height: 1342px;
 }
+
 .container {
   box-sizing: border-box;
   max-width: 1200px;
   margin: 0 40px;
+  height: 100%;
 }
+.pets-content {
+  display: flex;
+  flex-direction: column;
+}
+
 h3 {
   font-size: 35px;
   line-height: 45.5px;
   color: #545454;
   font-family: var(--header-font);
   letter-spacing: 0.06em;
+}
+#pets-content h3 {
+  text-align: center;
+  padding: 80px 0 60px;
+}
+
+.pets-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 30px;
+  padding-bottom: 30px;
+}
+button {
+  height: 52px;
+  width: 187px;
+  /* background: none; */
+  color: #292929;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s ease-in 0s;
+  font-family: var(--header-font);
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  margin: 30px 0;
+}
+
+.btn-light {
+  border: 2px solid var(--logo);
+  background: #fafafa;
+  cursor: pointer;
+}
+.btn-light:hover {
+  border: 2px solid var(--active-button);
+  background: var(--active-button);
+}
+
+.nav-btn {
+  padding-bottom: 69px;
+  margin: 0 auto;
+}
+.nav-btn p {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  padding-bottom: 4px;
+}
+
+.nav-btn li {
+  display: inline;
+  list-style-type: none;
+  padding: 0 8px;
+}
+.page-num {
+  background: var(--logo);
+}
+.nav-btn button {
+  width: 52px;
+  height: 52px;
+}
+.no-active button {
+  color: #e5e5e5;
+  border: 2px solid #e5e5e5;
+  background: none;
+}
+.no-active button:hover {
+  color: #e5e5e5;
+  border: 2px solid #e5e5e5;
+  background: none;
+}
+
+.card {
+  width: 270px;
+  text-align: center;
+  background: #fafafa;
+  border-radius: 9px;
+}
+.card img {
+  width: 100%;
+  border-radius: 9px 9px 0 0;
+}
+.card p {
+  color: #545454;
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  margin-top: 30px;
 }
 
 /*--------------------*/
