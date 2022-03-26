@@ -288,11 +288,6 @@ button:disabled {
   color: #e5e5e5;
   border: 2px solid #e5e5e5;
 }
-/* .no-active button:hover {
-  color: #e5e5e5;
-  border: 2px solid #e5e5e5;
-  background: none;
-} */
 
 .card {
   width: 270px;
