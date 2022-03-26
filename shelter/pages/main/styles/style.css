@@ -396,6 +396,10 @@ h3 {
 .card:hover {
   background: var(--white);
 }
+.card:hover .btn-light {
+  border: 2px solid var(--active-button);
+  background: var(--active-button);
+}
 
 /*--------------------*/
 /* help */
