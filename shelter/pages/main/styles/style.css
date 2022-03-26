@@ -459,17 +459,23 @@ h3 {
 /* donation */
 .donation {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  min-height: 462px;
+  min-height: 464px;
 }
+.pic-donation,
+.donation-content {
+  flex-basis: 44.8%;
+}
+
 .pic-donation {
   align-self: center;
-  width: 44.51%;
+  /* width: 44.8%; */
   padding-bottom: 16px;
 }
 
 .donation-content {
-  width: 380px;
+  max-width: 380px;
 }
 .donation-content > h3 {
   padding-top: 80px;
