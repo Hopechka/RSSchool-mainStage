@@ -297,6 +297,7 @@ button {
   text-align: center;
   background: #fafafa;
   border-radius: 9px;
+  cursor: pointer;
 }
 .card img {
   width: 100%;
@@ -309,6 +310,9 @@ button {
   line-height: 23px;
   letter-spacing: 0.06em;
   margin-top: 30px;
+}
+.card:hover {
+  background: var(--white);
 }
 
 /*--------------------*/

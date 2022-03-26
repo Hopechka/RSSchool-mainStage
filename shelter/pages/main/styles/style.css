@@ -391,6 +391,10 @@ h3 {
 .card {
   display: inline-block;
   margin-right: 86px;
+  cursor: pointer;
+}
+.card:hover {
+  background: var(--white);
 }
 
 /*--------------------*/
