@@ -314,10 +314,11 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* column-gap: 159px; */
 }
-.footer > div {
-  width: 26.6%;
+.questions,
+.visit,
+.pic-footer {
+  flex-basis: 27%;
 }
 .h3-questions {
   width: 279px;
@@ -330,12 +331,12 @@ footer {
   min-height: 204px;
   padding-bottom: 18px;
 }
-.visit {
-  width: 302px;
+.visit h3 {
+  width: 270px;
 }
 .footer h3 {
   color: var(--white);
-  padding-top: 56px;
+  padding-top: 15px;
 }
 
 .footer p {
@@ -371,4 +372,5 @@ footer {
 }
 .pin-first {
   padding-right: 20px;
+  padding-top: 6px;
 }
