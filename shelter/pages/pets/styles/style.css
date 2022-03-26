@@ -253,7 +253,7 @@ button {
   background: #fafafa;
   cursor: pointer;
 }
-.btn-light:hover {
+button:hover {
   border: 2px solid var(--active-button);
   background: var(--active-button);
 }
@@ -281,16 +281,18 @@ button {
   width: 52px;
   height: 52px;
 }
-.no-active button {
+button:disabled {
   color: #e5e5e5;
   border: 2px solid #e5e5e5;
   background: none;
+  color: #e5e5e5;
+  border: 2px solid #e5e5e5;
 }
-.no-active button:hover {
+/* .no-active button:hover {
   color: #e5e5e5;
   border: 2px solid #e5e5e5;
   background: none;
-}
+} */
 
 .card {
   width: 270px;
