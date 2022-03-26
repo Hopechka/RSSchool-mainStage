@@ -178,7 +178,8 @@ h1 {
 .nav-item a:active {
   color: var(--white);
 }
-.nav-item a:hover {
+.nav-item a:hover,
+.nav-item.active a {
   color: var(--white);
   border-bottom: 3px solid var(--logo);
 }
@@ -240,7 +241,7 @@ button {
   cursor: pointer;
   transition: background 0.3s ease-in 0s;
 }
-.start-content > button {
+.start-content button {
   width: 207px;
   margin-bottom: 20px;
 }
@@ -310,7 +311,7 @@ h3 {
   text-align: center;
   padding: 80px 0 60px;
 }
-.btn-friends > button {
+.btn-friends button {
   width: 261px;
 }
 .pets-cards {
