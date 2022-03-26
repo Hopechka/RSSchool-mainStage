@@ -43,6 +43,7 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 input,
@@ -89,5 +90,37 @@ h6 {
   font-size: inherit;
   font-weight: inherit;
 }
+/*--------------------*/
+/*Базовые стили*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg-dark: #000000;
+  --logo: #f1cdb3;
+  --white: #ffffff;
+  --normal: #cdcdcd;
+  --active-button: #fddcc4;
+  --header-font: Georgia, sans-serif;
+  --basic-font: Arial, sans-serif;
+  --regular-font: 15px;
+}
 
+/*--------------------*/
+html {
+  background: #f6f6f6;
+}
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
 /*--------------------*/
