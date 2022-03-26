@@ -282,11 +282,9 @@ button:hover {
   height: 52px;
 }
 button:disabled {
-  color: #e5e5e5;
-  border: 2px solid #e5e5e5;
+  color: #cdcdcd;
+  border: 2px solid #cdcdcd;
   background: none;
-  color: #e5e5e5;
-  border: 2px solid #e5e5e5;
 }
 
 .card {

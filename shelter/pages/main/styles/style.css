@@ -344,12 +344,16 @@ h3 {
 }
 .prev:disabled,
 .next:disabled {
-  color: #e5e5e5;
-  border: 2px solid #e5e5e5;
+  color: #cdcdcd;
+  border: 2px solid #cdcdcd;
   background: none;
-  color: #e5e5e5;
-  border: 2px solid #e5e5e5;
 }
+.prev:disabled img,
+.next:disabled img {
+  filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(267deg) brightness(102%)
+    contrast(95%);
+}
+
 .card {
   width: 270px;
   text-align: center;
