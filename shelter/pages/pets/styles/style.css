@@ -105,8 +105,10 @@ h6 {
 :root {
   --bg-dark: #000000;
   --logo: #f1cdb3;
+  --logo-dark: #545454;
   --white: #ffffff;
   --normal: #cdcdcd;
+  --normal-dark: #292929;
   --active-button: #fddcc4;
   --header-font: Georgia, sans-serif;
   --basic-font: Arial, sans-serif;
@@ -124,3 +126,152 @@ body {
   font-family: Arial, sans-serif;
 }
 /*--------------------*/
+
+/* header */
+.container-header {
+  box-sizing: border-box;
+  max-width: 1280px;
+  /* margin: 0 auto; */
+  /* margin-top: 60px; */
+  padding: 30px 40px;
+  background: var(--white);
+}
+header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  font-size: 32px;
+  line-height: 35.2px;
+  color: var(--logo-dark);
+  letter-spacing: 0.06em;
+}
+
+.logo-text {
+  font-size: 13px;
+  line-height: 14.95px;
+  font-family: var(--basic-font);
+  color: var(--normal-dark);
+  padding-top: 10px;
+  text-align: justify;
+  letter-spacing: 0.1em;
+}
+
+.logo span {
+  width: 100%;
+  display: inline-block;
+}
+.nav {
+  align-self: center;
+}
+
+.nav-list {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+.nav-item a {
+  color: var(--logo-dark);
+  cursor: pointer;
+  font-size: var(--regular-font);
+  line-height: 24px;
+  margin-left: 35px;
+}
+.nav-item a:active {
+  color: var(--normal-dark);
+}
+.nav-item a:hover,
+.nav-item.active a {
+  color: var(--normal-dark);
+  border-bottom: 3px solid var(--logo);
+}
+
+/*--------------------*/
+/* pets-content */
+#pets-content {
+  height: 1342px;
+}
+.container {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 40px;
+}
+h3 {
+  font-size: 35px;
+  line-height: 45.5px;
+  color: #545454;
+  font-family: var(--header-font);
+  letter-spacing: 0.06em;
+}
+
+/*--------------------*/
+/* footer */
+footer {
+  background: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%)
+    #211f20;
+}
+.footer {
+  min-height: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* column-gap: 159px; */
+}
+.footer > div {
+  width: 26.6%;
+}
+.h3-questions {
+  width: 279px;
+}
+.questions,
+.visit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 204px;
+  padding-bottom: 18px;
+}
+.visit {
+  width: 302px;
+}
+.footer h3 {
+  color: var(--white);
+  padding-top: 56px;
+}
+
+.footer p {
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: var(--logo);
+  vertical-align: middle;
+}
+
+.questions img,
+.visit img {
+  float: left;
+  margin-right: 20px;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.pic-footer {
+  align-self: flex-end;
+}
+.pic-footer img {
+  float: right;
+}
+.block {
+  display: flex;
+  align-content: center;
+}
+.email {
+  padding: 3px 0;
+}
+.pin-first {
+  padding-right: 20px;
+}
