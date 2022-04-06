@@ -182,6 +182,7 @@ h1 {
 .nav-item.active a {
   color: var(--white);
   border-bottom: 3px solid var(--logo);
+  /* text-decoration: underline 3px var(--logo); */
 }
 
 /*--------------------*/
