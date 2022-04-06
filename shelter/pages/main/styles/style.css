@@ -348,6 +348,7 @@ h3 {
   color: #cdcdcd;
   border: 2px solid #cdcdcd;
   background: none;
+  cursor: auto;
 }
 .prev:disabled img,
 .next:disabled img {

@@ -276,6 +276,11 @@ button:hover {
 }
 .page-num {
   background: var(--logo);
+  cursor: auto;
+}
+.page-num:hover {
+  background: var(--logo);
+  border: 2px solid var(--logo);
 }
 .nav-btn button {
   width: 52px;
@@ -285,6 +290,7 @@ button:disabled {
   color: #cdcdcd;
   border: 2px solid #cdcdcd;
   background: none;
+  cursor: auto;
 }
 
 .card {
