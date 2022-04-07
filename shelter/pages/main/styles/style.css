@@ -698,4 +698,19 @@ footer {
   }
   /*--------------------*/
   /* donation */
+  .donation {
+    flex-direction: column;
+    align-items: center;
+  }
+  .pic-donation {
+    padding-bottom: 100px;
+    padding-top: 40px;
+    order: 1;
+  }
+  .donation-content > h3 {
+    padding-top: 79px;
+  }
+
+  /*--------------------*/
+  /* footer */
 }
