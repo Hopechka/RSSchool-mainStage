@@ -193,7 +193,7 @@ h1 {
   margin: 0 40px;
 }
 .not-only {
-  height: 788px;
+  min-height: 788px;
   display: flex;
   justify-content: space-between;
   /* background-image: url(../../../assets/images/start-screen-puppy.png) no-repeat; */
@@ -617,4 +617,45 @@ footer {
 .pin-first {
   padding-right: 20px;
   padding-top: 6px;
+}
+
+/*--------------------*/
+/* adaptive */
+@media screen and (max-width: 1279px) {
+  /* header */
+  .container-header {
+    margin: 30px 30px 0px 30px;
+  }
+  /*--------------------*/
+  /* not-only */
+  .container {
+    margin: 0 30px;
+  }
+  .not-only {
+    max-height: 1090px;
+    flex-direction: column;
+  }
+  .not-only::before {
+    height: 1165px;
+    margin-left: -30px;
+  }
+  .start-content {
+    padding-top: 60px;
+  }
+  .start-content button {
+    margin-bottom: 100px;
+  }
+  .btn-our-friends {
+    text-align: center;
+  }
+  .start-puppy img {
+    width: 81.5%;
+  }
+
+  .start-puppy {
+    text-align: right;
+  }
+
+  /*--------------------*/
+  /* about */
 }
