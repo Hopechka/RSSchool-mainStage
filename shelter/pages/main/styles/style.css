@@ -713,4 +713,41 @@ footer {
 
   /*--------------------*/
   /* footer */
+  .footer {
+    justify-content: space-around;
+    row-gap: 47px;
+    padding-top: 15px;
+  }
+  .questions,
+  .visit,
+  .pic-footer {
+    flex-basis: 45.6%;
+  }
+  .questions,
+  .visit {
+    display: inline-block;
+  }
+  .questions {
+    margin-left: 25px;
+  }
+
+  .email {
+    margin: 39px 0 40px 0;
+  }
+  .phone p {
+    padding-top: 5px;
+  }
+  .block-pin-first {
+    margin: 32px 0 33px -5px;
+  }
+  .block-pin-second {
+    margin-left: -5px;
+  }
+  .block-pin-second p {
+    padding-top: 5px;
+  }
+  .pic-footer img {
+    float: none;
+    padding-left: 11px;
+  }
 }
