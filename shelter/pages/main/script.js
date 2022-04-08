@@ -46,12 +46,7 @@ function activateMenu() {
 }
 
 function closeMenu() {
-  burgerBtn.classList.remove('active');
-  navList.classList.remove('active');
-  logo.classList.remove('active');
-  nav.classList.remove('active');
-  slider.classList.remove('active');
-  header.classList.remove('active');
+  return activateMenu();
 }
 
 burgerBtn.addEventListener('click', activateMenu);
