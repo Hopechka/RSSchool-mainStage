@@ -751,6 +751,7 @@ footer {
     padding-left: 11px;
   }
 }
+
 @media screen and (max-width: 767px) {
   /* header */
   .container-header {
@@ -839,7 +840,7 @@ footer {
     row-gap: 20px;
   }
   .cards-change {
-    width: 300px;
+    width: 100%;
     margin-left: 15px;
   }
   .btn-friends {
@@ -967,4 +968,7 @@ footer {
     margin-left: 9px;
     padding-left: 11px;
   }
+}
+
+@media screen and (max-width: 375px) {
 }
