@@ -1,3 +1,4 @@
+//Slider
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slider = document.querySelector('.slider');
@@ -25,3 +26,11 @@ function slideLeft() {
 
 prevBtn.addEventListener('click', slideLeft);
 nextBtn.addEventListener('click', slideRight);
+
+// Burger-menu
+const burgerBtn = document.querySelector('.burger-menu');
+function activateMenu() {
+  burgerBtn.classList.toggle('active');
+}
+
+burgerBtn.addEventListener('click', activateMenu);

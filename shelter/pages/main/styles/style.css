@@ -123,6 +123,9 @@ body {
   width: 100%;
   font-family: Arial, sans-serif;
 }
+body._lock {
+  overflow: hidden;
+}
 /*--------------------*/
 
 /* header */
@@ -183,6 +186,11 @@ h1 {
   color: var(--white);
   border-bottom: 3px solid var(--logo);
   /* text-decoration: underline 3px var(--logo); */
+}
+
+/* burger-menu */
+.burger-menu {
+  display: none;
 }
 
 /*--------------------*/
@@ -759,6 +767,52 @@ footer {
   }
   .nav {
     display: none;
+  }
+  /* burger-menu */
+  .burger-menu {
+    width: 30px;
+    height: 22px;
+    margin-top: 19px;
+    margin-right: 43px;
+    position: relative;
+    z-index: 4;
+    display: block;
+    cursor: pointer;
+  }
+  .burger-menu::before,
+  .burger-menu::after,
+  .burger-menu span {
+    background-color: var(--logo);
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease 0s;
+  }
+  .burger-menu::before,
+  .burger-menu::after {
+    content: '';
+  }
+  .burger-menu::before {
+    top: 0;
+  }
+  .burger-menu::after {
+    bottom: 0;
+  }
+  .burger-menu span {
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+  .burger-menu.active span {
+    transform: rotate(90deg) translate(0px, 0px);
+  }
+  .burger-menu.active:before {
+    top: 50%;
+    transform: rotate(90deg) translate(0px, 11px);
+  }
+  .burger-menu.active:after {
+    top: 50%;
+    transform: rotate(90deg) translate(0px, -11px);
   }
   /*--------------------*/
   /* not-only */
