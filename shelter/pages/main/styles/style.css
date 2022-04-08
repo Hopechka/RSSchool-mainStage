@@ -765,9 +765,18 @@ footer {
   .container-header {
     margin: 30px 10px 0px 10px;
   }
+  #header.active {
+    justify-content: flex-end;
+    column-gap: 41px;
+  }
+  .logo.active {
+    position: relative;
+    z-index: 4;
+  }
   .nav {
     display: none;
   }
+
   /* burger-menu */
   .burger-menu {
     width: 30px;
@@ -814,6 +823,7 @@ footer {
     top: 50%;
     transform: rotate(90deg) translate(0px, -11px);
   }
+
   /*--------------------*/
   /* not-only */
   .container {

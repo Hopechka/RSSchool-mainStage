@@ -29,8 +29,15 @@ nextBtn.addEventListener('click', slideRight);
 
 // Burger-menu
 const burgerBtn = document.querySelector('.burger-menu');
+const logo = document.querySelector('.logo');
+const nav = document.querySelector('.nav');
+const header = document.querySelector('#header');
+
 function activateMenu() {
   burgerBtn.classList.toggle('active');
+  logo.classList.toggle('active');
+  nav.classList.toggle('active');
+  header.classList.toggle('active');
 }
 
 burgerBtn.addEventListener('click', activateMenu);
