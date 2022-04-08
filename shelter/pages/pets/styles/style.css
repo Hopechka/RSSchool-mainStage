@@ -182,6 +182,7 @@ h1 {
   font-size: var(--regular-font);
   line-height: 24px;
   margin-left: 35px;
+  padding-bottom: 2px;
 }
 .nav-item a:active {
   color: var(--normal-dark);
