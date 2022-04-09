@@ -495,7 +495,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 464px;
+  min-height: 462px;
 }
 .pic-donation,
 .donation-content {
@@ -566,33 +566,31 @@ footer {
     #211f20;
 }
 .footer {
-  min-height: 350px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  padding-top: 40px;
 }
-.questions,
-.visit,
-.pic-footer {
-  flex-basis: 27%;
+
+.wrapper {
+  display: flex;
+  column-gap: 160px;
 }
-.h3-questions {
-  width: 279px;
+.questions {
+  max-width: 278px;
+}
+.visit {
+  max-width: 302px;
 }
 .questions,
 .visit {
+  margin: 16px 0 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  min-height: 204px;
-  padding-bottom: 18px;
-}
-.visit h3 {
-  width: 270px;
+  justify-content: space-between;
 }
 .footer h3 {
   color: var(--white);
-  padding-top: 15px;
+  letter-spacing: 0.059em;
 }
 
 .footer p {
@@ -601,34 +599,13 @@ footer {
   line-height: 23px;
   letter-spacing: 0.06em;
   color: var(--logo);
-  vertical-align: middle;
-}
-
-.questions img,
-.visit img {
-  float: left;
-  margin-right: 20px;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
-
-.pic-footer {
-  align-self: flex-end;
-}
-.pic-footer img {
-  float: right;
+  padding-left: 20px;
 }
 .block {
   display: flex;
-  align-content: center;
 }
-.email {
-  padding: 3px 0;
-}
-.pin-first {
-  padding-right: 20px;
-  padding-top: 6px;
+.block a {
+  margin: auto 0;
 }
 
 /*--------------------*/
@@ -726,45 +703,28 @@ footer {
   /*--------------------*/
   /* footer */
   .footer {
-    justify-content: space-around;
-    row-gap: 47px;
-    padding-top: 15px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    justify-content: center;
+    row-gap: 65px;
   }
-  .questions,
-  .visit,
-  .pic-footer {
-    flex-basis: 45.6%;
+  .wrapper {
+    flex-basis: 100%;
+    justify-content: space-around;
+    column-gap: normal;
+    min-height: 234px;
+    padding: 0 3px 0;
   }
   .questions,
   .visit {
-    display: inline-block;
-  }
-  .questions {
-    margin-left: 25px;
-  }
-
-  .email {
-    margin: 39px 0 40px 0;
-  }
-  .phone p {
-    padding-top: 5px;
-  }
-  .block-pin-first {
-    margin: 32px 0 33px -5px;
-  }
-  .block-pin-second {
-    margin-left: -5px;
-  }
-  .block-pin-second p {
-    padding-top: 5px;
-  }
-  .pic-footer img {
-    float: none;
-    padding-left: 11px;
+    margin: 0;
   }
 }
 
 @media screen and (max-width: 767px) {
+  body.off {
+    overflow: hidden;
+  }
   /* header */
 
   .container-header {
@@ -1017,57 +977,36 @@ footer {
   /*--------------------*/
   /* footer */
   .footer {
+    row-gap: 40px;
+  }
+  .wrapper {
     flex-direction: column;
-    row-gap: 21px;
-    padding-top: 15px;
+    width: 100%;
     align-items: center;
+    row-gap: 40px;
+    padding: 0;
   }
-
-  .h3-questions,
-  .visit h3 {
+  .footer h3 {
     text-align: center;
+    padding: 0 11px 0;
   }
-  .visit h3 {
-    margin-left: 15px;
-    padding-top: 0;
-  }
-  .visit {
-    width: 300px;
-  }
-
   .questions {
-    margin-left: 10px;
+    row-gap: 42px;
   }
 
-  .pic-footer {
-    flex-basis: 89%;
+  .visit {
+    row-gap: 40px;
+  }
+  .email,
+  .phone {
     align-self: center;
   }
-  .email {
-    margin-left: 9px;
-  }
-  .phone {
-    margin-left: 15px;
-  }
-  .block-pin-first {
-    margin-left: 0px;
-    margin-top: 40px;
-    margin-bottom: 39px;
-  }
-  .block-pin-first p {
-    padding-top: 0px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
-  .block-pin-second {
-    margin-left: 0px;
+  .pic-footer {
+    text-align: center;
+    width: 99%;
   }
   .pic-footer img {
-    width: 91%;
-    margin-left: 9px;
-    padding-left: 11px;
+    width: 87%;
   }
 }
 

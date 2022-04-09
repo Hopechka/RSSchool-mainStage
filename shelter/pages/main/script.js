@@ -43,6 +43,7 @@ function activateMenu() {
   navList.classList.toggle('active');
   slider.classList.toggle('active');
   header.classList.toggle('active');
+  document.body.classList.toggle('off');
 }
 
 function closeMenu() {
