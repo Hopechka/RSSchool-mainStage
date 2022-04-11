@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Shelter main page</title>
+  </head>
+  <body>
+    <section id="our-friends">
+      <div class="container our-friends">
+        <h3>
+          Our friends who <br />
+          are looking for a house
+        </h3>
+        <div class="pets-cards">
+          <div class="cards-change">
+            <div class="slider">
+              <div class="card">
+                <img src="../../assets/images/pets-katrine.jpg" alt="Katrine" />
+                <p>Katrine</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img
+                  src="../../assets/images/pets-jennifer.jpg"
+                  alt="Jennifer"
+                />
+                <p>Jennifer</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img src="../../assets/images/pets-woody.jpg" alt="Woody" />
+                <p>Woody</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img src="../../assets/images/pets-sophia.jpg" alt="Sophia" />
+                <p>Sophia</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img src="../../assets/images/pets-timmy.jpg" alt="Timmy" />
+                <p>Timmy</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img src="../../assets/images/pets-charly.jpg" alt="Charly" />
+                <p>Charly</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img
+                  src="../../assets/images/pets-scarlett.jpg"
+                  alt="Scarlett"
+                />
+                <p>Scarlett</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+              <div class="card">
+                <img src="../../assets/images/pets-freddie.jpg" alt="Freddie" />
+                <p>Freddie</p>
+                <button class="btn-light card-btn">Learn more</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn-light prev">
+            <img src="../../assets/icons/Arrow-left.svg" alt="arrow-prev" />
+          </button>
+          <button class="btn-light next">
+            <img src="../../assets/icons/Arrow-right.svg" alt="arrow-next" />
+          </button>
+        </div>
+        <div class="btn-friends">
+          <a href="../../pages/pets/index.html" target="_blank"
+            ><button><span>Get to know the rest</span></button></a
+          >
+        </div>
+      </div>
+    </section>
+    <div id="myModal" class="modal">
+      <div class="modal-window">
+        <div>
+          <img class="modal-pic" src="" alt="pet picture" />
+        </div>
+        <div class="modal-content">
+          <div><h3 id="name" class="name"></h3></div>
+          <div><p class="pet-type"></p></div>
+          <div><p id="description" class="description"></p></div>
+          <div>
+            <ul>
+              <li>
+                <span><b>Age:</b></span
+                ><span id="age" class="age"></span>
+              </li>
+              <li>
+                <span><b>Inoculations:</b></span
+                ><span id="inoculations" class="inoculations"></span>
+              </li>
+              <li>
+                <span><b>Diseases:</b></span
+                ><span id="diseases" class="diseases"></span>
+              </li>
+              <li>
+                <span><b>Parasites:</b></span
+                ><span id="parasites" class="parasites"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="btn-light close">
+          <span>&times;</span>
+        </button>
+      </div>
+    </div>
+    <script src="scripts/test.js"></script>
+  </body>
+</html>
