@@ -112,18 +112,7 @@ h6 {
   --basic-font: Arial, sans-serif;
   --regular-font: 15px;
 }
-@font-face {
-  font-family: 'Georgia';
-  src: url('../../fonts/Georgia/georgia.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: 'Georgia';
-  src: url('../fonts/Georgia/georgia_bolditalic.ttf') format('truetype');
-  font-style: normal;
-  font-weight: bold;
-}
+
 /*--------------------*/
 html {
   background: #f6f6f6;
@@ -634,4 +623,18 @@ footer {
 .pin-first {
   padding-right: 20px;
   padding-top: 6px;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia_bolditalic.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: bold;
 }
