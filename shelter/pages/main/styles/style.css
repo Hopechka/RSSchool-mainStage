@@ -123,8 +123,11 @@ body {
   width: 100%;
   font-family: Arial, sans-serif;
 }
-body._lock {
+
+body.off,
+html.off {
   overflow: hidden;
+  height: 100%;
 }
 /*--------------------*/
 
@@ -432,7 +435,6 @@ h3 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -444,11 +446,14 @@ h3 {
 /* The Close Button */
 .close {
   color: #292929;
-  font-size: 20px;
+  background: none;
   width: 52px;
   position: absolute;
-  right: -52px;
-  top: -52px;
+  right: -42px;
+  top: -53px;
+}
+.close span {
+  font-size: 30px;
 }
 
 .close:hover,
@@ -460,12 +465,11 @@ h3 {
 
 .modal-window {
   /* width: 900px; */
-  width: 70%;
+  width: 63%;
   height: 500px;
   background: #fafafa;
   display: flex;
-  align-items: center;
-  /* justify-content: space-around; */
+  /* align-items: center; */
   border-radius: 9px;
   position: absolute;
   left: 50%;
@@ -480,6 +484,7 @@ h3 {
 .modal-content {
   width: 350px;
   margin: 0 auto;
+  padding-top: 50px;
 }
 .pet-type {
   font-family: var(--header-font);
@@ -757,6 +762,27 @@ footer {
   .card {
     margin-right: 36px;
   }
+  /*--------------------*/
+  /* modal-window */
+  .modal-window {
+    width: 81%;
+    height: 350px;
+  }
+  .modal-pic {
+    width: 350px;
+  }
+  .description {
+    padding: 20px 0;
+    font-size: 13px;
+    line-height: 110%;
+  }
+  .modal-window ul li {
+    padding-bottom: 6px;
+  }
+  .modal-content {
+    width: 261px;
+    padding-top: 10px;
+  }
 
   /*--------------------*/
   /* help */
@@ -813,9 +839,6 @@ footer {
 }
 
 @media screen and (max-width: 767px) {
-  body.off {
-    overflow: hidden;
-  }
   /* header */
 
   .container-header {
@@ -1000,6 +1023,34 @@ footer {
   }
   .our-friends {
     min-height: 792px;
+  }
+  /*--------------------*/
+  /* modal-window */
+  .modal-window {
+    width: 75%;
+    min-height: 341px;
+  }
+  .modal-pic {
+    display: none;
+  }
+  .description {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+  }
+  .modal-window ul {
+    padding-left: 10px;
+  }
+  .modal-content {
+    width: 100%;
+    overflow: scroll;
+  }
+  .name,
+  .pet-type {
+    text-align: center;
+  }
+  .close {
+    right: -26px;
   }
 
   /*--------------------*/

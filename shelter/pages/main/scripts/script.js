@@ -80,6 +80,7 @@ function fillOutTheCard(event) {
   const target = event.target.closest('.card');
   currentName = target.children[1].innerText;
   modal.style.display = 'block';
+  document.body.classList.toggle('off');
 }
 
 function showData(data) {
@@ -91,9 +92,12 @@ function showData(data) {
       let arr = data[nameIndex][e];
       if (arr.length > 1) {
         document.getElementById(e).textContent = arr.join(', ');
+      } else {
+        document.getElementById(e).textContent = data[nameIndex][e];
       }
+    } else {
+      document.getElementById(e).textContent = data[nameIndex][e];
     }
-    document.getElementById(e).textContent = data[nameIndex][e];
   });
 }
 
@@ -103,9 +107,11 @@ slider.addEventListener('click', getQuotes);
 //close modal-window
 span.addEventListener('click', function () {
   modal.style.display = 'none';
+  document.body.classList.remove('off');
 });
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
+    document.body.classList.remove('off');
   }
 };
