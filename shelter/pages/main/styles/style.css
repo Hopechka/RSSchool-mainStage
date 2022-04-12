@@ -179,7 +179,9 @@ h1 {
 .nav-item a:active {
   color: var(--white);
 }
-.nav-item a:hover,
+.nav-item a:hover {
+  color: var(--white);
+}
 .nav-item.active a {
   color: var(--white);
   border-bottom: 3px solid var(--logo);
