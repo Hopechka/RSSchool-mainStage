@@ -112,7 +112,18 @@ h6 {
   --basic-font: Arial, sans-serif;
   --regular-font: 15px;
 }
-
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../fonts/Georgia/georgia.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Georgia';
+  src: url('../fonts/Georgia/georgia_bolditalic.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
 /*--------------------*/
 html {
   background: #f6f6f6;
@@ -122,6 +133,9 @@ body {
   margin: 0 auto;
   width: 100%;
   font-family: Arial, sans-serif;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 /*--------------------*/
 
