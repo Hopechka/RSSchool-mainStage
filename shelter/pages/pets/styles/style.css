@@ -254,7 +254,7 @@ button {
 
 .btn-light {
   border: 2px solid var(--logo);
-  background: #fafafa;
+  background: none;
   cursor: pointer;
 }
 button:hover {
