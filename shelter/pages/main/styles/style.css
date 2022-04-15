@@ -124,10 +124,15 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+::-webkit-scrollbar {
+  display: none;
+  
 body.off,
 html.off {
   overflow: hidden;
   height: 100%;
+
 }
 /*--------------------*/
 
@@ -185,7 +190,9 @@ h1 {
 .nav-item a:active {
   color: var(--white);
 }
-.nav-item a:hover,
+.nav-item a:hover {
+  color: var(--white);
+}
 .nav-item.active a {
   color: var(--white);
   border-bottom: 3px solid var(--logo);
@@ -1153,4 +1160,44 @@ footer {
 }
 
 @media screen and (max-width: 375px) {
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia_bolditalic.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bolditalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: bold;
 }

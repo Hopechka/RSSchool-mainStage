@@ -125,6 +125,9 @@ body {
   width: 100%;
   font-family: Arial, sans-serif;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 /*--------------------*/
 
 /* header */
@@ -145,6 +148,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 h1 {
   font-size: 32px;
   line-height: 35.2px;
@@ -185,12 +189,18 @@ h1 {
   padding-bottom: 2px;
 }
 .nav-item a:active {
+  color: #292929;
+}
+.nav-item a:hover {
   color: var(--normal-dark);
 }
-.nav-item a:hover,
+
 .nav-item.active a {
-  color: var(--normal-dark);
+  color: var(--logo-dark);
   border-bottom: 3px solid var(--logo);
+}
+.burger-menu {
+  display: none;
 }
 
 /*--------------------*/
@@ -251,7 +261,7 @@ button {
 
 .btn-light {
   border: 2px solid var(--logo);
-  background: #fafafa;
+  background: none;
   cursor: pointer;
 }
 button:hover {
@@ -588,4 +598,43 @@ footer {
   .pic-footer img {
     width: 86.5%;
   }
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia_bolditalic.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bolditalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: bold;
 }
