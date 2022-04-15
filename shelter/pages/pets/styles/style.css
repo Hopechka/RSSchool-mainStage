@@ -248,6 +248,8 @@ h3 {
   justify-content: space-between;
   row-gap: 30px;
   padding-bottom: 30px;
+  max-height: 930px;
+  overflow: hidden;
 }
 button {
   height: 52px;

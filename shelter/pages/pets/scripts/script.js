@@ -90,3 +90,58 @@ window.onclick = function (event) {
     document.body.classList.remove('off');
   }
 };
+
+//Pagination
+
+function namesMixer() {
+  let nameArr = [
+    'Jennifer',
+    'Sophia',
+    'Woody',
+    'Scarlett',
+    'Katrine',
+    'Timmy',
+    'Freddie',
+    'Charly',
+  ];
+  return nameArr.sort(() => Math.random() - 0.5);
+}
+function combineName() {
+  let newNameArr = namesMixer();
+  let prevArr = [];
+  while (prevArr.length <= 48) {
+    if (newNameArr[0] != prevArr[prevArr.length - 1]) {
+      let array = prevArr.concat(newNameArr);
+      prevArr = array;
+      newNameArr = namesMixer();
+    } else {
+      combineName();
+    }
+  }
+
+  return prevArr;
+}
+
+function cardsShow() {
+  let arr = combineName();
+  for (let pet of arr) {
+    let elem = document.createElement('div');
+    elem.classList.add('card');
+    petsCards.appendChild(elem);
+    let imgCard = document.createElement('img');
+    imgCard.src = `../../assets/images/pets-${pet.toLowerCase()}.jpg`;
+    let petName = document.createElement('p');
+    let petNameText = document.createTextNode(pet);
+    petName.appendChild(petNameText);
+    let cardBtn = document.createElement('button');
+    cardBtn.classList.add('btn-light');
+    cardBtn.classList.add('card-btn');
+    let cardBtnText = document.createTextNode('Learn more');
+    cardBtn.appendChild(cardBtnText);
+    elem.appendChild(imgCard);
+    elem.appendChild(petName);
+    elem.appendChild(cardBtn);
+  }
+}
+
+cardsShow();
