@@ -145,6 +145,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 h1 {
   font-size: 32px;
   line-height: 35.2px;
@@ -185,12 +186,18 @@ h1 {
   padding-bottom: 2px;
 }
 .nav-item a:active {
+  color: #292929;
+}
+.nav-item a:hover {
   color: var(--normal-dark);
 }
-.nav-item a:hover,
+
 .nav-item.active a {
-  color: var(--normal-dark);
+  color: var(--logo-dark);
   border-bottom: 3px solid var(--logo);
+}
+.burger-menu {
+  display: none;
 }
 
 /*--------------------*/
