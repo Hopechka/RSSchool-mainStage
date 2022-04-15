@@ -108,14 +108,23 @@ function namesMixer() {
 }
 function combineName() {
   let newNameArr = namesMixer();
-  let prevArr = [];
+  let prevArr = [
+    'Jennifer',
+    'Sophia',
+    'Woody',
+    'Scarlett',
+    'Katrine',
+    'Timmy',
+    'Freddie',
+    'Charly',
+  ];
   while (prevArr.length <= 48) {
     if (newNameArr[0] != prevArr[prevArr.length - 1]) {
       let array = prevArr.concat(newNameArr);
       prevArr = array;
       newNameArr = namesMixer();
     } else {
-      combineName();
+      newNameArr = namesMixer();
     }
   }
 
