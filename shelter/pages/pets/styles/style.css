@@ -258,7 +258,7 @@ button {
 
 .btn-light {
   border: 2px solid var(--logo);
-  background: #fafafa;
+  background: none;
   cursor: pointer;
 }
 button:hover {
@@ -595,4 +595,43 @@ footer {
   .pic-footer img {
     width: 86.5%;
   }
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Georgia';
+  src: url('../../../assets/fonts/Georgia/georgia_bolditalic.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arial_bolditalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: bold;
 }
