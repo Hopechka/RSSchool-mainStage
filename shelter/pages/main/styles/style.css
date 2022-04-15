@@ -638,3 +638,31 @@ footer {
   font-style: normal;
   font-weight: bold;
 }
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arialnarrow.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arialnarrow_bold.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arialnarrow_italic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arial';
+  src: url('../../../assets/fonts/Arial/arialnarrow_bolditalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: bold;
+}
