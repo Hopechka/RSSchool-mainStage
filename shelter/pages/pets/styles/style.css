@@ -128,6 +128,11 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+body.off,
+html.off {
+  overflow: hidden;
+  height: 100%;
+}
 /*--------------------*/
 
 /* header */
@@ -332,6 +337,102 @@ button:disabled {
   background: var(--active-button);
 }
 /*--------------------*/
+/* modal-window */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #292929;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* The Close Button */
+.close {
+  color: #292929;
+  background: none;
+  width: 52px;
+  position: absolute;
+  right: -39px;
+  top: -84px;
+}
+.close span {
+  font-size: 30px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-window {
+  /* width: 900px; */
+  width: 63%;
+  height: 500px;
+  background: #fafafa;
+  display: flex;
+  /* align-items: center; */
+  border-radius: 9px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-pic {
+  width: 500px;
+  border-radius: 9px;
+}
+
+.modal-content {
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.pet-type {
+  font-family: var(--header-font);
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+}
+.description,
+.age,
+.inoculations,
+.diseases,
+.parasites {
+  font-family: var(--header-font);
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+}
+.description {
+  padding: 40px 0;
+}
+h3#name.name {
+  padding-bottom: 10px;
+  padding-top: 0px;
+  text-align: left;
+}
+.modal-window ul li {
+  list-style: inside;
+  padding-bottom: 11px;
+}
+.modal-window li::marker {
+  color: var(--logo);
+  font-size: 1em;
+}
+.age,
+.inoculations,
+.diseases,
+.parasites {
+  padding-left: 4px;
+}
+
+/*--------------------*/
 /* footer */
 footer {
   background: radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%)
@@ -405,6 +506,27 @@ footer {
   .nav-btn {
     padding-top: 10px;
     padding-bottom: 46px;
+  }
+  /*--------------------*/
+  /* modal-window */
+  .modal-window {
+    width: 81%;
+    height: 350px;
+  }
+  .modal-pic {
+    width: 350px;
+  }
+  .description {
+    padding: 20px 0;
+    font-size: 13px;
+    line-height: 110%;
+  }
+  .modal-window ul li {
+    padding-bottom: 6px;
+  }
+  .modal-content {
+    width: 261px;
+    padding-top: 10px;
   }
 
   /*--------------------*/
@@ -544,6 +666,7 @@ footer {
     top: 50%;
     transform: rotate(90deg) translate(0px, -11px);
   }
+
   /*--------------------*/
   /* pets-content */
   .container {
@@ -563,6 +686,34 @@ footer {
   }
   .nav-btn li {
     padding: 0px 2px;
+  }
+  /*--------------------*/
+  /* modal-window */
+  .modal-window {
+    width: 75%;
+    min-height: 341px;
+  }
+  .modal-pic {
+    display: none;
+  }
+  .description {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+  }
+  .modal-window ul {
+    padding-left: 10px;
+  }
+  .modal-content {
+    width: 100%;
+    overflow: scroll;
+  }
+  h3#name.name,
+  .pet-type {
+    text-align: center;
+  }
+  .close {
+    right: -26px;
   }
   /*--------------------*/
   /* footer */
