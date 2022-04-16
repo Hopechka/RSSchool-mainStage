@@ -92,6 +92,11 @@ window.onclick = function (event) {
 };
 
 //Pagination
+const lastPage = document.querySelector('.next-next');
+const nextNarrow = document.querySelector('.next');
+const numPage = document.querySelector('.page-num');
+const firstPage = document.querySelector('.prev-prev');
+const prevNarrow = document.querySelector('.prev');
 
 function namesMixer() {
   let nameArr = [
@@ -118,7 +123,7 @@ function combineName() {
     'Freddie',
     'Charly',
   ];
-  while (prevArr.length <= 48) {
+  while (prevArr.length < 48) {
     if (newNameArr[0] != prevArr[prevArr.length - 1]) {
       let array = prevArr.concat(newNameArr);
       prevArr = array;
@@ -130,17 +135,17 @@ function combineName() {
 
   return prevArr;
 }
+let arr = combineName();
 
-function cardsShow() {
-  let arr = combineName();
-  for (let pet of arr) {
+function cardsShow(start = 0, end = 7) {
+  for (let pet = start; pet <= end; pet++) {
     let elem = document.createElement('div');
     elem.classList.add('card');
     petsCards.appendChild(elem);
     let imgCard = document.createElement('img');
-    imgCard.src = `../../assets/images/pets-${pet.toLowerCase()}.jpg`;
+    imgCard.src = `../../assets/images/pets-${arr[pet].toLowerCase()}.jpg`;
     let petName = document.createElement('p');
-    let petNameText = document.createTextNode(pet);
+    let petNameText = document.createTextNode(arr[pet]);
     petName.appendChild(petNameText);
     let cardBtn = document.createElement('button');
     cardBtn.classList.add('btn-light');
@@ -154,3 +159,65 @@ function cardsShow() {
 }
 
 cardsShow();
+
+function cardsRemove() {
+  //   console.log(petsCards.children);
+  //   console.log(petsCards);
+  while (petsCards.firstChild) {
+    petsCards.removeChild(petsCards.firstChild);
+  }
+}
+
+function showLastCards() {
+  cardsRemove();
+  cardsShow(40, 47);
+  lastPage.setAttribute('disabled', 'disabled');
+  nextNarrow.setAttribute('disabled', 'disabled');
+  firstPage.removeAttribute('disabled', 'disabled');
+  prevNarrow.removeAttribute('disabled', 'disabled');
+  if (document.body.clientWidth >= 1280) {
+    numPage.innerHTML = '6';
+  } else if (document.body.clientWidth >= 768) {
+    for (let i = 0; i < 2; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+    numPage.innerHTML = '8';
+  } else {
+    for (let i = 0; i < 5; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+    numPage.innerHTML = '16';
+  }
+}
+function showFirstCards() {
+  cardsRemove();
+  cardsShow();
+  lastPage.removeAttribute('disabled', 'disabled');
+  nextNarrow.removeAttribute('disabled', 'disabled');
+  firstPage.setAttribute('disabled', 'disabled');
+  prevNarrow.setAttribute('disabled', 'disabled');
+  numPage.innerHTML = '1';
+}
+function showCorrectNumberOfCards() {
+  for (let pet of petsCards.children) {
+    pet.style.display = '';
+  }
+
+  if (document.body.clientWidth >= 1280) {
+    numPage.innerHTML = '6';
+  } else if (document.body.clientWidth >= 768) {
+    for (let i = 0; i < 2; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+    numPage.innerHTML = '8';
+  } else {
+    for (let i = 0; i < 5; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+    numPage.innerHTML = '16';
+  }
+}
+
+lastPage.addEventListener('click', showLastCards);
+firstPage.addEventListener('click', showFirstCards);
+window.addEventListener('click', showCorrectNumberOfCards);

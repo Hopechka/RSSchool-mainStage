@@ -502,7 +502,7 @@ footer {
   .pets-cards {
     justify-content: center;
     column-gap: 40px;
-    max-height: 1365px;
+    height: 1365px;
     overflow: hidden;
   }
   .nav-btn {
