@@ -97,6 +97,7 @@ const nextNarrow = document.querySelector('.next');
 const numPage = document.querySelector('.page-num');
 const firstPage = document.querySelector('.prev-prev');
 const prevNarrow = document.querySelector('.prev');
+let count = 1;
 
 function namesMixer() {
   let nameArr = [
@@ -137,15 +138,15 @@ function combineName() {
 }
 let arr = combineName();
 
-function cardsShow(start = 0, end = 7) {
-  for (let pet = start; pet <= end; pet++) {
+function cardsShow() {
+  for (let pet of arr) {
     let elem = document.createElement('div');
     elem.classList.add('card');
     petsCards.appendChild(elem);
     let imgCard = document.createElement('img');
-    imgCard.src = `../../assets/images/pets-${arr[pet].toLowerCase()}.jpg`;
+    imgCard.src = `../../assets/images/pets-${pet.toLowerCase()}.jpg`;
     let petName = document.createElement('p');
-    let petNameText = document.createTextNode(arr[pet]);
+    let petNameText = document.createTextNode(pet);
     petName.appendChild(petNameText);
     let cardBtn = document.createElement('button');
     cardBtn.classList.add('btn-light');
@@ -156,68 +157,194 @@ function cardsShow(start = 0, end = 7) {
     elem.appendChild(petName);
     elem.appendChild(cardBtn);
   }
+  if (document.body.clientWidth >= 1280) {
+    for (let i = 8; i < 48; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+  } else if (document.body.clientWidth >= 768) {
+    for (let i = 6; i < 48; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+  } else {
+    for (let i = 3; i < 48; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
+  }
 }
 
 cardsShow();
 
-function cardsRemove() {
-  //   console.log(petsCards.children);
-  //   console.log(petsCards);
-  while (petsCards.firstChild) {
-    petsCards.removeChild(petsCards.firstChild);
-  }
-}
+// function cardsRemove() {
+//   while (petsCards.firstChild) {
+//     petsCards.removeChild(petsCards.firstChild);
+//   }
+// }
 
 function showLastCards() {
-  cardsRemove();
-  cardsShow(40, 47);
+  for (let i = 0; i < 48; i++) {
+    petsCards.children[i].style.display = '';
+  }
   lastPage.setAttribute('disabled', 'disabled');
   nextNarrow.setAttribute('disabled', 'disabled');
   firstPage.removeAttribute('disabled', 'disabled');
   prevNarrow.removeAttribute('disabled', 'disabled');
   if (document.body.clientWidth >= 1280) {
+    for (let i = 0; i < 40; i++) {
+      petsCards.children[i].style.display = 'none';
+      count = 6;
+    }
     numPage.innerHTML = '6';
   } else if (document.body.clientWidth >= 768) {
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 42; i++) {
       petsCards.children[i].style.display = 'none';
     }
+    count = 8;
     numPage.innerHTML = '8';
   } else {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 45; i++) {
       petsCards.children[i].style.display = 'none';
     }
+    count = 16;
     numPage.innerHTML = '16';
   }
 }
 function showFirstCards() {
-  cardsRemove();
-  cardsShow();
+  count = 1;
+  for (let i = 0; i < 48; i++) {
+    petsCards.children[i].style.display = '';
+  }
+
   lastPage.removeAttribute('disabled', 'disabled');
   nextNarrow.removeAttribute('disabled', 'disabled');
   firstPage.setAttribute('disabled', 'disabled');
   prevNarrow.setAttribute('disabled', 'disabled');
   numPage.innerHTML = '1';
-}
-function showCorrectNumberOfCards() {
-  for (let pet of petsCards.children) {
-    pet.style.display = '';
-  }
-
   if (document.body.clientWidth >= 1280) {
-    numPage.innerHTML = '6';
+    for (let i = 8; i < 48; i++) {
+      petsCards.children[i].style.display = 'none';
+    }
   } else if (document.body.clientWidth >= 768) {
-    for (let i = 0; i < 2; i++) {
+    for (let i = 6; i < 48; i++) {
       petsCards.children[i].style.display = 'none';
     }
-    numPage.innerHTML = '8';
   } else {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 3; i < 48; i++) {
       petsCards.children[i].style.display = 'none';
     }
-    numPage.innerHTML = '16';
   }
+}
+
+function showNextCards() {
+  firstPage.removeAttribute('disabled', 'disabled');
+  prevNarrow.removeAttribute('disabled', 'disabled');
+  let index;
+  for (let i = 47; i > 0; i--) {
+    if (petsCards.children[i].style.display === '') {
+      index = i + 1;
+      break;
+    }
+  }
+  for (let i = 0; i < 48; i++) {
+    petsCards.children[i].style.display = 'none';
+  }
+  if (document.body.clientWidth >= 1280) {
+    for (let i = index; i < index + 8; i++) {
+      petsCards.children[i].style.display = '';
+      //console.log(index);
+    }
+    if (index >= 40) {
+      lastPage.setAttribute('disabled', 'disabled');
+      nextNarrow.setAttribute('disabled', 'disabled');
+    }
+  } else if (document.body.clientWidth >= 768) {
+    for (let i = index; i < index + 6; i++) {
+      petsCards.children[i].style.display = '';
+      console.log(index);
+    }
+    if (index >= 42) {
+      lastPage.setAttribute('disabled', 'disabled');
+      nextNarrow.setAttribute('disabled', 'disabled');
+    }
+  } else {
+    for (let i = index; i < index + 3; i++) {
+      petsCards.children[i].style.display = '';
+    }
+    if (index >= 45) {
+      lastPage.setAttribute('disabled', 'disabled');
+      nextNarrow.setAttribute('disabled', 'disabled');
+    }
+  }
+  count++;
+  numPage.innerHTML = count;
+}
+function showPrevCards() {
+  lastPage.removeAttribute('disabled', 'disabled');
+  nextNarrow.removeAttribute('disabled', 'disabled');
+  let index;
+
+  for (let i = 0; i < 48; i++) {
+    if (petsCards.children[i].style.display === '') {
+      index = i - 1;
+      console.log(index);
+      break;
+    }
+  }
+  for (let i = 0; i < 48; i++) {
+    petsCards.children[i].style.display = 'none';
+  }
+  if (document.body.clientWidth >= 1280) {
+    for (let i = index; i > index - 8; i--) {
+      petsCards.children[i].style.display = '';
+      console.log(index);
+    }
+    if (index == 7) {
+      firstPage.setAttribute('disabled', 'disabled');
+      prevNarrow.setAttribute('disabled', 'disabled');
+    }
+  } else if (document.body.clientWidth >= 768) {
+    for (let i = index; i > index - 6; i--) {
+      petsCards.children[i].style.display = '';
+      console.log(index);
+    }
+    if (index == 5) {
+      firstPage.setAttribute('disabled', 'disabled');
+      prevNarrow.setAttribute('disabled', 'disabled');
+    }
+  } else {
+    for (let i = index; i > index - 3; i--) {
+      petsCards.children[i].style.display = '';
+    }
+    if (index == 2) {
+      firstPage.setAttribute('disabled', 'disabled');
+      prevNarrow.setAttribute('disabled', 'disabled');
+    }
+  }
+  count--;
+  numPage.innerHTML = count;
 }
 
 lastPage.addEventListener('click', showLastCards);
 firstPage.addEventListener('click', showFirstCards);
-window.addEventListener('click', showCorrectNumberOfCards);
+nextNarrow.addEventListener('click', showNextCards);
+prevNarrow.addEventListener('click', showPrevCards);
+
+// function showCorrectNumberOfCards() {
+//   for (let pet of petsCards.children) {
+//     pet.style.display = '';
+//   }
+
+//   if (document.body.clientWidth >= 1280) {
+//     numPage.innerHTML = '6';
+//   } else if (document.body.clientWidth >= 768) {
+//     for (let i = 0; i < 2; i++) {
+//       petsCards.children[i].style.display = 'none';
+//     }
+//     numPage.innerHTML = '8';
+//   } else {
+//     for (let i = 0; i < 5; i++) {
+//       petsCards.children[i].style.display = 'none';
+//     }
+//     numPage.innerHTML = '16';
+//   }
+// }
+// window.addEventListener('click', showCorrectNumberOfCards);
