@@ -124,15 +124,13 @@ body {
   font-family: Arial, sans-serif;
 }
 
-
 ::-webkit-scrollbar {
   display: none;
-  
+}
 body.off,
 html.off {
   overflow: hidden;
   height: 100%;
-
 }
 /*--------------------*/
 
