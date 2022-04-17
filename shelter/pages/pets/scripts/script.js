@@ -182,27 +182,27 @@ cardsShow();
 
 function showLastCards() {
   for (let i = 0; i < 48; i++) {
-    petsCards.children[i].style.display = '';
+    petsCards.children[i].style.display = 'none';
   }
   lastPage.setAttribute('disabled', 'disabled');
   nextNarrow.setAttribute('disabled', 'disabled');
   firstPage.removeAttribute('disabled', 'disabled');
   prevNarrow.removeAttribute('disabled', 'disabled');
   if (document.body.clientWidth >= 1280) {
-    for (let i = 0; i < 40; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 40; i < 48; i++) {
+      petsCards.children[i].style.display = '';
       count = 6;
     }
     numPage.innerHTML = '6';
   } else if (document.body.clientWidth >= 768) {
-    for (let i = 0; i < 42; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 42; i < 48; i++) {
+      petsCards.children[i].style.display = '';
     }
     count = 8;
     numPage.innerHTML = '8';
   } else {
-    for (let i = 0; i < 45; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 45; i <= 48; i++) {
+      petsCards.children[i].style.display = '';
     }
     count = 16;
     numPage.innerHTML = '16';
@@ -211,7 +211,7 @@ function showLastCards() {
 function showFirstCards() {
   count = 1;
   for (let i = 0; i < 48; i++) {
-    petsCards.children[i].style.display = '';
+    petsCards.children[i].style.display = 'none';
   }
 
   lastPage.removeAttribute('disabled', 'disabled');
@@ -220,16 +220,16 @@ function showFirstCards() {
   prevNarrow.setAttribute('disabled', 'disabled');
   numPage.innerHTML = '1';
   if (document.body.clientWidth >= 1280) {
-    for (let i = 8; i < 48; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 0; i < 8; i++) {
+      petsCards.children[i].style.display = '';
     }
   } else if (document.body.clientWidth >= 768) {
-    for (let i = 6; i < 48; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 0; i < 6; i++) {
+      petsCards.children[i].style.display = '';
     }
   } else {
-    for (let i = 3; i < 48; i++) {
-      petsCards.children[i].style.display = 'none';
+    for (let i = 0; i < 3; i++) {
+      petsCards.children[i].style.display = '';
     }
   }
 }
