@@ -408,12 +408,15 @@ h3 {
   column-gap: 90px; */
   width: 990px;
   overflow: hidden;
+  height: 435px;
 }
 .slider {
-  width: 2908px;
+  /*  width: 2908px; */
+  width: 100%;
   position: relative;
-  left: 0;
-  transition: all ease 1s;
+  /* left: 0;
+   */
+  /* transition: all ease 1s; */
 }
 .slider.active {
   z-index: -1;
@@ -424,9 +427,11 @@ h3 {
   clear: both;
 }
 .card {
-  display: inline-block;
-  margin-right: 86px;
+  /* display: inline-block;
+  margin-right: 86px; */
   cursor: pointer;
+  position: absolute;
+  transition: all ease 1s;
 }
 .card:hover {
   background: var(--white);

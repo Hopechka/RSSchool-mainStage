@@ -2,30 +2,136 @@
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slider = document.querySelector('.slider');
-
-let left = 0;
-
-function slideRight() {
-  left = left - 360;
-  prevBtn.disabled = false;
-  if (left < -1440) {
-    nextBtn.disabled = true;
-  }
-  slider.style.left = left + 'px';
+//---------------------------------//
+let cardsChange = document.querySelector('.cards-change').offsetWidth * 2;
+const cards = document.querySelectorAll('.card');
+let cardsArray = [];
+for (let i = 0; i < cards.length; i++) {
+  cardsArray[i] = cards[i];
+  cards[i].remove();
 }
 
-function slideLeft() {
-  left = left + 360;
-  nextBtn.disabled = false;
-  if (left > 0) {
-    left = 0;
-    prevBtn.disabled = true;
+let step = 0;
+let offset;
+let visibleCards = 6;
+
+offset = 0;
+function draw() {
+  cardsArray[step].style.left = (offset / visibleCards) * cardsChange + 'px';
+  slider.appendChild(cardsArray[step]);
+  if (step + 1 == cardsArray.length) {
+    step = 0;
+  } else {
+    step++;
   }
-  slider.style.left = left + 'px';
+  offset++;
+}
+draw();
+draw();
+draw();
+draw();
+draw();
+draw();
+
+function left() {
+  prevBtn.removeEventListener('click', left);
+  let cards2 = document.querySelectorAll('.card');
+  console.log(cards2);
+  for (let i = 0; i < cards2.length; i++) {
+    cards2[i].style.left =
+      parseInt(cards2[i].style.left, 10) - cardsChange / 2 + 'px';
+  }
+  setTimeout(function () {
+    for (let i = 0; i < cards2.length; i++) {
+      if (parseInt(cards2[i].style.left, 10) < 0) {
+        cards2[i].remove();
+      }
+    }
+    offset = visibleCards / 2;
+    draw();
+    draw();
+    draw();
+
+    prevBtn.addEventListener('click', left);
+  }, 1000);
+}
+prevBtn.addEventListener('click', left);
+
+// offset = 3;
+// function drawNegative() {
+//   cardsArray[step].style.left = -(offset / visibleCards) * cardsChange + 'px';
+//   slider.appendChild(cardsArray[step]);
+//   if (step + 1 == cardsArray.length) {
+//     step = 0;
+//   } else {
+//     step++;
+//   }
+//   offset--;
+// }
+
+function drawBeforeNode() {
+  cardsArray[step].style.left = (offset / visibleCards) * cardsChange + 'px';
+  slider.prepend(cardsArray[step]);
+  if (step + 1 == cardsArray.length) {
+    step = 0;
+  } else {
+    step++;
+  }
+  offset--;
+  console.log(offset);
 }
 
-prevBtn.addEventListener('click', slideLeft);
-nextBtn.addEventListener('click', slideRight);
+function right() {
+  //   drawNegative();
+  //   drawNegative();
+  //   drawNegative();
+  nextBtn.removeEventListener('click', right);
+  let cards2 = document.querySelectorAll('.card');
+  console.log(cards2);
+  for (let i = 0; i < cards2.length; i++) {
+    cards2[i].style.left =
+      parseInt(cards2[i].style.left, 10) + cardsChange / 2 + 'px';
+  }
+
+  setTimeout(function () {
+    offset = 2;
+    drawBeforeNode();
+    drawBeforeNode();
+    drawBeforeNode();
+    for (let i = 0; i < cards2.length; i++) {
+      if (parseInt(cards2[i].style.left, 10) >= 1980) {
+        cards2[i].remove();
+      }
+    }
+    nextBtn.addEventListener('click', right);
+  }, 1000);
+}
+nextBtn.addEventListener('click', right);
+
+//---------------------------------//
+// let left = 0;
+
+// function slideRight() {
+//   left = left - 360;
+//   prevBtn.disabled = false;
+//   if (left < -1440) {
+//     nextBtn.disabled = true;
+//   }
+//   slider.style.left = left + 'px';
+// }
+
+// function slideLeft() {
+//   left = left + 360;
+//   nextBtn.disabled = false;
+//   if (left > 0) {
+//     left = 0;
+//     prevBtn.disabled = true;
+//   }
+//   slider.style.left = left + 'px';
+// }
+
+// prevBtn.addEventListener('click', slideLeft);
+// nextBtn.addEventListener('click', slideRight);
 
 // Burger-menu
 const burgerBtn = document.querySelector('.burger-menu');
