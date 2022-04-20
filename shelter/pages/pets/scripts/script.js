@@ -201,7 +201,7 @@ function showLastCards() {
     count = 8;
     numPage.innerHTML = '8';
   } else {
-    for (let i = 45; i <= 48; i++) {
+    for (let i = 45; i < 48; i++) {
       petsCards.children[i].style.display = '';
     }
     count = 16;
