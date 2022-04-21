@@ -414,6 +414,7 @@ h3 {
   /*  width: 2908px; */
   width: 100%;
   position: relative;
+  right: 990px; /* эксперимент */
   /* left: 0;
    */
   /* transition: all ease 1s; */
@@ -773,6 +774,9 @@ footer {
   .card {
     margin-right: 36px;
   }
+  .slider {
+    right: 580px; /* эксперимент */
+  }
   /*--------------------*/
   /* modal-window */
   .modal-window {
@@ -1034,6 +1038,9 @@ footer {
   }
   .our-friends {
     min-height: 792px;
+  }
+  .slider {
+    right: 285px; /* эксперимент */
   }
   /*--------------------*/
   /* modal-window */
