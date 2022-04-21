@@ -2,7 +2,9 @@
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const slider = document.querySelector('.slider');
-let cardsChangeWidth = document.querySelector('.cards-change').offsetWidth;
+let cardsChange = document.querySelector('.cards-change');
+let cardsChangeWidth;
+
 const cards = document.querySelectorAll('.card');
 let screenWidthNow = window.innerWidth;
 let screenWidthBefore;
@@ -27,12 +29,15 @@ function checkTheScreenWidth() {
   if (window.innerWidth >= 1280) {
     cardsInSliderAtMoment = 9;
     offsetForDrawBeforeNode = 2;
+    console.log('я тут 1280 и выше');
   } else if (window.innerWidth >= 768) {
     cardsInSliderAtMoment = 6;
     offsetForDrawBeforeNode = 1;
+    console.log('я тут 768 и выше');
   } else {
     cardsInSliderAtMoment = 3;
     offsetForDrawBeforeNode = 0;
+    console.log('я тут 767 и ниже');
   }
   for (let i = 0; i < cardsInSliderAtMoment; i++) {
     draw();
@@ -40,7 +45,27 @@ function checkTheScreenWidth() {
 }
 checkTheScreenWidth();
 
+function screenWidthMeasurement() {
+  screenWidthBefore = screenWidthNow;
+  screenWidthNow = window.innerWidth;
+  if (screenWidthBefore != screenWidthNow) {
+    for (let i = 0; i < cards.length; i++) {
+      cardsArray[i] = cards[i];
+      cards[i].remove();
+    }
+    offset = 0;
+    step = 0;
+    checkTheScreenWidth();
+  }
+}
+prevBtn.addEventListener('click', screenWidthMeasurement);
+nextBtn.addEventListener('click', screenWidthMeasurement);
+
 function draw() {
+  cardsChangeWidth = cardsChange.offsetWidth;
+  console.log(cardsChangeWidth);
+  console.log(offset);
+  console.log(step);
   cardsArray[step].style.left =
     (offset / cardsInSliderAtMoment) * cardsChangeWidth * 3 + 'px';
   slider.appendChild(cardsArray[step]);
@@ -73,6 +98,7 @@ function drawAfterNode(arr, arr3) {
   draw();
 }
 function left() {
+  cardsChangeWidth = cardsChange.offsetWidth;
   prevBtn.removeEventListener('click', left);
   let cards2 = document.querySelectorAll('.card');
   console.log(cards2);
@@ -103,9 +129,11 @@ function left() {
     prevBtn.addEventListener('click', left);
   }, 1000);
 }
+
 prevBtn.addEventListener('click', left);
 
 function drawBeforeNode(arr, arr2) {
+  cardsChangeWidth = cardsChange.offsetWidth;
   //cardsMixer();
   arr = arr.concat(arr2);
   //проверка на то, что имя уникально и не повторялось в прошлыех карточках
@@ -137,6 +165,7 @@ function drawBeforeNode(arr, arr2) {
 }
 
 function right() {
+  cardsChangeWidth = cardsChange.offsetWidth;
   nextBtn.removeEventListener('click', right);
   let cards3 = document.querySelectorAll('.card');
   for (let i = 0; i < cards3.length; i++) {
