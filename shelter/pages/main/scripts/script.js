@@ -180,7 +180,11 @@ function right() {
       }
     }
     let exceptionNames = [];
-    for (let i = 0; i < cardsInSliderAtMoment / 3; i++) {
+    for (
+      let i = 0;
+      i < cardsInSliderAtMoment - cardsInSliderAtMoment / 3;
+      i++
+    ) {
       exceptionNames.push(cards3[i].querySelector('p').innerHTML);
     }
     let arr2 = [];
