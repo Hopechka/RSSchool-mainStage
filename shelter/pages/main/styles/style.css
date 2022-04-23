@@ -127,6 +127,7 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
 body.off,
 html.off {
   overflow: hidden;
@@ -403,30 +404,50 @@ h3 {
 }
 
 .cards-change {
-  /* display: flex;
-  column-gap: 90px; */
+  display: flex;
+  height: 435px;
   width: 990px;
   overflow: hidden;
 }
 .slider {
-  width: 2908px;
+  display: flex;
+  flex-wrap: nowrap;
   position: relative;
-  left: 0;
-  transition: all ease 1s;
+  left: -990px;
 }
-.slider.active {
-  z-index: -1;
-}
-.slider::after {
-  content: '';
-  display: block;
-  clear: both;
+.item {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 90px;
 }
 .card {
-  display: inline-block;
-  margin-right: 86px;
   cursor: pointer;
 }
+@keyframes move-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
+  }
+}
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 3s;
+}
+@keyframes move-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0px;
+  }
+}
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 3s;
+}
+
 .card:hover {
   background: var(--white);
 }
@@ -470,7 +491,7 @@ h3 {
 
 .modal-window {
   /* width: 900px; */
-  width: 63%;
+  width: 70%;
   height: 500px;
   background: #fafafa;
   display: flex;
@@ -761,12 +782,32 @@ footer {
   }
   /*--------------------*/
   /* our-friends */
+  @keyframes move-right {
+    from {
+      left: -580px;
+    }
+    to {
+      left: -1160px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      left: -580px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  .slider {
+    left: -580px;
+  }
   .cards-change {
     width: 580px;
   }
-  .card {
-    margin-right: 36px;
+  .item {
+    column-gap: 40px;
   }
+
   /*--------------------*/
   /* modal-window */
   .modal-window {
@@ -1019,15 +1060,38 @@ footer {
     justify-content: space-evenly;
     row-gap: 20px;
   }
-  .cards-change {
+  /* .cards-change {
     width: 100%;
     margin-left: 15px;
-  }
+  } */
   .btn-friends {
     padding-top: 114px;
   }
   .our-friends {
     min-height: 792px;
+  }
+  @keyframes move-right {
+    from {
+      left: -290px;
+    }
+    to {
+      left: -580px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      left: -290px;
+    }
+    to {
+      left: 5px;
+    }
+  }
+  .slider {
+    left: -285px;
+    column-gap: 23px;
+  }
+  .cards-change {
+    width: 285px;
   }
   /*--------------------*/
   /* modal-window */
