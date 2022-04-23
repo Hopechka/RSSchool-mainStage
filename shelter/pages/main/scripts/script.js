@@ -29,15 +29,12 @@ function checkTheScreenWidth() {
   if (window.innerWidth >= 1280) {
     cardsInSliderAtMoment = 9;
     offsetForDrawBeforeNode = 2;
-    console.log('я тут 1280 и выше');
   } else if (window.innerWidth >= 768) {
     cardsInSliderAtMoment = 6;
     offsetForDrawBeforeNode = 1;
-    console.log('я тут 768 и выше');
   } else {
     cardsInSliderAtMoment = 3;
     offsetForDrawBeforeNode = 0;
-    console.log('я тут 767 и ниже');
   }
   for (let i = 0; i < cardsInSliderAtMoment; i++) {
     draw();
