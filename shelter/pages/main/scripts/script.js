@@ -166,6 +166,7 @@ const card = document.querySelector('.card');
 const modalPic = document.querySelector('.modal-pic');
 const modal = document.getElementById('myModal');
 const span = document.querySelector('.close');
+const modalWindow = document.querySelector('.modal-window');
 const petsInfo = [
   'name',
   'description',
@@ -220,5 +221,19 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
     document.body.classList.remove('off');
+    span.classList.remove('hover');
   }
 };
+
+//hover for modal
+modalWindow.onmouseover = modalWindow.onmouseout = handler;
+
+function handler(event) {
+  //   console.log(event);
+  if (event.type == 'mouseover') {
+    span.classList.remove('hover');
+  }
+  if (event.type == 'mouseout') {
+    span.classList.add('hover');
+  }
+}

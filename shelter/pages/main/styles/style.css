@@ -483,10 +483,13 @@ h3 {
 }
 
 .close:hover,
+.close.hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+  border: 2px solid var(--active-button);
+  background: var(--active-button);
 }
 
 .modal-window {

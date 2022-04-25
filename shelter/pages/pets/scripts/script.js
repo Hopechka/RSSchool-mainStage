@@ -31,6 +31,7 @@ const petType = document.querySelector('.pet-type');
 const card = document.querySelector('.card');
 const modalPic = document.querySelector('.modal-pic');
 const modal = document.getElementById('myModal');
+const modalWindow = document.querySelector('.modal-window');
 const span = document.querySelector('.close');
 const petsCards = document.querySelector('.pets-cards');
 
@@ -90,6 +91,18 @@ window.onclick = function (event) {
     document.body.classList.remove('off');
   }
 };
+//hover for modal
+modalWindow.onmouseover = modalWindow.onmouseout = handler;
+
+function handler(event) {
+  //   console.log(event);
+  if (event.type == 'mouseover') {
+    span.classList.remove('hover');
+  }
+  if (event.type == 'mouseout') {
+    span.classList.add('hover');
+  }
+}
 
 //Pagination
 const lastPage = document.querySelector('.next-next');
@@ -114,16 +127,17 @@ function namesMixer() {
 }
 function combineName() {
   let newNameArr = namesMixer();
-  let prevArr = [
-    'Jennifer',
-    'Sophia',
-    'Woody',
-    'Scarlett',
-    'Katrine',
-    'Timmy',
-    'Freddie',
-    'Charly',
-  ];
+  //   let prevArr = [
+  //     'Jennifer',
+  //     'Sophia',
+  //     'Woody',
+  //     'Scarlett',
+  //     'Katrine',
+  //     'Timmy',
+  //     'Freddie',
+  //     'Charly',
+  //   ];
+  let prevArr = [];
   while (prevArr.length < 48) {
     if (newNameArr[0] != prevArr[prevArr.length - 1]) {
       let array = prevArr.concat(newNameArr);
