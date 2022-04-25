@@ -74,23 +74,16 @@ SLIDER.addEventListener('animationend', (animationEvent) => {
     mutableItem = ITEM_LEFT;
     SLIDER.classList.remove('transition-left');
     SLIDER.classList.remove('transition-right');
+    ITEM_RIGHT.innerHTML = ITEM_ACTIVE.innerHTML;
     ITEM_ACTIVE.innerHTML = ITEM_LEFT.innerHTML;
   } else {
     mutableItem = ITEM_RIGHT;
     SLIDER.classList.remove('transition-right');
     SLIDER.classList.remove('transition-left');
+    ITEM_LEFT.innerHTML = ITEM_ACTIVE.innerHTML;
     ITEM_ACTIVE.innerHTML = ITEM_RIGHT.innerHTML;
   }
-  //   let exceptionNames = [];
-  //   for (i = 0; i < ITEM_ACTIVE.children.length; i++) {
-  //     exceptionNames.push(ITEM_ACTIVE.children[i].querySelector('p').innerHTML);
-  //   }
-  //   let nameForUse = [];
-  //   for (i = 0; i < petsNamesList.length; i++) {
-  //     if (exceptionNames.findIndex((index) => index == petsNamesList[i]) === -1) {
-  //       nameForUse.push(petsNamesList[i]);
-  //     }
-  //   }
+
   let pet = removingDuplicateNames();
   mutableItem.innerHTML = '';
   for (i = 0; i < cardsOnThePage; i++) {
@@ -127,6 +120,7 @@ function removingDuplicateNames() {
       ITEM_ACTIVE.children[i].querySelector('p').textContent
     );
   }
+  //console.log(exceptionNames2);
 
   let nameForUse = [];
   for (i = 0; i < petsNamesList.length; i++) {
