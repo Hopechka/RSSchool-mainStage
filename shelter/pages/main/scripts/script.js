@@ -145,7 +145,7 @@ const burgerBtn = document.querySelector('.burger-menu');
 const logo = document.querySelector('.logo');
 const nav = document.querySelector('.nav');
 const navList = document.querySelector('.nav-list');
-const slide = document.querySelector('.slider');
+const slider = document.querySelector('.slider');
 const header = document.querySelector('#header');
 const navItem = document.querySelectorAll('.nav-item');
 
