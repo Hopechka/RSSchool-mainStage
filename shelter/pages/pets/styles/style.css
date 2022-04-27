@@ -507,6 +507,8 @@ footer {
     column-gap: 40px;
     height: 1365px;
     overflow: hidden;
+    max-width: 708px;
+    margin: 0 auto;
   }
   .nav-btn {
     padding-top: 10px;
@@ -571,13 +573,13 @@ footer {
     position: relative;
     z-index: 14;
   }
-  h1.active {
+  /* h1.active {
     color: var(--logo);
-  }
+  } */
 
-  .logo-text.active {
+  /* .logo-text.active {
     color: var(--white);
-  }
+  } */
 
   .nav.active {
     width: 100%;
@@ -595,7 +597,8 @@ footer {
     right: -100%;
     width: 320px;
     height: 100%;
-    background-color: #292929;
+    /* background-color: #292929; */
+    background-color: white;
     padding-top: 248px;
     text-align: center;
     transition: right 0.5s ease;
@@ -607,10 +610,10 @@ footer {
     margin-left: 0;
     padding-bottom: 7px;
   }
-  .nav-item a:hover,
+  /* .nav-item a:hover,
   .nav-item.active a {
     color: #fafafa;
-  }
+  } */
 
   .nav-item {
     margin-bottom: 42px;
@@ -633,7 +636,7 @@ footer {
   .burger-menu.active::before,
   .burger-menu.active::after,
   .burger-menu.active span {
-    background-color: var(--logo);
+    background-color: var(--logo-dark);
   }
 
   .burger-menu::before,
@@ -691,6 +694,11 @@ footer {
   }
   .nav-btn li {
     padding: 0px 2px;
+  }
+  .pets-cards {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
   }
   /*--------------------*/
   /* modal-window */
