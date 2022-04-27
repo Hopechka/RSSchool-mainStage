@@ -1062,6 +1062,8 @@ footer {
     flex-wrap: wrap;
     justify-content: space-evenly;
     row-gap: 20px;
+    max-width: 300px;
+    margin: 0 auto;
   }
   /* .cards-change {
     width: 100%;
