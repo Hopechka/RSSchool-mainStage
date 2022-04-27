@@ -138,8 +138,13 @@ function combineName() {
   //     'Charly',
   //   ];
   let prevArr = [];
+
   while (prevArr.length < 48) {
-    if (newNameArr[0] != prevArr[prevArr.length - 1]) {
+    let arr2 = prevArr.slice(-4).concat(newNameArr.slice(0, 4));
+    // console.log(prevArr);
+    // console.log(newNameArr);
+    // console.log(arr2);
+    if (arr2.length == [...new Set(arr2)].length) {
       let array = prevArr.concat(newNameArr);
       prevArr = array;
       newNameArr = namesMixer();
@@ -147,7 +152,6 @@ function combineName() {
       newNameArr = namesMixer();
     }
   }
-
   return prevArr;
 }
 let arr = combineName();
