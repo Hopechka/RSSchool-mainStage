@@ -11,10 +11,10 @@ class App {
     }
 
     start(): void {
-        (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e) =>
-            this.controller.getNews(e, (data: DrawNewsType) => this.view.drawNews(data))
+        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e) =>
+            this.controller.getNews(e, (data) => this.view.drawNews(data as DrawNewsType))
         );
-        this.controller.getSources((data: DrawSourcesType) => this.view.drawSources(data));
+        this.controller.getSources((data) => this.view.drawSources(data as DrawSourcesType));
     }
 }
 

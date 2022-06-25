@@ -2,20 +2,20 @@ import './sources.css';
 import { sourcesType } from '../../../types';
 
 class Sources {
-    draw(data: Array<sourcesType>) {
+    draw(data: Array<sourcesType>): void {
         const fragment = document.createDocumentFragment();
-        const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-        data.forEach((item) => {
-            const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
+        data.forEach((item): void => {
+            const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
-            (<HTMLElement>sourceClone.querySelector('.source__item-name')).textContent = item.name;
-            (<HTMLElement>sourceClone.querySelector('.source__item')).setAttribute('data-source-id', item.id);
+            (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
+            (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
 
             fragment.append(sourceClone);
         });
 
-        (<HTMLElement>document.querySelector('.sources')).append(fragment);
+        (document.querySelector('.sources') as HTMLElement).append(fragment);
     }
 }
 

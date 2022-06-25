@@ -1,10 +1,10 @@
-export type OptionsObject = {
-    sources?: string;
-    apiKey?: string;
-};
-export interface LoaderInterface extends OptionsObject {
+// export type OptionsObject = {
+//     sources?: string;
+//     apiKey?: string;
+// };
+export interface LoaderInterface {
     baseLink: string;
-    options?: OptionsObject;
+    options?: { [apiKey: string]: string };
 }
 
 export interface articleType {
@@ -36,11 +36,11 @@ export interface DrawSourcesType extends sourcesType {
     status: string;
 }
 
-export interface TargetElements {
-    e: Event;
-    target: HTMLElement;
-    currentTarget: HTMLElement;
-}
+// export interface TargetElements {
+//     e: Event;
+//     target: HTMLElement;
+//     currentTarget: HTMLElement;
+// }
 
 export type CallBackNews = (data?: DrawNewsType) => void;
 

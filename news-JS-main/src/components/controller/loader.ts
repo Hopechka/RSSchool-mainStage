@@ -1,17 +1,17 @@
-import { LoaderInterface, OptionsObject } from '../../types';
+import { LoaderInterface } from '../../types';
 import { CallBackNews, CallBackSources } from '../../types';
 import { ErrorStatus, DrawNewsType, DrawSourcesType } from '../../types';
 
 class Loader implements LoaderInterface {
     baseLink: string;
-    options?: OptionsObject;
-    constructor(baseLink: string, options?: OptionsObject) {
+    options?: { [apiKey: string]: string };
+    constructor(baseLink: string, options?: { [apiKey: string]: string }) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: OptionsObject },
+        { endpoint, options = {} }: { endpoint: string; options?: { [apiKey: string]: string } },
         callback = (): void => {
             console.error('No callback for GET response');
         }
@@ -29,19 +29,24 @@ class Loader implements LoaderInterface {
         return res;
     }
 
-    makeUrl(options: OptionsObject, endpoint: string): string {
+    makeUrl(options: { [apiKey: string]: string }, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
-        Object.keys(urlOptions).forEach((key: string) => {
+        Object.keys(urlOptions).forEach((key: string): void => {
             url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
         });
 
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: CallBackNews | CallBackSources, options?: OptionsObject): void {
+    load(
+        method: string,
+        endpoint: string,
+        callback: CallBackNews | CallBackSources,
+        options: { [apiKey: string]: string }
+    ): void {
         fetch(this.makeUrl(options, endpoint), { method })
-            .then(this.errorHandler)
+            .then(this.errorHandler.bind(this))
             .then((res: Response) => res.json())
             .then((data: DrawNewsType & DrawSourcesType) => callback(data))
             .catch((err: Error) => console.error(err));
