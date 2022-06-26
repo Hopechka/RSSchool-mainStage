@@ -1,7 +1,22 @@
+/* * {
+    outline: 1px solid red;
+} */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 body {
+    max-width: 1920px;
+    margin: 0 auto;
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+}
+
+.container {
+    margin: 0 40px;
 }
 
 header {
@@ -16,9 +31,10 @@ header h1 {
 footer {
     height: 100px;
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
 }
+
 footer .copyright {
     font-size: 14px;
     color: #333;
@@ -32,4 +48,88 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
+}
+
+.git-link {
+    transition: 0.25s;
+}
+.git-link:hover {
+    transform: translateY(-0.25em);
+}
+.date,
+.git-link a {
+    font: 300 1rem 'Fira Sans', sans-serif;
+    color: #70d6ff;
+    opacity: 0.8;
+}
+.git-link a {
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.git-link a:hover {
+    opacity: 1;
+}
+
+.git-link img {
+    filter: invert(75%) sepia(73%) saturate(3115%) hue-rotate(165deg) brightness(99%) contrast(104%);
+    opacity: 0.8;
+    transition: 0.25s;
+}
+.git-link img:hover {
+    opacity: 1;
+}
+.logo-link {
+    height: 100px;
+}
+
+.logo-link svg {
+    height: 60px;
+    filter: invert(75%) sepia(73%) saturate(3115%) hue-rotate(165deg) brightness(99%) contrast(104%);
+    opacity: 0.8;
+    transition: 0.25s;
+    padding-top: 20px;
+}
+
+.logo-link svg:hover {
+    opacity: 1;
+    transform: translateY(-0.25em);
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        margin: 0 20px;
+    }
+
+    footer {
+        flex-wrap: wrap;
+        height: 150px;
+    }
+
+    .copyright,
+    .date {
+        flex-basis: 49%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .container {
+        margin: 0 10px;
+    }
+    footer {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        row-gap: 15px;
+        height: 200px;
+    }
+    .copyright,
+    .date {
+        flex: 1;
+    }
+    .logo-link svg {
+        padding-top: 0;
+    }
 }
