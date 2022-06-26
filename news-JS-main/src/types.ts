@@ -53,4 +53,4 @@ export enum ErrorStatus {
     NotFound,
 }
 
-// export type Callback = <T>(data:<T>) => void
+// export type Callback = <T>(data: T) => void;

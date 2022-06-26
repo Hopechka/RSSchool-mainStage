@@ -14,7 +14,6 @@ class AppController extends AppLoader {
     getNews(e: Event, callback: CallBackNews): void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
-
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id') as string;
