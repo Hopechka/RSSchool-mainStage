@@ -1,7 +1,3 @@
-// export type OptionsObject = {
-//     sources?: string;
-//     apiKey?: string;
-// };
 export interface LoaderInterface {
     baseLink: string;
     options?: { [apiKey: string]: string };

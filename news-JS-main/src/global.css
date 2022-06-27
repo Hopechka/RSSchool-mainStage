@@ -26,6 +26,28 @@ header {
 header h1 {
     font-size: 40px;
     font-weight: 800;
+    text-align: center;
+}
+.alphabet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+}
+.alphabet li {
+    list-style-type: none;
+    font: 300 1.2rem 'Fira Sans', sans-serif;
+    color: #70d6ff;
+    cursor: pointer;
+    padding: 0 5px;
+    box-sizing: border-box;
+    transition: 0.25s;
+}
+.alphabet li:hover,
+.alphabet li:focus {
+    color: #69db7e;
+    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
+    transform: translateY(-0.25em);
 }
 
 footer {
@@ -96,6 +118,14 @@ footer .copyright:before {
 .logo-link svg:hover {
     opacity: 1;
     transform: translateY(-0.25em);
+}
+
+@media screen and (max-width: 768px) {
+    .alphabet {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        margin: 15px auto;
+    }
 }
 
 @media screen and (max-width: 600px) {

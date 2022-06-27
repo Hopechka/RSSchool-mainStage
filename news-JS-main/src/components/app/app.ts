@@ -14,7 +14,11 @@ class App {
         (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e) =>
             this.controller.getNews(e, (data) => this.view.drawNews(data as DrawNewsType))
         );
-        this.controller.getSources((data) => this.view.drawSources(data as DrawSourcesType));
+        document.querySelectorAll('.alphabet').forEach((item): void =>
+            item.addEventListener('click', (e) => {
+                this.controller.getSources((data) => this.view.drawSources(e, data as DrawSourcesType));
+            })
+        );
     }
 }
 
