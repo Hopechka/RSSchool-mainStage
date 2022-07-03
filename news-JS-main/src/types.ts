@@ -1,6 +1,6 @@
 export interface LoaderInterface {
-    baseLink: string;
-    options?: { [apiKey: string]: string };
+    readonly baseLink: string;
+    readonly options?: { [key: string]: string };
 }
 
 export interface articleType {

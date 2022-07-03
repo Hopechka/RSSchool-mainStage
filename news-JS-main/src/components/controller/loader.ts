@@ -3,15 +3,10 @@ import { CallBackNews, CallBackSources } from '../../types';
 import { ErrorStatus, DrawNewsType, DrawSourcesType } from '../../types';
 
 class Loader implements LoaderInterface {
-    baseLink: string;
-    options?: { [apiKey: string]: string };
-    constructor(baseLink: string, options?: { [apiKey: string]: string }) {
-        this.baseLink = baseLink;
-        this.options = options;
-    }
+    constructor(public baseLink: string, public options?: { [key: string]: string }) {}
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: { [apiKey: string]: string } },
+        { endpoint, options = {} }: { endpoint: string; options?: { [key: string]: string } },
         callback = (): void => {
             console.error('No callback for GET response');
         }
@@ -29,7 +24,7 @@ class Loader implements LoaderInterface {
         return res;
     }
 
-    makeUrl(options: { [apiKey: string]: string }, endpoint: string): string {
+    makeUrl(options: { [key: string]: string }, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
         Object.keys(urlOptions).forEach((key: string): void => {
@@ -43,7 +38,7 @@ class Loader implements LoaderInterface {
         method: string,
         endpoint: string,
         callback: CallBackNews | CallBackSources,
-        options: { [apiKey: string]: string }
+        options: { [key: string]: string }
     ): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler.bind(this))
