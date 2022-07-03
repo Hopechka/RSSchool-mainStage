@@ -17,6 +17,14 @@ body {
 
 .container {
     margin: 0 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+#main {
+    flex-grow: 1;
 }
 
 header {
@@ -27,6 +35,9 @@ header h1 {
     font-size: 40px;
     font-weight: 800;
     text-align: center;
+}
+.h1 span {
+    border-bottom: 2px solid #69db7e;
 }
 .alphabet {
     display: flex;
@@ -159,7 +170,11 @@ footer .copyright:before {
     .date {
         flex: 1;
     }
+    .logo-link {
+        height: 60px;
+    }
     .logo-link svg {
+        height: 40px;
         padding-top: 0;
     }
 }
