@@ -1,5 +1,5 @@
 import './sources.css';
-import { sourcesType } from '../../../types';
+import { sourcesType } from '../../types/types';
 
 class Sources {
     draw(e: Event, data: Array<sourcesType>): void {

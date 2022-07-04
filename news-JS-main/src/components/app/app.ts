@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { DrawNewsType, DrawSourcesType } from '../../types';
+import { DrawNewsType, DrawSourcesType } from '../types/types';
 
 class App {
     controller: AppController;

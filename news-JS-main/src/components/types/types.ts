@@ -1,6 +1,6 @@
 export interface LoaderInterface {
-    readonly baseLink: string;
-    readonly options?: { [key: string]: string };
+    baseLink: string;
+    options: { [key: string]: string };
 }
 
 export interface articleType {
@@ -42,7 +42,7 @@ export type CallBackNews = (data?: DrawNewsType) => void;
 
 export type CallBackSources = (data?: DrawSourcesType) => void;
 
-export enum ErrorStatus {
+export const enum ErrorStatus {
     Unauthorized = 401,
     PaymentRequired,
     Forbidden,

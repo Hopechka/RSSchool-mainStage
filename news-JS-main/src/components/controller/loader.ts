@@ -1,9 +1,9 @@
-import { LoaderInterface } from '../../types';
-import { CallBackNews, CallBackSources } from '../../types';
-import { ErrorStatus, DrawNewsType, DrawSourcesType } from '../../types';
+import { LoaderInterface } from '../types/types';
+import { CallBackNews, CallBackSources } from '../types/types';
+import { ErrorStatus, DrawNewsType, DrawSourcesType } from '../types/types';
 
 class Loader implements LoaderInterface {
-    constructor(public baseLink: string, public options?: { [key: string]: string }) {}
+    constructor(public baseLink: string, public options: { [key: string]: string }) {}
 
     getResp(
         { endpoint, options = {} }: { endpoint: string; options?: { [key: string]: string } },
