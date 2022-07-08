@@ -1,10 +1,13 @@
 import 'normalize.css';
 import './style.css';
 import { cardsDraw } from './components/controller/cardsDraw';
+import { basketStatus } from './components/controller/basket';
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 
 cardsDraw();
+
+basketStatus();
 
 // function trySome(): void {
 //     const a = 'Hello world';

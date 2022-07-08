@@ -12,3 +12,7 @@ export type StoreInterface = {
 export type RootObject = {
     [key: string]: StoreInterface;
 };
+
+export type CartObj = {
+    [key: string]: number;
+};
