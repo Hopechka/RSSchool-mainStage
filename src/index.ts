@@ -1,10 +1,10 @@
 import 'normalize.css';
 import './style.css';
-import { goodsLoader } from './components/controller/goodsLoader';
+import { cardsDraw } from './components/controller/cardsDraw';
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 
-goodsLoader();
+cardsDraw();
 
 // function trySome(): void {
 //     const a = 'Hello world';

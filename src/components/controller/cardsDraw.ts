@@ -6,7 +6,7 @@ import store from '../../assets/store.json';
 // import photo1 from '../../assets/images/1.png';
 // import images from '../../assets/images';
 
-export function goodsLoader() {
+export function cardsDraw(): void {
     // console.log(images);
     // console.log(store[1].name);
     // console.log(photo1 as '*.png');
