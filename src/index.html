@@ -7,8 +7,49 @@
         <title>Online store</title>
     </head>
     <body>
-        Hello world
-        <div class="div"></div>
-        <button class="btn">Нажми на меня</button>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    Car Collection <br />
+                    store
+                </h1>
+                <div class="basket">
+                    <img src="./assets/icon/basket-shopping-solid.svg" alt="basket" />
+                    <div class="count"><span>1</span></div>
+                </div>
+            </header>
+            <main class="main">
+                <section class="filter"></section>
+                <section class="cards" id="cards"></section>
+            </main>
+            <footer class="footer">
+                <div class="date"><span>2022</span></div>
+                <div class="git-link">
+                    <a href="https://github.com/Hopechka?tab=stars">
+                        <img src="./assets/icon/GitHub-Mark-64px.png" alt="GitHub link" />
+                    </a>
+                    <a href="https://github.com/Hopechka?tab=stars">
+                        <span>Hopechka</span>
+                    </a>
+                </div>
+                <div class="school-logo">
+                    <a href="https://rs.school/js/"><img src="./assets/icon/rs_school_logo.svg" alt="school-logo" /></a>
+                </div>
+            </footer>
+            <template id="card">
+                <div class="card">
+                    <h3 class="card-name">Volkswagen Karmann Ghia Coupe</h3>
+                    <div class="card-pic card-pic-1"></div>
+                    <ul>
+                        <li class="card-price">Цена: $50</li>
+                        <li class="card-amount">Количество: 2</li>
+                        <li class="card-factory">Производитель: Minichamps</li>
+                        <li class="card-year">Год выпуска: 1955</li>
+                        <li class="card-color">Цвет: Yellow/Black</li>
+                        <li class="card-material">Материал: metal/plastic</li>
+                    </ul>
+                </div>
+            </template>
+        </div>
     </body>
 </html>

@@ -1,21 +1,19 @@
 import 'normalize.css';
 import './style.css';
-import store from './assets/store.json';
-import photo1 from './assets/images/1.jpg';
-import photo2 from './assets/images/2.jpg';
+import { goodsLoader } from './components/controller/goodsLoader';
+// import photo1 from './assets/images/1.jpg';
+// import photo2 from './assets/images/2.jpg';
 
-console.log(store.firstName);
-console.log(store.address);
-console.log(store.phoneNumbers[0]);
+goodsLoader();
 
-function trySome(): void {
-    const a = 'Hello world';
-    const arr: number[] = [1, 2, 3];
-    console.log(a);
-    console.log(arr);
-}
+// function trySome(): void {
+//     const a = 'Hello world';
+//     const arr: number[] = [1, 2, 3];
+//     console.log(a);
+//     console.log(arr);
+// }
 
-trySome();
+// trySome();
 
 // const img = document.getElementById('img') as HTMLElement;
 
@@ -25,21 +23,21 @@ trySome();
 
 // img.appendChild(pic);
 
-const div = document.querySelector('div') as HTMLDivElement;
+// const div = document.querySelector('div') as HTMLDivElement;
 
-let i = 1;
-function picChange() {
-    if (i === 1) {
-        i++;
-        div.style.background = `url('${photo2 as '*.jpg'}')`;
-    } else {
-        i--;
-        div.style.background = `url('${photo1 as '*.jpg'}')`;
-    }
-    div.style.backgroundSize = 'cover';
-    div.style.backgroundRepeat = 'no-repeat';
-}
+// let i = 1;
+// function picChange() {
+//     if (i === 1) {
+//         i++;
+//         div.style.background = `url('${photo2 as '*.jpg'}')`;
+//     } else {
+//         i--;
+//         div.style.background = `url('${photo1 as '*.jpg'}')`;
+//     }
+//     div.style.backgroundSize = 'cover';
+//     div.style.backgroundRepeat = 'no-repeat';
+// }
 
-const btn = document.querySelector('.btn') as Element;
+// const btn = document.querySelector('.btn') as Element;
 
-btn.addEventListener('click', picChange);
+// btn.addEventListener('click', picChange);

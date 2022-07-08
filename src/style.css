@@ -1,14 +1,15 @@
 @charset "UTF-8";
 /*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,500;1,300;1,500&family=Roboto:wght@400;700&display=swap");
 * {
   padding: 0;
   margin: 0;
   border: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-  height: 100%;
   width: 100%;
   font-size: 100%;
   line-height: 1;
@@ -30,25 +31,175 @@ h6 {
 }
 
 /*--------------------*/
+h1 {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-style: italic;
+  text-shadow: 5px 0px 4px #131212;
+}
+
+.card-name,
+.git-link span,
+.date span,
+.count span {
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
 * {
-  outline: 1px solid green;
+  font-family: 'Roboto', sans-serif;
+  color: white;
 }
 
 body {
-  position: relative;
-  width: 100vw;
+  height: 100%;
   max-width: 1440px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin: 0 auto;
+  background: #7b797a;
+  background: linear-gradient(to top, #7b797a, #504e4f);
 }
 
-.div {
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 40px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 4px solid #cdc4c4;
+  border-radius: 8px;
+}
+
+header .basket img {
+  width: 50px;
+  height: 50px;
+}
+
+.basket {
+  position: relative;
+}
+
+.basket .count {
   position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #cdc4c4;
+  border-radius: 16px;
   z-index: 100;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  border: 5px solid purple;
-  background: url("./assets/images/1.jpg");
-  background-size: cover;
+  bottom: -2px;
+  right: 30px;
+  text-align: center;
+  background: white;
+  opacity: 0.7;
+  padding-top: 5px;
+}
+
+.basket .count span {
+  color: black;
+}
+
+.main {
+  flex: 1;
+  margin: 20px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid #cdc4c4;
+  border-radius: 16px;
+}
+
+.card .card-name {
+  text-align: center;
+  padding: 10px 0;
+  height: 70px;
+}
+
+.card .card-pic {
+  width: 100%;
+  height: 150px;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
+}
+
+.card .card-pic img {
+  width: 100%;
+}
+
+.card li {
+  list-style: none;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 4px solid #cdc4c4;
+  border-radius: 8px;
+}
+
+.footer .school-logo {
+  width: 100px;
+}
+
+.footer .git-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+
+.footer .git-link a {
+  text-decoration: none;
+}
+
+.footer .git-link img {
+  width: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    margin: 0 30px;
+  }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0 20px;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    max-width: 270px;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 }

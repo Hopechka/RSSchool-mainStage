@@ -1,0 +1,62 @@
+{
+    "1": {
+        "name": "Karmann Ghia Coupe",
+        "brand": "Volkswagen",
+        "year": 1955,
+        "price": 50,
+        "color": "Yellow/Black",
+        "manufacturer": "Minichamps",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/b90/3cdheky6eiickz6tp2bjh93se3kumry5.jpg"
+    },
+    "2": {
+        "name": "MAYBACH 62",
+        "brand": "Mercedes-Benz",
+        "year": 2003,
+        "price": 50,
+        "color": "Silver/Black",
+        "manufacturer": "DeAgostini",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/cd2/rqm1upsgfimzqsk7ua0l8ej2364fr238.jpg"
+    },
+    "3": {
+        "name": "Karmann Ghia Coupe",
+        "brand": "Volkswagen",
+        "year": 1959,
+        "price": 50,
+        "color": "Blue",
+        "manufacturer": "Minichamps",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/120/fz5g3lj1emsyoz66fami3x75x7d75jj1.jpg"
+    },
+    "4": {
+        "name": "Karmann Ghia Coupe",
+        "brand": "Volkswagen",
+        "year": 1955,
+        "price": 50,
+        "color": "Yellow/Black",
+        "manufacturer": "Minichamps",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/b90/3cdheky6eiickz6tp2bjh93se3kumry5.jpg"
+    },
+    "5": {
+        "name": "MAYBACH 62",
+        "brand": "Mercedes-Benz",
+        "year": 2003,
+        "price": 50,
+        "color": "Silver/Black",
+        "manufacturer": "DeAgostini",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/cd2/rqm1upsgfimzqsk7ua0l8ej2364fr238.jpg"
+    },
+    "6": {
+        "name": "Karmann Ghia Coupe",
+        "brand": "Volkswagen",
+        "year": 1959,
+        "price": 50,
+        "color": "Blue",
+        "manufacturer": "Minichamps",
+        "material": "metal/plastic",
+        "image": "https://model-car.ru/upload/iblock/120/fz5g3lj1emsyoz66fami3x75x7d75jj1.jpg"
+    }
+}

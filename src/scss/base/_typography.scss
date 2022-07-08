@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,500;1,300;1,500&family=Roboto:wght@400;700&display=swap');
+
+// font-family: 'Kantumruy Pro', sans-serif;
+// font-family: 'Roboto', sans-serif;
+
+h1 {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-style: italic;
+    text-shadow: 5px 0px 4px rgb(19, 18, 18);
+}
+.card-name,
+.git-link span,
+.date span,
+.count span {
+    font-family: 'Kantumruy Pro', sans-serif;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
