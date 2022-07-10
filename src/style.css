@@ -71,9 +71,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 4px solid #cdc4c4;
   border-radius: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(to top, #7b797a, #504e4f);
 }
 
 header .basket img {
@@ -198,7 +202,7 @@ header .basket img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px;
   border-top: 4px solid #cdc4c4;
   border-radius: 8px;
 }

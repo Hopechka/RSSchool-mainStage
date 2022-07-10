@@ -16,7 +16,8 @@ export function cardsDraw(): void {
     for (const key in store) {
         const cardClone = card.content.cloneNode(true) as HTMLElement;
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-art', key);
-        (cardClone.querySelector('.card-name') as HTMLElement).textContent = (store as RootObject)[key].name;
+        (cardClone.querySelector('.card-name') as HTMLElement).textContent =
+            (store as RootObject)[key].brand + '  ' + (store as RootObject)[key].name;
         (cardClone.querySelector('.card-pic') as HTMLElement).style.backgroundImage = `url(${
             (store as RootObject)[key].image
         })`;
