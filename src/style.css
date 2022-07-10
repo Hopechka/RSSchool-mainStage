@@ -143,6 +143,7 @@ header .basket img {
   max-width: 350px;
   padding: 10px;
   margin: 5px;
+  cursor: pointer;
   border: 2px solid #cdc4c4;
   border-radius: 16px;
   position: relative;
@@ -267,5 +268,81 @@ header .basket img {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+  }
+}
+
+button {
+  height: 52px;
+  width: 187px;
+  color: #292929;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s ease-in 0s;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+}
+
+.btn-light {
+  border: 2px solid #cdc4c4;
+  background: none;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 2px solid #9e509e;
+  background: #9e509e;
+}
+
+.nav-btn {
+  padding-bottom: 69px;
+  margin: 0 auto;
+}
+
+.nav-btn p {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  padding-bottom: 4px;
+}
+
+.nav-btn li {
+  display: inline;
+  list-style-type: none;
+  padding: 0 8px;
+}
+
+.page-num {
+  color: #f7f1f1;
+  border: 2px solid #cdc4c4;
+  background: none;
+  cursor: auto;
+}
+
+.page-num:hover {
+  background: #9e509e;
+  border: 2px solid #9e509e;
+}
+
+.nav-btn button {
+  width: 52px;
+  height: 52px;
+}
+
+button:disabled {
+  color: #f7f1f1;
+  border: 2px solid #cdc4c4;
+  background: none;
+  cursor: auto;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-btn li {
+    padding: 0 2px;
+  }
+  .nav-btn button {
+    width: 45px;
+    height: 45px;
   }
 }
