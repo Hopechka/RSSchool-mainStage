@@ -32,17 +32,31 @@ export function basketStatus() {
 }
 
 function changeStatus(event: Event) {
-    const target = (event.target as HTMLDivElement).closest('.card');
-    const article = (target as HTMLDivElement).getAttribute('data-art') as string;
-    const activeCard = (target as HTMLDivElement).querySelector('.card-add');
-    (activeCard as HTMLDivElement).classList.toggle('active');
-    if ((activeCard as HTMLDivElement).classList.contains('active')) {
-        count++;
-        cart[article] = 1;
-        // cart[article] !== undefined ? cart[article]++ : (cart[article] = 1);
+    const target = (event.target as HTMLDivElement).closest('.card') as HTMLDivElement;
+    const article = target.getAttribute('data-art') as string;
+    const activeCard = target.querySelector('.card-add') as HTMLDivElement;
+    if (count < 5) {
+        activeCard.classList.toggle('active');
+        if (activeCard.classList.contains('active')) {
+            count++;
+            cart[article] = 1;
+            // cart[article] !== undefined ? cart[article]++ : (cart[article] = 1);
+        } else {
+            count--;
+            cart[article]--;
+        }
     } else {
-        count--;
-        cart[article]--;
+        if (activeCard.classList.contains('active')) {
+            activeCard.classList.remove('active');
+            count--;
+            cart[article]--;
+        } else {
+            const wrapper = target.querySelector('.wrapper') as HTMLElement;
+            wrapper.classList.add('cart-full');
+            setTimeout(() => {
+                wrapper.classList.remove('cart-full');
+            }, 1500);
+        }
     }
     fillBasket();
 }

@@ -38,5 +38,6 @@ export function cardsDraw(): void {
         }`;
         fragment.append(cardClone);
     }
+    cards.innerHTML = '';
     cards.appendChild(fragment);
 }

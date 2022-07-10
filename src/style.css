@@ -176,6 +176,24 @@ header .basket img {
   border-radius: 16px;
 }
 
+.cart-full {
+  z-index: 5;
+  opacity: 0.8;
+}
+
+.cart-full::after {
+  content: 'Sorry, cart is full';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: #9e509e;
+  position: absolute;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+}
+
 .footer {
   display: flex;
   align-items: center;
