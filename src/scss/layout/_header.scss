@@ -1,0 +1,36 @@
+header {
+    @include flex-center-between;
+    padding: 20px;
+    border-bottom: 4px solid $borderColor;
+    border-radius: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to top, $mainBgColor, #504e4f);
+
+    .basket img {
+        width: 50px;
+        height: 50px;
+    }
+}
+.basket {
+    position: relative;
+
+    .count {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border: 2px solid $borderColor;
+        border-radius: 16px;
+        z-index: 100;
+        bottom: -2px;
+        right: 30px;
+        text-align: center;
+        background: white;
+        opacity: 0.7;
+        padding-top: 5px;
+    }
+    .count span {
+        color: black;
+    }
+}

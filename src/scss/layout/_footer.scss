@@ -1,0 +1,28 @@
+.footer {
+    @include flex-center-between;
+    padding: 20px;
+    border-top: 4px solid $borderColor;
+    border-radius: 8px;
+
+    .school-logo {
+        width: 100px;
+    }
+    .git-link {
+        @include flex-center-between;
+        column-gap: 5px;
+    }
+    .git-link a {
+        text-decoration: none;
+    }
+    .git-link img {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        @include flex-column;
+        align-items: center;
+        gap: 15px;
+    }
+}
