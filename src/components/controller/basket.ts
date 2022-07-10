@@ -35,7 +35,7 @@ function changeStatus(event: Event) {
     const target = (event.target as HTMLDivElement).closest('.card') as HTMLDivElement;
     const article = target.getAttribute('data-art') as string;
     const activeCard = target.querySelector('.card-add') as HTMLDivElement;
-    if (count < 5) {
+    if (count < 10) {
         activeCard.classList.toggle('active');
         if (activeCard.classList.contains('active')) {
             count++;

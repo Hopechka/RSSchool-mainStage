@@ -67,7 +67,7 @@
 }
 .cart-full {
     z-index: 5;
-    opacity: 0.8;
+    opacity: 0.9;
 
     &::after {
         content: 'Sorry, your cart is full';
