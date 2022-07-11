@@ -1,13 +1,24 @@
 button {
-    height: 52px;
-    width: 187px;
+    height: 30px;
+    width: 150px;
     color: #292929;
     border-radius: 100px;
     cursor: pointer;
     transition: background 0.3s ease-in 0s;
-    font-size: 17px;
     line-height: 130%;
     letter-spacing: 0.06em;
+
+    &:hover {
+        border: 2px solid $activeColor;
+        background: $activeColor;
+    }
+    &:disabled {
+        color: $mainTextColor;
+        border: 2px solid $borderColor;
+        background: none;
+        cursor: auto;
+        opacity: 0.5;
+    }
 }
 
 .btn-light {
@@ -15,47 +26,36 @@ button {
     background: none;
     cursor: pointer;
 }
-button:hover {
-    border: 2px solid $activeColor;
-    background: $activeColor;
-}
 
 .nav-btn {
-    padding-bottom: 69px;
-    margin: 0 auto;
-}
-.nav-btn p {
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    padding-bottom: 4px;
+    text-align: center;
+    p {
+        font-size: 20px;
+        line-height: 115%;
+        letter-spacing: 0.06em;
+        padding-bottom: 4px;
+    }
+    li {
+        display: inline;
+        list-style-type: none;
+        padding: 0 8px;
+    }
+    button {
+        width: 52px;
+        height: 52px;
+    }
 }
 
-.nav-btn li {
-    display: inline;
-    list-style-type: none;
-    padding: 0 8px;
-}
 .page-num {
     color: $mainTextColor;
     border: 2px solid $borderColor;
     background: none;
     cursor: auto;
-}
-.page-num:hover {
-    background: $activeColor;
-    border: 2px solid $activeColor;
-}
-.nav-btn button {
-    width: 52px;
-    height: 52px;
-}
-button:disabled {
-    color: $mainTextColor;
-    border: 2px solid $borderColor;
-    background: none;
-    cursor: auto;
-    opacity: 0.5;
+
+    &:hover {
+        background: none;
+        border: 2px solid $borderColor;
+    }
 }
 
 @media screen and (max-width: 600px) {

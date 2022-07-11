@@ -3,7 +3,7 @@ import './style.css';
 import { cardsShow } from './components/view/pagination';
 // import { cardsDraw } from './components/controller/cardsDraw';
 import { basketStatus } from './components/controller/basket';
-
+import './components/controller/sort';
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 

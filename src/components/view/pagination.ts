@@ -1,6 +1,7 @@
 import { cardsDraw } from '../controller/cardsDraw';
 import store from '../../assets/store.json';
 cardsDraw();
+
 const lastPage = document.querySelector('.next-next') as HTMLButtonElement;
 const nextNarrow = document.querySelector('.next') as HTMLButtonElement;
 const numPage = document.querySelector('.page-num') as HTMLButtonElement;
@@ -17,6 +18,7 @@ if (document.body.clientWidth > 768) {
 } else {
     index = 2;
 }
+export let obj: { indexStart: number; indexLength: number } = { indexStart: 0, indexLength: index };
 
 let count = 1;
 
@@ -36,7 +38,7 @@ function showLastCards(): void {
     prevNarrow.removeAttribute('disabled');
     const indexLast: number =
         LastGoodNumber % index === 0 ? LastGoodNumber - index : LastGoodNumber - (LastGoodNumber % index);
-
+    obj = { indexStart: indexLast, indexLength: LastGoodNumber };
     for (let i = indexLast; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = '';
     }
@@ -44,7 +46,7 @@ function showLastCards(): void {
     numPage.innerHTML = count.toString();
 }
 
-function showFirstCards(): void {
+export function showFirstCards(): void {
     count = 1;
     for (let i = 0; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = 'none';
@@ -56,6 +58,7 @@ function showFirstCards(): void {
     prevNarrow.setAttribute('disabled', 'disabled');
     numPage.innerHTML = '1';
 
+    obj = { indexStart: 0, indexLength: index };
     for (let i = 0; i < index; i++) {
         (cards.children[i] as HTMLElement).style.display = '';
     }
@@ -77,6 +80,7 @@ function showNextCards(): void {
     }
     const nextIndex = step + index >= LastGoodNumber ? LastGoodNumber : step + index;
 
+    obj = { indexStart: step, indexLength: nextIndex };
     for (let i = step; i < nextIndex; i++) {
         (cards.children[i] as HTMLElement).style.display = '';
 
@@ -104,7 +108,7 @@ function showPrevCards(): void {
     for (let i = 0; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = 'none';
     }
-
+    obj = { indexStart: step, indexLength: step - index };
     for (let i = step; i > step - index; i--) {
         (cards.children[i] as HTMLElement).style.display = '';
 

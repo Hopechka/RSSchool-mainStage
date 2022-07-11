@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,400;0,500;1,300;1,500&family=Roboto:wght@400;700&display=swap');
 
+* {
+    font-family: 'Roboto', sans-serif;
+    color: $mainTextColor;
+    line-height: 1.25em;
+}
+
 h1 {
     font-family: 'Kantumruy Pro', sans-serif;
     font-style: italic;
@@ -10,6 +16,7 @@ h1 {
 }
 h3 {
     letter-spacing: 0.06em;
+    padding: 5px;
 }
 .card-name,
 .git-link span,
@@ -18,8 +25,6 @@ h3 {
     font-family: 'Kantumruy Pro', sans-serif;
 }
 
-* {
-    font-family: 'Roboto', sans-serif;
-    color: $mainTextColor;
-    line-height: 1.5em;
+.card-price {
+    font-weight: bold;
 }

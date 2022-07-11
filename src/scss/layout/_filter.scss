@@ -1,0 +1,17 @@
+.filter {
+    width: 20%;
+    border-right: 2px solid $borderColor;
+    li {
+        list-style-type: none;
+        padding: 5px;
+    }
+}
+.sort-btn p select {
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    .filter {
+        width: 100%;
+    }
+}
