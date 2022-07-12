@@ -1,4 +1,5 @@
-import { showFirstCards } from '../view/pagination';
+import { setArr, containArr } from '../view/articleList';
+import { getArr, showFirstCards } from '../view/pagination';
 
 const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
 sortSelect.addEventListener('click', function () {
@@ -44,6 +45,9 @@ sortSelect.addEventListener('change', function () {
 const cards = document.querySelector('#cards') as HTMLElement;
 
 function sortUp(sortType: string) {
+    const arrContain = containArr();
+    console.log('arrContain: ', arrContain);
+
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
             if (
@@ -56,10 +60,12 @@ function sortUp(sortType: string) {
             }
         }
     }
-    showFirstCards();
+    showCards();
 }
 
 function sortDown(sortType: string) {
+    const arrContain = containArr();
+    console.log('arrContain: ', arrContain);
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
             if (
@@ -72,5 +78,15 @@ function sortDown(sortType: string) {
             }
         }
     }
+    showCards();
+}
+
+function showCards() {
+    const articles: string[] = [];
+    for (let i = 0; i < cards.children.length; i++) {
+        articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
+    }
+    getArr(articles);
     showFirstCards();
+    setArr(articles);
 }

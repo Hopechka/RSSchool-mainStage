@@ -54,12 +54,18 @@ h3 {
 .card-name,
 .git-link span,
 .date span,
-.count span {
+.count span,
+.filter-btn span {
   font-family: 'Kantumruy Pro', sans-serif;
 }
 
 .card-price {
   font-weight: bold;
+}
+
+html {
+  height: 100%;
+  background: #7b797a;
 }
 
 body {
@@ -85,10 +91,19 @@ body {
   display: flex;
 }
 
-.content {
+#content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -100,11 +115,6 @@ body {
 @media screen and (max-width: 600px) {
   .container {
     margin: 0 20px;
-  }
-  .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -151,13 +161,15 @@ header .basket img {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  flex: 1;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 350px;
+  max-width: 300px;
+  max-height: 420px;
   padding: 10px;
   margin: 5px;
   cursor: pointer;
@@ -234,13 +246,13 @@ header .basket img {
   text-align: center;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 474px) {
   .cards {
     display: flex;
     flex-direction: column;
@@ -265,9 +277,43 @@ header .basket img {
   color: black;
 }
 
-@media screen and (max-width: 600px) {
+#sort-select {
+  width: 95%;
+}
+
+.slider {
+  margin: 8px 0;
+}
+
+.slider .noUi-connect {
+  background: #9e509e;
+}
+
+.slider .noUi-handle {
+  border-radius: 100px;
+}
+
+.slider .noUi-tooltip {
+  display: none;
+}
+
+.slider .noUi-active .noUi-tooltip {
+  display: block;
+}
+
+@media screen and (max-width: 900px) {
   .filter {
+    display: flex;
+    justify-content: space-around;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -310,9 +356,9 @@ header .basket img {
 
 button {
   height: 30px;
-  width: 150px;
+  width: 90%;
   color: #292929;
-  border-radius: 100px;
+  border-radius: 50px;
   cursor: pointer;
   transition: background 0.3s ease-in 0s;
   line-height: 130%;
@@ -340,6 +386,7 @@ button:disabled {
 
 .nav-btn {
   text-align: center;
+  margin: 40px 0;
 }
 
 .nav-btn p {
@@ -379,5 +426,8 @@ button:disabled {
   .nav-btn button {
     width: 45px;
     height: 45px;
+  }
+  .nav-btn {
+    margin: 20px 0;
   }
 }

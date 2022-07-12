@@ -1,27 +1,20 @@
 import 'normalize.css';
 import './style.css';
-import { cardsShow } from './components/view/pagination';
+import { showFirstCards } from './components/view/pagination';
 // import { cardsDraw } from './components/controller/cardsDraw';
 import { basketStatus } from './components/controller/basket';
 import './components/controller/sort';
+import './components/controller/filter';
+
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 
 // cardsDraw();
 
 basketStatus();
-cardsShow();
+showFirstCards();
 
 //------------------------------
-
-// function trySome(): void {
-//     const a = 'Hello world';
-//     const arr: number[] = [1, 2, 3];
-//     console.log(a);
-//     console.log(arr);
-// }
-
-// trySome();
 
 // const img = document.getElementById('img') as HTMLElement;
 

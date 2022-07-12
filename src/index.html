@@ -20,43 +20,53 @@
             </header>
             <main class="main">
                 <section class="filter">
-                    <h3>Sorting</h3>
-                    <div class="sort-btn">
-                        <form>
-                            <p>
-                                <select id="sort-select">
-                                    <option>Sorting</option>
-                                    <option value="sort-name-up">Sort by Name(A-Z)</option>
-                                    <option value="sort-name-down">Sort by Name(Z-A)</option>
-                                    <option value="sort-year-up">Sort by year &#8593;</option>
-                                    <option value="sort-year-down">Sort by year &#8595;</option>
-                                    <option value="sort-fabric-up">Sort by fabric &#8593;</option>
-                                    <option value="sort-fabric-down">Sort by fabric &#8595;</option>
-                                </select>
-                            </p>
-                        </form>
-                    </div>
+                    <div>
+                        <h3>Sorting</h3>
+                        <div class="sort-btn">
+                            <form>
+                                <p>
+                                    <select id="sort-select">
+                                        <option>Sorting</option>
+                                        <option value="sort-name-up">Sort by Name(A-Z)</option>
+                                        <option value="sort-name-down">Sort by Name(Z-A)</option>
+                                        <option value="sort-year-up">Sort by year &#8593;</option>
+                                        <option value="sort-year-down">Sort by year &#8595;</option>
+                                        <option value="sort-fabric-up">Sort by fabric &#8593;</option>
+                                        <option value="sort-fabric-down">Sort by fabric &#8595;</option>
+                                    </select>
+                                </p>
+                            </form>
+                        </div>
 
-                    <h3>Filters by range</h3>
-                    <ul class="filter-btn filter-btn-range">
-                        <li>фильтры по количеству</li>
-                        <li>фильтры по году выпуска на рынок</li>
-                    </ul>
-                    <h3>Filters by value</h3>
-                    <ul class="filter-btn filter-btn-value">
-                        <li>фильтры по производителю</li>
-                        <li>фильтры по цвету</li>
-                        <li>фильтры по материалу</li>
-                        <li>фильтры по бренду</li>
-                    </ul>
-                    <ul class="reset-btn">
-                        <li>
-                            <button class="btn-reset-filter">Сброс фильтров</button>
-                        </li>
-                        <li>
-                            <button class="btn-reset-settings">Сброс настроек</button>
-                        </li>
-                    </ul>
+                        <h3>Filters by range</h3>
+                        <ul class="filter-btn filter-btn-range">
+                            <li>
+                                <span>Filters by year: </span>
+                                <div id="slider-year" class="slider"></div>
+                            </li>
+                            <li>
+                                <span>Filters by quantity:</span>
+                                <div id="slider-quantity" class="slider"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Filters by value</h3>
+                        <ul class="filter-btn filter-btn-value">
+                            <li>фильтры по производителю</li>
+                            <li>фильтры по цвету</li>
+                            <li>фильтры по материалу</li>
+                            <li>фильтры по бренду</li>
+                        </ul>
+                        <ul class="reset-btn">
+                            <li>
+                                <button class="btn-reset-filter">Filters reset</button>
+                            </li>
+                            <li>
+                                <button class="btn-reset-settings">Settings reset</button>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
                 <section id="content">
                     <div class="cards" id="cards"></div>

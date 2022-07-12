@@ -9,9 +9,35 @@
 .sort-btn p select {
     color: black;
 }
+#sort-select {
+    width: 95%;
+}
 
-@media screen and (max-width: 600px) {
+.slider {
+    margin: 8px 0;
+    .noUi-connect {
+        background: $activeColor;
+    }
+    .noUi-handle {
+        border-radius: 100px;
+    }
+    .noUi-tooltip {
+        display: none;
+    }
+    .noUi-active .noUi-tooltip {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 900px) {
     .filter {
+        display: flex;
+        justify-content: space-around;
         width: 100%;
+    }
+}
+@media screen and (max-width: 424px) {
+    .filter {
+        @include flex-column-center;
     }
 }

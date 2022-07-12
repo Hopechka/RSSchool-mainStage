@@ -21,8 +21,7 @@
 
 @media screen and (max-width: 600px) {
     .footer {
-        @include flex-column;
-        align-items: center;
+        @include flex-column-center;
         gap: 10px;
     }
 }

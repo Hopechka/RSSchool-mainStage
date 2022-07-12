@@ -9,6 +9,7 @@
 //             color: string;
 //             manufacturer: string;
 //             material: string;
+//             quantity: number;
 //             image: string;
 //         };
 //     };
