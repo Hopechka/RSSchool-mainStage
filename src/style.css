@@ -91,11 +91,36 @@ body {
   display: flex;
 }
 
+#modal {
+  display: none;
+}
+
+.modal-on {
+  position: absolute;
+  background: black;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  opacity: 0.8;
+  border-radius: 16px;
+}
+
+.modal-on h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 #content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  position: relative;
+  min-height: 200px;
 }
 
 @media screen and (max-width: 900px) {
@@ -274,11 +299,58 @@ header .basket img {
 }
 
 .sort-btn p select {
-  color: black;
+  color: #232122;
 }
 
 #sort-select {
   width: 95%;
+  border: 2px solid #9e509e;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.filter-btn-value p select {
+  color: #f7f1f1;
+}
+
+.filter-btn-value .sort-btn {
+  width: 95%;
+  background: #7b797a;
+  border: none;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.filter-btn-value .sort-btn .hidden {
+  display: none;
+}
+
+.filter-btn-value .sort-btn .visible {
+  display: block;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  z-index: 100;
+  background: #7b797a;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+}
+
+.filter-btn-value .sort-btn .arrow {
+  float: right;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.filter-btn-value .sort-btn .arrow:hover {
+  color: #9e509e;
+}
+
+.filter-btn-value .sort-btn .arrow:active {
+  color: #9e509e;
+  text-shadow: 1px 2px 3px black;
 }
 
 .slider {
@@ -301,19 +373,61 @@ header .basket img {
   display: block;
 }
 
+.wrap {
+  width: 95%;
+  position: relative;
+  top: 0%;
+  left: 0%;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid #9e509e;
+  border-right: none;
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.searchTerm:focus {
+  color: #232122;
+}
+
+.searchButton {
+  width: 40px;
+  height: 30px;
+  border: 1px solid #9e509e;
+  background: #9e509e;
+  text-align: center;
+  color: #cdc4c4;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 900px) {
   .filter {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    border: 2px solid #cdc4c4;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
   }
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 767px) {
   .filter {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -363,6 +477,7 @@ button {
   transition: background 0.3s ease-in 0s;
   line-height: 130%;
   letter-spacing: 0.06em;
+  border: 2px solid #9e509e;
 }
 
 button:hover {

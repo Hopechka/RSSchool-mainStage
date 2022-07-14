@@ -46,7 +46,7 @@ const cards = document.querySelector('#cards') as HTMLElement;
 
 function sortUp(sortType: string) {
     const arrContain = containArr();
-    console.log('arrContain: ', arrContain);
+    // console.log('arrContain: ', arrContain);
 
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
@@ -65,7 +65,7 @@ function sortUp(sortType: string) {
 
 function sortDown(sortType: string) {
     const arrContain = containArr();
-    console.log('arrContain: ', arrContain);
+    // console.log('arrContain: ', arrContain);
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
             if (

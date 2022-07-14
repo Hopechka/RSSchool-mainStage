@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
         <title>Online store</title>
     </head>
     <body>
@@ -21,6 +25,16 @@
             <main class="main">
                 <section class="filter">
                     <div>
+                        <h3>Search</h3>
+
+                        <div class="wrap">
+                            <div class="search">
+                                <input type="text" class="searchTerm" placeholder="Search by product name" />
+                                <button type="submit" class="searchButton">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
                         <h3>Sorting</h3>
                         <div class="sort-btn">
                             <form>
@@ -37,26 +51,57 @@
                                 </p>
                             </form>
                         </div>
+                    </div>
 
+                    <div>
                         <h3>Filters by range</h3>
                         <ul class="filter-btn filter-btn-range">
                             <li>
                                 <span>Filters by year: </span>
                                 <div id="slider-year" class="slider"></div>
+                                <div class="years"></div>
                             </li>
                             <li>
                                 <span>Filters by quantity:</span>
                                 <div id="slider-quantity" class="slider"></div>
+                                <div class="quantity-text"></div>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h3>Filters by value</h3>
+                        <h3>Filters by value:</h3>
                         <ul class="filter-btn filter-btn-value">
-                            <li>фильтры по производителю</li>
-                            <li>фильтры по цвету</li>
-                            <li>фильтры по материалу</li>
-                            <li>фильтры по бренду</li>
+                            <li>
+                                <div class="sort-btn">
+                                    <span>by factory</span>
+                                    <span class="arrow">&#9660;</span>
+
+                                    <form class="hidden" id="filter-by-factory-select"></form>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sort-btn">
+                                    <span>by color</span>
+                                    <span class="arrow">&#9660;</span>
+
+                                    <form class="hidden" id="filter-by-color-select"></form>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sort-btn">
+                                    <span>by material</span>
+                                    <span class="arrow">&#9660;</span>
+
+                                    <form class="hidden" id="filter-by-material-select"></form>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sort-btn">
+                                    <span>by brand</span>
+                                    <span class="arrow">&#9660;</span>
+                                    <form class="hidden" id="filter-by-brand-select"></form>
+                                </div>
+                            </li>
                         </ul>
                         <ul class="reset-btn">
                             <li>
@@ -69,6 +114,9 @@
                     </div>
                 </section>
                 <section id="content">
+                    <div id="modal" class="modal-on">
+                        <h3>Извините, совпадений не обнаружено</h3>
+                    </div>
                     <div class="cards" id="cards"></div>
                     <div class="nav-btn">
                         <ul>

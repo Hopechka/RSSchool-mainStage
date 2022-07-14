@@ -5,6 +5,7 @@ import { RootObject } from '../types/types';
 import { getArr, showFirstCards } from '../view/pagination';
 import { setArr, containArr } from '../view/articleList';
 
+const cards = document.querySelector('#cards') as HTMLElement;
 const year: number[] = [];
 const quantity: number[] = [];
 for (const key in store) {
@@ -14,8 +15,16 @@ for (const key in store) {
 
 const minYear = Math.min(...year);
 const maxYear = Math.max(...year);
+const minQuantity = Math.min(...quantity);
 const maxQuantity = Math.max(...quantity);
 
+//Текст под слайдером
+const years = document.querySelector('.years') as HTMLDivElement;
+years.innerHTML = `<span>${minYear} - ${maxYear}</span>`;
+const quantityText = document.querySelector('.quantity-text') as HTMLDivElement;
+quantityText.innerHTML = `<span>${minQuantity} - ${maxQuantity}</span>`;
+
+//Слайдер по годам
 const sliderYear: noUiSlider.target = document.getElementById('slider-year') as noUiSlider.target;
 
 noUiSlider.create(sliderYear, {
@@ -38,18 +47,19 @@ noUiSlider.create(sliderYear, {
     },
 });
 
-const cards = document.querySelector('#cards') as HTMLElement;
 function getYear(values: (number | string)[]) {
     const arrContain = containArr();
-    console.log('arrContain: ', arrContain);
+    // console.log('arrContain: ', arrContain);
 
     const minValue = values[0];
     const maxValue = values[1];
 
+    years.innerHTML = `<span>${minValue} - ${maxValue}</span>`;
+
     const articles: string[] = [];
     for (let i = 0; i < cards.children.length; i++) {
         const dataAtr = (cards.children[i] as HTMLElement).getAttribute('data-year')!;
-        if (+dataAtr > minValue && +dataAtr < maxValue) {
+        if (+dataAtr >= minValue && +dataAtr < maxValue) {
             articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
             (cards.children[i] as HTMLElement).style.display = '';
         } else {
@@ -71,6 +81,7 @@ function getYear(values: (number | string)[]) {
 
 sliderYear.noUiSlider?.on('change', getYear);
 
+//Слайдер по количеству
 const sliderQuantity: noUiSlider.target = document.getElementById('slider-quantity') as noUiSlider.target;
 
 noUiSlider.create(sliderQuantity, {
@@ -95,10 +106,11 @@ noUiSlider.create(sliderQuantity, {
 
 function getQuantity(values: (number | string)[]) {
     const arrContain = containArr();
-    console.log('arrContain: ', arrContain);
+    // console.log('arrContain: ', arrContain);
 
     const minValue = values[0];
     const maxValue = values[1];
+    quantityText.innerHTML = `<span>${minValue} - ${maxValue}</span>`;
 
     const articles: string[] = [];
     for (let i = 0; i < cards.children.length; i++) {
@@ -118,11 +130,14 @@ function getQuantity(values: (number | string)[]) {
 
 sliderQuantity.noUiSlider?.on('change', getQuantity);
 
+//сброс слайдера
 const btnResetFilter = document.querySelector('.btn-reset-filter');
 
 function suspendFilters() {
     sliderYear.noUiSlider?.reset();
     sliderQuantity.noUiSlider?.reset();
+    years.innerHTML = `<span>${minYear} - ${maxYear}</span>`;
+    quantityText.innerHTML = `<span>${minQuantity} - ${maxQuantity}</span>`;
     getArr();
     showFirstCards();
 }

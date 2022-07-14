@@ -7,6 +7,7 @@ button {
     transition: background 0.3s ease-in 0s;
     line-height: 130%;
     letter-spacing: 0.06em;
+    border: 2px solid $activeColor;
 
     &:hover {
         border: 2px solid $activeColor;

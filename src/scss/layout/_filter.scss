@@ -7,10 +7,54 @@
     }
 }
 .sort-btn p select {
-    color: black;
+    color: $darkTextColor;
 }
 #sort-select {
     width: 95%;
+    border: 2px solid $activeColor;
+    height: 30px;
+    border-radius: 5px;
+}
+.filter-btn-value p select {
+    color: $mainTextColor;
+}
+.filter-btn-value .sort-btn {
+    width: 95%;
+    background: $mainBgColor;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: relative;
+
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+        position: absolute;
+        top: 30px;
+        width: 100%;
+        // transform: translateY(40%);
+        z-index: 100;
+        background: $mainBgColor;
+        border-radius: 0 0 5px 5px;
+        padding: 5px;
+    }
+    .arrow {
+        float: right;
+        padding-right: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: $activeColor;
+        }
+        &:active {
+            color: $activeColor;
+            text-shadow: 1px 2px 3px black;
+        }
+    }
 }
 
 .slider {
@@ -28,16 +72,55 @@
         display: block;
     }
 }
+.wrap {
+    width: 95%;
+    position: relative;
+    top: 0%;
+    left: 0%;
+}
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.searchTerm {
+    width: 100%;
+    border: 2px solid $activeColor;
+    border-right: none;
+    padding: 5px;
+    height: 30px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+
+    &:focus {
+        color: $darkTextColor;
+    }
+}
+.searchButton {
+    width: 40px;
+    height: 30px;
+    border: 1px solid $activeColor;
+    background: $activeColor;
+    text-align: center;
+    color: $borderColor;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
 
 @media screen and (max-width: 900px) {
     .filter {
         display: flex;
         justify-content: space-around;
         width: 100%;
+        border: 2px solid $borderColor;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 5px;
     }
 }
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 767px) {
     .filter {
-        @include flex-column-center;
+        @include flex-column;
     }
 }

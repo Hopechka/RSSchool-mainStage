@@ -5,7 +5,13 @@ const data = store as RootObject;
 
 let arrForGive: string[] = Object.keys(data);
 export function setArr(articles: string[]) {
-    arrForGive = articles;
+    if (articles.length !== 0) {
+        arrForGive = articles;
+    } else {
+        arrForGive = Object.keys(data);
+    }
+
+    console.log('arrForGive: ', arrForGive);
     // // const arrCondition: string[];
     // const cards = document.querySelector('.cards') as HTMLElement;
     // for (let i = 0; i < cards.children.length; i++) {
@@ -17,5 +23,6 @@ export function setArr(articles: string[]) {
 }
 
 export function containArr() {
+    console.log('arrForGive: ', arrForGive);
     return arrForGive;
 }

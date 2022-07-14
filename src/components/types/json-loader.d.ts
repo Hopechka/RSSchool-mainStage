@@ -7,7 +7,7 @@
 //             year: number;
 //             price: number;
 //             color: string;
-//             manufacturer: string;
+//             factory: string;
 //             material: string;
 //             quantity: number;
 //             image: string;
