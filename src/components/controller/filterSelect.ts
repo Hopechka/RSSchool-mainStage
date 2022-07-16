@@ -70,11 +70,11 @@ function getCheckedCheckBoxes() {
 }
 
 const arrContain = containArr();
+// console.log('arrContain for select: ', containArr());
 let articles: string[] = [];
 
 function filterCards() {
     const checkboxesChecked: CheckBoxType = getCheckedCheckBoxes();
-
     const filteredData: FilteredData = [];
     arrContain.forEach((item) => {
         for (const key in store) {
@@ -85,6 +85,8 @@ function filterCards() {
     });
 
     const result = filterOut(filteredData, checkboxesChecked);
+    console.log('RESULT: ', result);
+    console.log('arrContain for select: ', containArr());
 
     result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
 
@@ -94,8 +96,6 @@ function filterCards() {
     } else {
         modal.style.display = 'none';
     }
-
-    console.log('articles: ', articles);
 
     setArr(articles);
     getArr(articles);
