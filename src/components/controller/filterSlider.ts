@@ -132,6 +132,7 @@ sliderQuantity.noUiSlider?.on('change', getQuantity);
 
 //сброс слайдера
 const btnResetFilter = document.querySelector('.btn-reset-filter');
+const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;
 
 function suspendFilters() {
     sliderYear.noUiSlider?.reset();
@@ -143,3 +144,4 @@ function suspendFilters() {
 }
 
 btnResetFilter?.addEventListener('click', suspendFilters);
+SettingResetBtn.addEventListener('click', suspendFilters);

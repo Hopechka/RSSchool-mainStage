@@ -1,5 +1,5 @@
 import store from '../../assets/store.json';
-import { CheckBoxType, FilteredData, RootObject } from '../types/types';
+import { CheckBoxType, FilteredData, RootObject, StoreInterface } from '../types/types';
 import { getArr, showFirstCards } from '../view/pagination';
 import { setArr, containArr } from '../view/articleList';
 
@@ -15,14 +15,11 @@ const arrows = document.querySelectorAll('.arrow');
 arrows.forEach((item) => {
     item.addEventListener('click', showSelect);
     (item.nextElementSibling as Element).addEventListener(
-        'mouseout',
+        'mouseleave',
         (event) => {
             if ((event.target as Element).tagName === 'FORM') {
-                if (event.type === 'mouseout') {
-                    console.log(event.type);
-                    // console.log(event.target.tagName);
-                    // console.log(event.currentTarget.tagName);
-                    // (event.target as Element).className = 'hidden';
+                if (event.type === 'mouseleave') {
+                    (event.target as Element).className = 'hidden';
                 }
             }
         },
@@ -38,11 +35,9 @@ function insertOptions(id: string, prop: string) {
     }
     new Set(listProps).forEach((item) => {
         const label = document.createElement('label');
-        const br = document.createElement('br');
         label.innerHTML = `<input class="checkbox" type="checkbox" name=${prop} value=${item.split(' ').join('*')}>
         ${item}`;
         selectElement.append(label);
-        selectElement.append(br);
     });
 }
 
@@ -79,25 +74,28 @@ let articles: string[] = [];
 
 function filterCards() {
     const checkboxesChecked: CheckBoxType = getCheckedCheckBoxes();
-    console.log('checkboxesChecked: ', checkboxesChecked);
-    const filteredData: FilteredData = Object.keys(store)
-        .filter((key) => arrContain.includes(key))
-        .reduce((obj, key) => {
-            obj[key] = (store as RootObject)[key];
-            return obj;
-        }, []);
+
+    const filteredData: FilteredData = [];
+    arrContain.forEach((item) => {
+        for (const key in store) {
+            if (item === key) {
+                filteredData.push((store as RootObject)[key]);
+            }
+        }
+    });
 
     const result = filterOut(filteredData, checkboxesChecked);
 
-    result.forEach((item) => articles.push(item!.id.toString()));
+    result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
 
     const modal = document.getElementById('modal') as HTMLDivElement;
-    console.log(modal);
     if (articles.length === 0) {
         modal.style.display = 'block';
     } else {
         modal.style.display = 'none';
     }
+
+    console.log('articles: ', articles);
 
     setArr(articles);
     getArr(articles);
@@ -110,7 +108,7 @@ function filterOut(arr: FilteredData, filterObj: CheckBoxType) {
     return arr.filter((item) => {
         for (const field in filterObj) {
             if (filterObj[field].length != 0) {
-                const val = item![field];
+                const val = (item as StoreInterface)[field].toString();
                 if (val) {
                     if (filterObj[field].indexOf(val) < 0) return false;
                 }
@@ -121,12 +119,24 @@ function filterOut(arr: FilteredData, filterObj: CheckBoxType) {
 }
 
 const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;
+const btnResetFilter = document.querySelector('.btn-reset-filter') as HTMLButtonElement;
 
 function resetSettings() {
     checkboxes.forEach((item) => {
         (item as HTMLInputElement).checked = false;
     });
     filterCards();
+    const cards = document.querySelector('#cards') as HTMLElement;
+    const articles: string[] = [];
+    for (let i = 0; i < cards.children.length; i++) {
+        articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
+    }
+
+    getArr(articles);
+    setArr(articles);
+
+    showFirstCards();
 }
 
 SettingResetBtn.addEventListener('click', resetSettings);
+btnResetFilter.addEventListener('click', resetSettings);

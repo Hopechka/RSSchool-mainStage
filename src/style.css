@@ -202,6 +202,16 @@ header .basket img {
   border-radius: 16px;
   position: relative;
   z-index: 2;
+  opacity: 0;
+  animation-name: a1;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes a1 {
+  to {
+    opacity: 1;
+  }
 }
 
 .card .card-name {
@@ -351,6 +361,15 @@ header .basket img {
 .filter-btn-value .sort-btn .arrow:active {
   color: #9e509e;
   text-shadow: 1px 2px 3px black;
+}
+
+.filter-btn-value .sort-btn label {
+  display: block;
+  margin: 2px 0;
+}
+
+.filter-btn-value .sort-btn label:hover {
+  background: #9e509e;
 }
 
 .slider {

@@ -17,7 +17,7 @@ export function cardsDraw(data: RootObject): void {
         const cardClone = card.content.cloneNode(true) as HTMLElement;
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-art', key);
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-name', data[key].name);
-        (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-fabric', data[key].factory);
+        (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-factory', data[key].factory);
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-year', data[key].year.toString());
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-quantity', data[key].quantity.toString());
         (cardClone.querySelector('.card-name') as HTMLElement).textContent = data[key].brand + '  ' + data[key].name;

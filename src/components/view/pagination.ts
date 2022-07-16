@@ -1,9 +1,9 @@
-import { cardsDraw } from '../controller/cardsDraw';
+// import { cardsDraw } from '../controller/cardsDraw';
 import store from '../../assets/store.json';
 import { RootObject } from '../types/types';
 
 const data = store as RootObject;
-cardsDraw(data);
+// cardsDraw(data);
 
 let articleList: string[] = Object.keys(data);
 
@@ -37,7 +37,7 @@ let count = 1;
 
 export function showFirstCards(): void {
     count = 1;
-    console.log('articleList first: ', articleList);
+
     for (let i = 0; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = 'none';
     }
@@ -54,6 +54,7 @@ export function showFirstCards(): void {
 
     numPage.innerHTML = '1';
 
+    console.log('articleList first: ', articleList);
     for (let i = 0; i < index; i++) {
         for (let j = 0; j < LastGoodNumber; j++) {
             if (articleList[i] === (cards.children[j] as HTMLElement).getAttribute('data-art')) {

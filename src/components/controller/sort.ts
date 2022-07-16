@@ -1,4 +1,7 @@
-import { setArr, containArr } from '../view/articleList';
+import store from '../../assets/store.json';
+import { RootObject } from '../types/types';
+import { cardsDraw } from '../controller/cardsDraw';
+import { containArr } from '../view/articleList';
 import { getArr, showFirstCards } from '../view/pagination';
 
 const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
@@ -32,22 +35,19 @@ sortSelect.addEventListener('change', function () {
     }
 });
 sortSelect.addEventListener('change', function () {
-    if (sortSelect.value == 'sort-fabric-up') {
-        sortUp('data-fabric');
+    if (sortSelect.value == 'sort-factory-up') {
+        sortUp('data-factory');
     }
 });
 sortSelect.addEventListener('change', function () {
-    if (sortSelect.value == 'sort-fabric-down') {
-        sortDown('data-fabric');
+    if (sortSelect.value == 'sort-factory-down') {
+        sortDown('data-factory');
     }
 });
 
 const cards = document.querySelector('#cards') as HTMLElement;
 
 function sortUp(sortType: string) {
-    const arrContain = containArr();
-    // console.log('arrContain: ', arrContain);
-
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
             if (
@@ -64,8 +64,6 @@ function sortUp(sortType: string) {
 }
 
 function sortDown(sortType: string) {
-    const arrContain = containArr();
-    // console.log('arrContain: ', arrContain);
     for (let i = 0; i < cards.children.length; i++) {
         for (let j = i; j < cards.children.length; j++) {
             if (
@@ -86,7 +84,22 @@ function showCards() {
     for (let i = 0; i < cards.children.length; i++) {
         articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
     }
-    getArr(articles);
+    const arrContain = containArr();
+    if (arrContain.length < articles.length) {
+        getArr(arrContain);
+    } else {
+        getArr(articles);
+    }
+
     showFirstCards();
-    setArr(articles);
 }
+
+const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;
+
+function resetSettings() {
+    const data = store as RootObject;
+    cardsDraw(data);
+    sortSelect.options[0].selected = true;
+}
+
+SettingResetBtn.addEventListener('click', resetSettings);

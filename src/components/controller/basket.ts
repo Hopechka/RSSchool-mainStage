@@ -69,3 +69,13 @@ function fillBasket() {
 function setStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;
+
+function resetSettings() {
+    count = 0;
+    cart = {};
+    fillBasket();
+}
+
+SettingResetBtn.addEventListener('click', resetSettings);

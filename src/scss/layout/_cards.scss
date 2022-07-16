@@ -16,6 +16,17 @@
     position: relative;
     z-index: 2;
 
+    opacity: 0;
+    animation-name: a1;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    @keyframes a1 {
+        to {
+            opacity: 1;
+        }
+    }
+
     .card-name {
         text-align: center;
         padding: 10px 0;
