@@ -9,7 +9,7 @@ import './components/controller/sort';
 import './components/controller/filterSlider';
 import './components/controller/filterSelect';
 
-import { getValue } from './components/controller/searchForm';
+import { getStorage } from './components/controller/searchForm';
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 
@@ -18,7 +18,7 @@ cardsDraw(data);
 
 basketStatus();
 showFirstCards();
-getValue();
+getStorage();
 //------------------------------
 
 // const img = document.getElementById('img') as HTMLElement;

@@ -5,8 +5,21 @@ import { RootObject } from '../types/types';
 
 const searchTerm = document.querySelector('.search-term') as HTMLInputElement;
 const searchButton = document.querySelector('.search-button');
-export function getValue() {
-    filterAll(searchTerm.value);
+
+const searchValue = '';
+export function getStorage() {
+    const searchValueLocalStorage = localStorage.getItem('searchValue') as string;
+    if (searchValue != searchValueLocalStorage) {
+        searchTerm.value = searchValueLocalStorage;
+        filterAll(searchValueLocalStorage);
+    } else {
+        getValue();
+    }
+}
+
+function getValue() {
+    // filterAll(searchTerm.value);
+    setStorage(searchTerm.value);
 }
 
 searchTerm.addEventListener('input', getValue);
@@ -14,6 +27,7 @@ searchTerm.addEventListener('input', getValue);
 function clearSearchForm() {
     searchTerm.value = '';
     searchTerm.focus();
+    setStorage(searchTerm.value);
     const cards = document.querySelector('#cards') as HTMLElement;
     const articles: string[] = [];
     for (let i = 0; i < cards.children.length; i++) {
@@ -48,4 +62,9 @@ function filterAll(value: string) {
     getArr(articles);
     setArr(articles);
     showFirstCards();
+}
+
+function setStorage(value: string) {
+    localStorage.setItem('searchValue', value);
+    filterAll(value);
 }

@@ -1,15 +1,6 @@
 import { RootObject } from '../types/types';
-// import store from '../../assets/store.json';
-
-// const store = require('../../assets/store.json');
-
-// import photo1 from '../../assets/images/1.png';
-// import images from '../../assets/images';
 
 export function cardsDraw(data: RootObject): void {
-    // console.log(images);
-    // console.log(store[1].name);
-    // console.log(photo1 as '*.png');
     const cards = document.getElementById('cards') as HTMLElement;
     const fragment = document.createDocumentFragment();
     const card = <HTMLTemplateElement>document.querySelector('#card');
