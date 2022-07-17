@@ -1,17 +1,12 @@
-// import { cardsDraw } from '../controller/cardsDraw';
 import store from '../../assets/store.json';
-import { RootObject } from '../types/types';
 
-const data = store as RootObject;
-// cardsDraw(data);
+let articleList: string[] = Object.keys(store);
 
-let articleList: string[] = Object.keys(data);
-
-export function getArr(arr: string[] = Object.keys(data)) {
+export function getArr(arr: string[] = Object.keys(store)) {
     return (articleList = arr);
 }
 
-console.log('articleList before: ', articleList);
+// console.log('articleList before: ', articleList);
 
 const lastPage = document.querySelector('.next-next') as HTMLButtonElement;
 const nextNarrow = document.querySelector('.next') as HTMLButtonElement;
@@ -19,10 +14,8 @@ const numPage = document.querySelector('.page-num') as HTMLButtonElement;
 const firstPage = document.querySelector('.prev-prev') as HTMLButtonElement;
 const prevNarrow = document.querySelector('.prev') as HTMLButtonElement;
 const cards = document.querySelector('.cards') as HTMLElement;
-// const goodsArts: string[] = Object.keys(data);
-// const LastGoodNumber = Number(goodsArts[goodsArts.length - 1]);
-const LastGoodNumber = Object.keys(data).length;
-console.log('LastGoodNumber before: ', LastGoodNumber);
+const LastGoodNumber = Object.keys(store).length;
+// console.log('LastGoodNumber before: ', LastGoodNumber);
 
 let index: number;
 if (document.body.clientWidth > 900) {
@@ -54,7 +47,7 @@ export function showFirstCards(): void {
 
     numPage.innerHTML = '1';
 
-    console.log('articleList first: ', articleList);
+    // console.log('articleList first: ', articleList);
     for (let i = 0; i < index; i++) {
         for (let j = 0; j < LastGoodNumber; j++) {
             if (articleList[i] === (cards.children[j] as HTMLElement).getAttribute('data-art')) {
@@ -66,7 +59,7 @@ export function showFirstCards(): void {
 
 function showLastCards(): void {
     // console.log('arr in last: ', arr);
-    console.log('articleList in last: ', articleList);
+    // console.log('articleList in last: ', articleList);
     // console.log('LastGoodNumber in last: ', LastGoodNumber);
     for (let i = 0; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = 'none';
@@ -83,7 +76,7 @@ function showLastCards(): void {
         articleList.length % index === 0
             ? articleList.length - index
             : articleList.length - (articleList.length % index);
-    console.log('indexLast: ', indexLast);
+    // console.log('indexLast: ', indexLast);
     for (let i = indexLast; i < articleList.length; i++) {
         for (let j = 0; j < LastGoodNumber; j++) {
             if (articleList[i] === (cards.children[j] as HTMLElement).getAttribute('data-art')) {
@@ -97,7 +90,7 @@ function showLastCards(): void {
 }
 
 function showNextCards(): void {
-    console.log('articleList in next: ', articleList);
+    // console.log('articleList in next: ', articleList);
     firstPage.removeAttribute('disabled');
     prevNarrow.removeAttribute('disabled');
 
@@ -145,15 +138,15 @@ function showPrevCards(): void {
         if ((cards.children[i] as HTMLElement).style.display === '') {
             step = i - 1;
             const art = (cards.children[i] as HTMLElement).getAttribute('data-art');
-            console.log(art);
+            // console.log(art);
             arrStep = articleList.findIndex((item) => item === art);
             break;
         }
     }
-    console.log('step: ', step);
-    console.log('arrStep: ', arrStep);
-    console.log('articleList: ', articleList);
-    console.log('arrStep - index: ', arrStep - index);
+    // console.log('step: ', step);
+    // console.log('arrStep: ', arrStep);
+    // console.log('articleList: ', articleList);
+    // console.log('arrStep - index: ', arrStep - index);
     for (let i = 0; i < LastGoodNumber; i++) {
         (cards.children[i] as HTMLElement).style.display = 'none';
     }

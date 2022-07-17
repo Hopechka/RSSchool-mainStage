@@ -115,6 +115,7 @@ function resetSettings() {
     const data = store as RootObject;
     cardsDraw(data);
     sortSelect.options[0].selected = true;
+    setStorage(['', '', 'selected']);
 }
 
 SettingResetBtn.addEventListener('click', resetSettings);
