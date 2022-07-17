@@ -47,7 +47,10 @@ function filterAll(value: string) {
     value.toLowerCase();
 
     const articles: string[] = arrContain.filter((item) => {
-        return (store as RootObject)[item].name.toLowerCase().includes(value);
+        return (
+            (store as RootObject)[item].name.toLowerCase().includes(value) ||
+            (store as RootObject)[item].brand.toLowerCase().includes(value)
+        );
     });
 
     setFilters(['searchForm', articles]);

@@ -11,6 +11,8 @@ import './components/controller/filterSelect';
 
 import { getStorage } from './components/controller/searchForm';
 import { getStorageSelect } from './components/controller/filterSelect';
+import { getStorageSlider } from './components/controller/filterSlider';
+import { getStorageSort } from './components/controller/sort';
 
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
@@ -21,8 +23,9 @@ cardsDraw(data);
 basketStatus();
 showFirstCards();
 getStorage();
-// getValue();
+getStorageSlider();
 getStorageSelect();
+getStorageSort();
 //------------------------------
 
 // const img = document.getElementById('img') as HTMLElement;

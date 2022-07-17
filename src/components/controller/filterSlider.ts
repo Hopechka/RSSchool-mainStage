@@ -2,7 +2,6 @@ import * as noUiSlider from 'nouislider';
 import '../../../node_modules/nouislider/dist/nouislider.css';
 import store from '../../assets/store.json';
 import { RootObject } from '../types/types';
-import { getArr, showFirstCards } from '../view/pagination';
 import { setFilters } from '../view/articleList';
 
 const cards = document.querySelector('#cards') as HTMLElement;
@@ -18,6 +17,23 @@ const maxYear = Math.max(...year);
 const minQuantity = Math.min(...quantity);
 const maxQuantity = Math.max(...quantity);
 
+let YearValue: (number | string)[] = [minYear, maxYear];
+let QuantityValue: (number | string)[] = [minQuantity, maxQuantity];
+export function getStorageSlider() {
+    const YearValueStorage = localStorage.getItem('YearValue') as string;
+    const QuantityValueStorage = localStorage.getItem('QuantityValue') as string;
+    if (YearValueStorage) {
+        YearValue = JSON.parse(YearValueStorage) as [];
+        getYear(YearValue);
+        sliderYear.noUiSlider?.set(YearValue);
+    }
+    if (QuantityValueStorage) {
+        QuantityValue = JSON.parse(QuantityValueStorage) as [];
+        getQuantity(QuantityValue);
+        sliderQuantity.noUiSlider?.set(QuantityValue);
+    }
+}
+
 //Текст под слайдером
 const years = document.querySelector('.years') as HTMLDivElement;
 years.innerHTML = `<span>${minYear} - ${maxYear}</span>`;
@@ -28,7 +44,7 @@ quantityText.innerHTML = `<span>${minQuantity} - ${maxQuantity}</span>`;
 const sliderYear: noUiSlider.target = document.getElementById('slider-year') as noUiSlider.target;
 
 noUiSlider.create(sliderYear, {
-    start: [minYear, maxYear],
+    start: YearValue,
     connect: true,
     tooltips: true,
     step: 1,
@@ -48,6 +64,7 @@ noUiSlider.create(sliderYear, {
 });
 
 function getYear(values: (number | string)[]) {
+    localStorageYear(values);
     const minValue = values[0];
     const maxValue = values[1];
 
@@ -81,7 +98,7 @@ sliderYear.noUiSlider?.on('change', getYear);
 const sliderQuantity: noUiSlider.target = document.getElementById('slider-quantity') as noUiSlider.target;
 
 noUiSlider.create(sliderQuantity, {
-    start: [1, maxQuantity],
+    start: QuantityValue,
     connect: true,
     step: 1,
     tooltips: true,
@@ -101,6 +118,7 @@ noUiSlider.create(sliderQuantity, {
 });
 
 function getQuantity(values: (number | string)[]) {
+    localStorageQuantity(values);
     const minValue = values[0];
     const maxValue = values[1];
     quantityText.innerHTML = `<span>${minValue} - ${maxValue}</span>`;
@@ -131,9 +149,23 @@ function suspendFilters() {
     sliderQuantity.noUiSlider?.reset();
     years.innerHTML = `<span>${minYear} - ${maxYear}</span>`;
     quantityText.innerHTML = `<span>${minQuantity} - ${maxQuantity}</span>`;
-    getArr();
-    showFirstCards();
+    // getArr();
+    // showFirstCards();
+    YearValue = [minYear, maxYear];
+    QuantityValue = [minQuantity, maxQuantity];
+    localStorageQuantity(QuantityValue);
+    localStorageYear(YearValue);
+    const articles = Object.keys(store);
+    setFilters(['sliderFilterByQuantity', articles]);
+    setFilters(['sliderFilterByYear', articles]);
 }
 
 btnResetFilter?.addEventListener('click', suspendFilters);
 SettingResetBtn.addEventListener('click', suspendFilters);
+
+function localStorageYear(values: (number | string)[]) {
+    return localStorage.setItem('YearValue', JSON.stringify(values));
+}
+function localStorageQuantity(values: (number | string)[]) {
+    return localStorage.setItem('QuantityValue', JSON.stringify(values));
+}

@@ -3,7 +3,20 @@ import { RootObject } from '../types/types';
 import { cardsDraw } from '../controller/cardsDraw';
 import { setFilters } from '../view/articleList';
 import { getArr, showFirstCards } from '../view/pagination';
-// import { getArr, showFirstCards } from '../view/pagination';
+
+export function getStorageSort() {
+    const sortMethod = localStorage.getItem('sortMethod') as string;
+    const sortBy = localStorage.getItem('sortBy') as string;
+    const sortSelectValue = localStorage.getItem('sortSelectValue') as string;
+    if (sortMethod) {
+        sortSelect.value = sortSelectValue;
+        if (sortMethod === 'sortUp') {
+            sortUp(sortBy);
+        } else {
+            sortDown(sortBy);
+        }
+    }
+}
 
 const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
 sortSelect.addEventListener('click', function () {
@@ -17,32 +30,38 @@ sortSelect.addEventListener('click', function () {
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-name-up') {
         sortUp('data-name');
+        setStorage(['sortUp', 'data-name', 'sort-name-up']);
     }
 });
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-name-down') {
         sortDown('data-name');
+        setStorage(['sortDown', 'data-name', 'sort-year-name']);
     }
 });
 
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-year-up') {
         sortUp('data-year');
+        setStorage(['sortUp', 'data-year', 'sort-year-up']);
     }
 });
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-year-down') {
         sortDown('data-year');
+        setStorage(['sortDown', 'data-year', 'sort-year-down']);
     }
 });
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-factory-up') {
         sortUp('data-factory');
+        setStorage(['sortUp', 'data-factory', 'sort-factory-up']);
     }
 });
 sortSelect.addEventListener('change', function () {
     if (sortSelect.value == 'sort-factory-down') {
         sortDown('data-factory');
+        setStorage(['sortDown', 'data-factory', 'sort-factory-down']);
     }
 });
 
@@ -85,12 +104,6 @@ function showCards() {
     for (let i = 0; i < cards.children.length; i++) {
         articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
     }
-    // const arrContain = containArr();
-    // if (arrContain.length < articles.length) {
-    //     getArr(arrContain);
-    // } else {
-    //     getArr(articles);
-    // }
     getArr(articles);
     showFirstCards();
     setFilters(['sortFilter', articles]);
@@ -105,3 +118,9 @@ function resetSettings() {
 }
 
 SettingResetBtn.addEventListener('click', resetSettings);
+
+function setStorage(sortValues: string[]) {
+    localStorage.setItem('sortMethod', sortValues[0]);
+    localStorage.setItem('sortBy', sortValues[1]);
+    localStorage.setItem('sortSelectValue', sortValues[2]);
+}

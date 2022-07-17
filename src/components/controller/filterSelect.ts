@@ -152,5 +152,5 @@ SettingResetBtn.addEventListener('click', resetSettings);
 btnResetFilter.addEventListener('click', resetSettings);
 
 function setStorage(checkboxesChecked: CheckBoxType) {
-    localStorage.setItem('selectValue', JSON.stringify(checkboxesChecked));
+    return localStorage.setItem('selectValue', JSON.stringify(checkboxesChecked));
 }
