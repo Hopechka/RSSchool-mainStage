@@ -1,5 +1,4 @@
-import { getArr, showFirstCards } from '../view/pagination';
-import { setArr, containArr } from '../view/articleList';
+import { setFilters } from '../view/articleList';
 import store from '../../assets/store.json';
 import { RootObject } from '../types/types';
 
@@ -9,15 +8,19 @@ const searchButton = document.querySelector('.search-button');
 const searchValue = '';
 export function getStorage() {
     const searchValueLocalStorage = localStorage.getItem('searchValue') as string;
-    if (searchValue != searchValueLocalStorage) {
-        searchTerm.value = searchValueLocalStorage;
-        filterAll(searchValueLocalStorage);
+    if (searchValueLocalStorage) {
+        if (searchValue != searchValueLocalStorage) {
+            searchTerm.value = searchValueLocalStorage;
+            filterAll(searchValueLocalStorage);
+        } else {
+            getValue();
+        }
     } else {
-        getValue();
+        filterAll(searchValue);
     }
 }
 
-function getValue() {
+export function getValue() {
     // filterAll(searchTerm.value);
     setStorage(searchTerm.value);
 }
@@ -34,37 +37,26 @@ function clearSearchForm() {
         articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
     }
 
-    getArr(articles);
-    setArr(articles);
-
-    showFirstCards();
+    setFilters(['searchForm', articles]);
 }
 
 searchButton?.addEventListener('click', clearSearchForm);
 
-let valForCheck = '';
-
 function filterAll(value: string) {
-    const arrContain = value.length > valForCheck.length ? containArr() : Object.keys(store);
+    const arrContain = Object.keys(store);
     value.toLowerCase();
-    valForCheck = value;
 
-    console.log('arrContain: ', arrContain);
     const articles: string[] = arrContain.filter((item) => {
         return (store as RootObject)[item].name.toLowerCase().includes(value);
     });
-    const modal = document.getElementById('modal') as HTMLDivElement;
-    if (articles.length === 0) {
-        modal.style.display = 'block';
-    } else {
-        modal.style.display = 'none';
-    }
-    getArr(articles);
-    setArr(articles);
-    showFirstCards();
+
+    setFilters(['searchForm', articles]);
 }
 
 function setStorage(value: string) {
     localStorage.setItem('searchValue', value);
     filterAll(value);
 }
+
+const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;
+SettingResetBtn.addEventListener('click', clearSearchForm);

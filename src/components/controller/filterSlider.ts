@@ -3,7 +3,7 @@ import '../../../node_modules/nouislider/dist/nouislider.css';
 import store from '../../assets/store.json';
 import { RootObject } from '../types/types';
 import { getArr, showFirstCards } from '../view/pagination';
-import { setArr, containArr } from '../view/articleList';
+import { setFilters } from '../view/articleList';
 
 const cards = document.querySelector('#cards') as HTMLElement;
 const year: number[] = [];
@@ -48,9 +48,6 @@ noUiSlider.create(sliderYear, {
 });
 
 function getYear(values: (number | string)[]) {
-    const arrContain = containArr();
-    // console.log('arrContain: ', arrContain);
-
     const minValue = values[0];
     const maxValue = values[1];
 
@@ -74,9 +71,8 @@ function getYear(values: (number | string)[]) {
     //         data[key] = (store as RootObject)[key];
     //     }
     // }
-    getArr(arrContain.filter((item) => articles.includes(item)));
-    setArr(articles);
-    showFirstCards();
+
+    setFilters(['sliderFilterByYear', articles]);
 }
 
 sliderYear.noUiSlider?.on('change', getYear);
@@ -105,9 +101,6 @@ noUiSlider.create(sliderQuantity, {
 });
 
 function getQuantity(values: (number | string)[]) {
-    const arrContain = containArr();
-    // console.log('arrContain: ', arrContain);
-
     const minValue = values[0];
     const maxValue = values[1];
     quantityText.innerHTML = `<span>${minValue} - ${maxValue}</span>`;
@@ -122,9 +115,8 @@ function getQuantity(values: (number | string)[]) {
             (cards.children[i] as HTMLElement).style.display = 'none';
         }
     }
-    getArr(arrContain.filter((item) => articles.includes(item)));
-    setArr(articles);
-    showFirstCards();
+
+    setFilters(['sliderFilterByQuantity', articles]);
     return articles;
 }
 

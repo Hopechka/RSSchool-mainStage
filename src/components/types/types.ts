@@ -25,3 +25,5 @@ export type CheckBoxType = {
 };
 
 export type FilteredData = [StoreInterface?];
+
+export type FilterHandlers = { [key: string]: string[] };

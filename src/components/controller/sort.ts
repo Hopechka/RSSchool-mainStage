@@ -1,8 +1,9 @@
 import store from '../../assets/store.json';
 import { RootObject } from '../types/types';
 import { cardsDraw } from '../controller/cardsDraw';
-import { containArr } from '../view/articleList';
+import { setFilters } from '../view/articleList';
 import { getArr, showFirstCards } from '../view/pagination';
+// import { getArr, showFirstCards } from '../view/pagination';
 
 const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
 sortSelect.addEventListener('click', function () {
@@ -84,14 +85,15 @@ function showCards() {
     for (let i = 0; i < cards.children.length; i++) {
         articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
     }
-    const arrContain = containArr();
-    if (arrContain.length < articles.length) {
-        getArr(arrContain);
-    } else {
-        getArr(articles);
-    }
-
+    // const arrContain = containArr();
+    // if (arrContain.length < articles.length) {
+    //     getArr(arrContain);
+    // } else {
+    //     getArr(articles);
+    // }
+    getArr(articles);
     showFirstCards();
+    setFilters(['sortFilter', articles]);
 }
 
 const SettingResetBtn = document.querySelector('.btn-reset-settings') as HTMLButtonElement;

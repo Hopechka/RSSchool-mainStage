@@ -1,28 +1,39 @@
-import store from '../../assets/store.json';
-import { RootObject } from '../types/types';
+import { FilterHandlers } from '../types/types';
+import { getArr, showFirstCards } from './pagination';
 
-const data = store as RootObject;
+const filterHandlers: FilterHandlers = {};
+export function setFilters(articlesArray: [string, string[]]) {
+    console.log(articlesArray);
+    console.log('filterHandlers before: ', filterHandlers);
+    filterHandlers[articlesArray[0]] = articlesArray[1];
+    console.log('filterHandlers after: ', filterHandlers);
+    setStorage();
+    const arr = Object.values(filterHandlers);
+    const res: string[] = [];
+    // for (let key of arr) {
+    //   for (j of key) {
+    //     if(arr.every(item => item.includes(j))){res.push(j)}
+    //   }
+    // }
 
-let arrForGive: string[] = Object.keys(data);
-export function setArr(articles: string[]) {
-    if (articles.length !== 0) {
-        arrForGive = articles;
+    arr.forEach((item) =>
+        item.forEach((v) => {
+            if (arr.every((c) => c.includes(v))) res.push(v);
+        })
+    );
+    console.log('RES: ', res);
+
+    const modal = document.getElementById('modal') as HTMLDivElement;
+    if (res.length === 0) {
+        modal.style.display = 'block';
     } else {
-        arrForGive = Object.keys(data);
+        modal.style.display = 'none';
     }
 
-    console.log('arrForGive: ', arrForGive);
-    // // const arrCondition: string[];
-    // const cards = document.querySelector('.cards') as HTMLElement;
-    // for (let i = 0; i < cards.children.length; i++) {
-    //     const elem1 = cards.children[i] as HTMLElement;
-    //     const style = window.getComputedStyle(elem1, null);
-    //     console.log(style.display);
-    //     // arrCondition.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
-    // }
+    getArr([...new Set(res)]);
+    showFirstCards();
 }
 
-export function containArr() {
-    console.log('arrForGive: ', arrForGive);
-    return arrForGive;
+function setStorage() {
+    localStorage.setItem('filterHandlers', JSON.stringify(filterHandlers));
 }

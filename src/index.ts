@@ -10,6 +10,8 @@ import './components/controller/filterSlider';
 import './components/controller/filterSelect';
 
 import { getStorage } from './components/controller/searchForm';
+import { getStorageSelect } from './components/controller/filterSelect';
+
 // import photo1 from './assets/images/1.jpg';
 // import photo2 from './assets/images/2.jpg';
 
@@ -19,6 +21,8 @@ cardsDraw(data);
 basketStatus();
 showFirstCards();
 getStorage();
+// getValue();
+getStorageSelect();
 //------------------------------
 
 // const img = document.getElementById('img') as HTMLElement;

@@ -1,7 +1,7 @@
 import store from '../../assets/store.json';
 import { CheckBoxType, FilteredData, RootObject, StoreInterface } from '../types/types';
-import { getArr, showFirstCards } from '../view/pagination';
-import { setArr, containArr } from '../view/articleList';
+import { showFirstCards } from '../view/pagination';
+import { setFilters } from '../view/articleList';
 
 function showSelect(event: Event) {
     const selectElement = (event.target as Element).nextElementSibling as Element;
@@ -52,6 +52,27 @@ checkboxes.forEach((item) => {
     item.addEventListener('change', filterCards);
 });
 
+// let checkboxesChecked: CheckBoxType = { factory: [], color: [], material: [], brand: [] };
+
+export function getStorageSelect() {
+    const selectValue = localStorage.getItem('selectValue') as string;
+    const selectValueParser = JSON.parse(selectValue) as CheckBoxType;
+    if (selectValue) {
+        const checkedValues: string[] = [];
+        Object.values(selectValueParser).forEach((item) => {
+            item.forEach((item) => checkedValues.push(item));
+        });
+        for (const key of checkedValues) {
+            checkboxes.forEach((item) => {
+                if ((item as HTMLInputElement).value.toLowerCase() === key.toLowerCase().split(' ').join('*')) {
+                    (item as HTMLInputElement).checked = true;
+                    filterCards();
+                }
+            });
+        }
+    }
+}
+
 function getCheckedCheckBoxes() {
     const checkboxesChecked: CheckBoxType = { factory: [], color: [], material: [], brand: [] };
     for (let index = 0; index < checkboxes.length; index++) {
@@ -66,10 +87,12 @@ function getCheckedCheckBoxes() {
             checkboxesChecked[(checkboxes[index] as HTMLInputElement).name] = newArr;
         }
     }
+    setStorage(checkboxesChecked);
     return checkboxesChecked;
 }
 
-const arrContain = containArr();
+const arrContain = Object.keys(store);
+// const arrContain = containArr();
 // console.log('arrContain for select: ', containArr());
 let articles: string[] = [];
 
@@ -85,22 +108,10 @@ function filterCards() {
     });
 
     const result = filterOut(filteredData, checkboxesChecked);
-    console.log('RESULT: ', result);
-    console.log('arrContain for select: ', containArr());
 
     result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
 
-    const modal = document.getElementById('modal') as HTMLDivElement;
-    if (articles.length === 0) {
-        modal.style.display = 'block';
-    } else {
-        modal.style.display = 'none';
-    }
-
-    setArr(articles);
-    getArr(articles);
-    showFirstCards();
-
+    setFilters(['selectFilter', articles]);
     articles = [];
 }
 
@@ -132,11 +143,14 @@ function resetSettings() {
         articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
     }
 
-    getArr(articles);
-    setArr(articles);
+    setFilters(['selectFilter', articles]);
 
     showFirstCards();
 }
 
 SettingResetBtn.addEventListener('click', resetSettings);
 btnResetFilter.addEventListener('click', resetSettings);
+
+function setStorage(checkboxesChecked: CheckBoxType) {
+    localStorage.setItem('selectValue', JSON.stringify(checkboxesChecked));
+}
