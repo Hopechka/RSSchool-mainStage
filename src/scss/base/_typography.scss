@@ -9,21 +9,24 @@
 h1 {
     font-family: 'Kantumruy Pro', sans-serif;
     font-style: italic;
-    text-shadow: 5px 0px 4px rgb(19, 18, 18);
+    text-shadow: 2px -2px 4px $activeColor;
     color: $logoColor;
     letter-spacing: 0.1em;
     line-height: 1em;
+    // color: $activeColor;
 }
 h3 {
     letter-spacing: 0.06em;
     padding: 5px;
 }
+
 .card-name,
 .git-link span,
 .date span,
 .count span,
 .filter-btn span {
     font-family: 'Kantumruy Pro', sans-serif;
+    padding: 0 5px;
 }
 
 .card-price {

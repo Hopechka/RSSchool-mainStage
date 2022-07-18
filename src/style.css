@@ -40,7 +40,7 @@ h6 {
 h1 {
   font-family: 'Kantumruy Pro', sans-serif;
   font-style: italic;
-  text-shadow: 5px 0px 4px #131212;
+  text-shadow: 2px -2px 4px #d42dab;
   color: white;
   letter-spacing: 0.1em;
   line-height: 1em;
@@ -57,6 +57,7 @@ h3 {
 .count span,
 .filter-btn span {
   font-family: 'Kantumruy Pro', sans-serif;
+  padding: 0 5px;
 }
 
 .card-price {
@@ -64,23 +65,23 @@ h3 {
 }
 
 html {
-  height: 100%;
-  background: #7b797a;
+  height: 100vh;
+  background: #4261cf;
+  background: linear-gradient(to bottom, #4261cf, #4d1d63 80%, #030243 100%);
 }
 
 body {
-  height: 100%;
   max-width: 1440px;
   font-size: 1rem;
   margin: 0 auto;
-  background: #7b797a;
-  background: linear-gradient(to top, #7b797a, #504e4f);
+  background: #4261cf;
+  background: linear-gradient(to bottom, #4261cf, #4d1d63 80%, #030243 100%);
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   justify-content: space-between;
   margin: 0 40px;
 }
@@ -89,6 +90,7 @@ body {
   flex: 1;
   margin: 20px 0;
   display: flex;
+  height: calc(100% - 210px);
 }
 
 #modal {
@@ -101,7 +103,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: 101;
-  opacity: 0.8;
+  opacity: 0.7;
   border-radius: 16px;
 }
 
@@ -121,6 +123,9 @@ body {
   margin: 0 auto;
   position: relative;
   min-height: 200px;
+  overflow: auto;
+  width: 100%;
+  margin: 10px;
 }
 
 @media screen and (max-width: 900px) {
@@ -132,8 +137,19 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  html,
+  body {
+    min-height: 100%;
+  }
   .container {
     margin: 0 30px;
+    height: 100%;
+  }
+  .main {
+    height: 100%;
+  }
+  #content {
+    overflow: visible;
   }
 }
 
@@ -153,7 +169,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(to top, #7b797a, #504e4f);
+  background: #4261cf;
+  background: linear-gradient(to top, #4261cf, #030243);
 }
 
 header .basket img {
@@ -194,11 +211,12 @@ header .basket img {
   flex-direction: column;
   align-items: center;
   max-width: 300px;
-  max-height: 420px;
+  max-height: 360px;
   padding: 10px;
   margin: 5px;
   cursor: pointer;
-  border: 2px solid #cdc4c4;
+  border-top: 2px solid #cdc4c4;
+  border-bottom: 2px solid #cdc4c4;
   border-radius: 16px;
   position: relative;
   z-index: 2;
@@ -242,11 +260,10 @@ header .basket img {
   position: absolute;
   width: 100px;
   height: 50px;
-  background: #9e509e;
+  background: #d42dab;
   opacity: 0.8;
   bottom: 15px;
   left: 0px;
-  border: 1px solid #cdc4c4;
   border-radius: 0px 16px 16px 0px;
   box-shadow: 6px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 3;
@@ -256,8 +273,8 @@ header .basket img {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: black;
-  opacity: 0.3;
+  background: #030243;
+  opacity: 0.5;
   z-index: -1;
   bottom: 0;
   border-radius: 16px;
@@ -274,7 +291,7 @@ header .basket img {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-  background: #9e509e;
+  background: #d42dab;
   position: absolute;
   border-radius: 8px;
   padding: 30px;
@@ -299,7 +316,7 @@ header .basket img {
 }
 
 .filter {
-  width: 20%;
+  width: 25%;
   border-right: 2px solid #cdc4c4;
 }
 
@@ -309,12 +326,12 @@ header .basket img {
 }
 
 .sort-btn p select {
-  color: #232122;
+  color: #030243;
 }
 
 #sort-select {
   width: 95%;
-  border: 2px solid #9e509e;
+  border: 2px solid #cdc4c4;
   height: 30px;
   border-radius: 5px;
 }
@@ -325,7 +342,7 @@ header .basket img {
 
 .filter-btn-value .sort-btn {
   width: 95%;
-  background: #7b797a;
+  background: #030243;
   border: none;
   height: 30px;
   border-radius: 5px;
@@ -343,7 +360,7 @@ header .basket img {
   top: 30px;
   width: 100%;
   z-index: 100;
-  background: #7b797a;
+  background: #030243;
   border-radius: 0 0 5px 5px;
   padding: 5px;
 }
@@ -355,11 +372,11 @@ header .basket img {
 }
 
 .filter-btn-value .sort-btn .arrow:hover {
-  color: #9e509e;
+  color: #d42dab;
 }
 
 .filter-btn-value .sort-btn .arrow:active {
-  color: #9e509e;
+  color: #d42dab;
   text-shadow: 1px 2px 3px black;
 }
 
@@ -369,7 +386,7 @@ header .basket img {
 }
 
 .filter-btn-value .sort-btn label:hover {
-  background: #9e509e;
+  background: #d42dab;
 }
 
 .slider {
@@ -377,7 +394,7 @@ header .basket img {
 }
 
 .slider .noUi-connect {
-  background: #9e509e;
+  background: #d42dab;
 }
 
 .slider .noUi-handle {
@@ -407,20 +424,20 @@ header .basket img {
 
 .search-term {
   width: 100%;
-  border: 2px solid #9e509e;
+  border: 2px solid #cdc4c4;
   border-right: none;
   padding: 5px;
   height: 30px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #232122;
+  color: #030243;
 }
 
 .search-button {
   width: 40px;
   height: 30px;
-  border: 1px solid #9e509e;
-  background: #9e509e;
+  border: 1px solid #d42dab;
+  background: #d42dab;
   text-align: center;
   color: #cdc4c4;
   border-radius: 0 5px 5px 0;
@@ -493,12 +510,12 @@ button {
   transition: background 0.3s ease-in 0s;
   line-height: 130%;
   letter-spacing: 0.06em;
-  border: 2px solid #9e509e;
+  border: 2px solid #cdc4c4;
 }
 
 button:hover {
-  border: 2px solid #9e509e;
-  background: #9e509e;
+  border: 2px solid #d42dab;
+  background: #d42dab;
 }
 
 button:disabled {

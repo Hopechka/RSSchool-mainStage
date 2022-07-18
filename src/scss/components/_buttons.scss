@@ -7,7 +7,7 @@ button {
     transition: background 0.3s ease-in 0s;
     line-height: 130%;
     letter-spacing: 0.06em;
-    border: 2px solid $activeColor;
+    border: $typeBorder2px;
 
     &:hover {
         border: 2px solid $activeColor;
@@ -15,7 +15,7 @@ button {
     }
     &:disabled {
         color: $mainTextColor;
-        border: 2px solid $borderColor;
+        border: $typeBorder2px;
         background: none;
         cursor: auto;
         opacity: 0.5;
@@ -23,7 +23,7 @@ button {
 }
 
 .btn-light {
-    border: 2px solid $borderColor;
+    border: $typeBorder2px;
     background: none;
     cursor: pointer;
 }
@@ -50,13 +50,13 @@ button {
 
 .page-num {
     color: $mainTextColor;
-    border: 2px solid $borderColor;
+    border: $typeBorder2px;
     background: none;
     cursor: auto;
 
     &:hover {
         background: none;
-        border: 2px solid $borderColor;
+        border: $typeBorder2px;
     }
 }
 
