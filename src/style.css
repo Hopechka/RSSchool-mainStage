@@ -67,7 +67,6 @@ h3 {
 html {
   height: 100vh;
   background: #4261cf;
-  background: linear-gradient(to bottom, #4261cf, #4d1d63 80%, #030243 100%);
 }
 
 body {
@@ -75,7 +74,7 @@ body {
   font-size: 1rem;
   margin: 0 auto;
   background: #4261cf;
-  background: linear-gradient(to bottom, #4261cf, #4d1d63 80%, #030243 100%);
+  background: linear-gradient(to top, #4261cf, #4d1d63 80%, #030243 100%);
 }
 
 .container {
@@ -90,7 +89,6 @@ body {
   flex: 1;
   margin: 20px 0;
   display: flex;
-  height: calc(100% - 210px);
 }
 
 #modal {
@@ -123,7 +121,6 @@ body {
   margin: 0 auto;
   position: relative;
   min-height: 200px;
-  overflow: auto;
   width: 100%;
   margin: 10px;
 }

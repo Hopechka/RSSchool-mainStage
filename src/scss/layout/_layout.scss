@@ -5,7 +5,7 @@
 html {
     height: 100vh;
     background: $mainBgColor;
-    background: linear-gradient(to bottom, $mainBgColor, $mainBgMiddleColor 80%, $mainBgEndColor 100%);
+    // background: linear-gradient(to bottom, $mainBgColor, $mainBgMiddleColor 80%, $mainBgEndColor 100%);
 }
 
 body {
@@ -14,7 +14,7 @@ body {
     font-size: 1rem;
     margin: 0 auto;
     background: $mainBgColor;
-    background: linear-gradient(to bottom, $mainBgColor, $mainBgMiddleColor 80%, $mainBgEndColor 100%);
+    background: linear-gradient(to top, $mainBgColor, $mainBgMiddleColor 80%, $mainBgEndColor 100%);
 }
 .container {
     @include flex-column;
@@ -27,7 +27,7 @@ body {
     flex: 1;
     margin: 20px 0;
     display: flex;
-    height: calc(100% - 210px);
+    // height: calc(100% - 210px);
 }
 #modal {
     display: none;
@@ -56,7 +56,7 @@ body {
     margin: 0 auto;
     position: relative;
     min-height: 200px;
-    overflow: auto;
+    // overflow: auto;
 
     width: 100%;
     margin: 10px;
