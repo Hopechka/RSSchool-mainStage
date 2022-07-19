@@ -24,11 +24,12 @@ export function setFilters(articlesArray: [string, string[]]) {
     console.log('RES: ', res);
 
     const modal = document.getElementById('modal') as HTMLDivElement;
-    if (res.length === 0) {
-        modal.style.display = 'block';
-    } else {
-        modal.style.display = 'none';
-    }
+    modal.style.display = getModalWindow(res);
+    // if (res.length === 0) {
+    //     modal.style.display = 'block';
+    // } else {
+    //     modal.style.display = 'none';
+    // }
 
     getArr([...new Set(res)]);
     showFirstCards();
@@ -37,3 +38,9 @@ export function setFilters(articlesArray: [string, string[]]) {
 function setStorage() {
     localStorage.setItem('filterHandlers', JSON.stringify(filterHandlers));
 }
+
+export function getModalWindow(result: string[]): string {
+    return result.length === 0 ? 'block' : 'none';
+}
+
+// module.exports = getModalWindow;

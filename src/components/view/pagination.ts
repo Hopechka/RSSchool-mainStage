@@ -168,7 +168,9 @@ function showPrevCards(): void {
     numPage.innerHTML = count.toString();
 }
 
-lastPage.addEventListener('click', showLastCards);
-firstPage.addEventListener('click', showFirstCards);
-nextNarrow.addEventListener('click', showNextCards);
-prevNarrow.addEventListener('click', showPrevCards);
+document.addEventListener('DOMContentLoaded', function () {
+    lastPage.addEventListener('click', showLastCards, false);
+    firstPage.addEventListener('click', showFirstCards, false);
+    nextNarrow.addEventListener('click', showNextCards, false);
+    prevNarrow.addEventListener('click', showPrevCards, false);
+});

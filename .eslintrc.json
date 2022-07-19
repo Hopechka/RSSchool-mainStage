@@ -9,8 +9,8 @@
     ],
     "parserOptions": {
         "ecmaVersion": 2020,
-        "sourceType": "module",
-        "project": ["./tsconfig.json"]
+        "sourceType": "module"
+        // "project": ["./tsconfig.json"]
     },
     "ignorePatterns": ["/*.*"],
     "parser": "@typescript-eslint/parser",

@@ -61,10 +61,10 @@ function changeStatus(event: Event) {
     fillBasket();
 }
 
-function fillBasket() {
-    const basketInside = document.querySelector('.count span') as HTMLElement;
-    basketInside.textContent = count.toString();
+function fillBasket(): string {
     setStorage();
+    const basketInside = document.querySelector('.count span') as HTMLElement;
+    return (basketInside.textContent = count.toString());
 }
 function setStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
