@@ -3,10 +3,10 @@ import { getArr, showFirstCards } from './pagination';
 
 const filterHandlers: FilterHandlers = {};
 export function setFilters(articlesArray: [string, string[]]) {
-    console.log(articlesArray);
-    console.log('filterHandlers before: ', filterHandlers);
+    // console.log(articlesArray);
+    // console.log('filterHandlers before: ', filterHandlers);
     filterHandlers[articlesArray[0]] = articlesArray[1];
-    console.log('filterHandlers after: ', filterHandlers);
+    // console.log('filterHandlers after: ', filterHandlers);
     setStorage();
     const arr = Object.values(filterHandlers);
     const res: string[] = [];
@@ -21,7 +21,7 @@ export function setFilters(articlesArray: [string, string[]]) {
             if (arr.every((c) => c.includes(v))) res.push(v);
         })
     );
-    console.log('RES: ', res);
+    // console.log('RES: ', res);
 
     const modal = document.getElementById('modal') as HTMLDivElement;
     modal.style.display = getModalWindow(res);
@@ -42,5 +42,3 @@ function setStorage() {
 export function getModalWindow(result: string[]): string {
     return result.length === 0 ? 'block' : 'none';
 }
-
-// module.exports = getModalWindow;

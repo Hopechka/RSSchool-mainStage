@@ -35,6 +35,8 @@ const baseConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+            inject: 'body',
+            scriptLoading: 'defer',
         }),
         new CleanWebpackPlugin(),
     ],

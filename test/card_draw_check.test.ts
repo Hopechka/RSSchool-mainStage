@@ -1,5 +1,6 @@
 import { cardsDraw } from '../src/components/controller/cardsDraw';
-// import store from '../src/assets/store.json';
+import { inner_html } from './inner_html';
+import store from '../src/assets/store.json';
 /**
  * @jest-environment node || jsdom
  */
@@ -23,10 +24,8 @@ describe('Сards Draw function: ', () => {
     });
 });
 
-// describe('Сards Draw layout: ', () => {
-//     cardsDraw(store);
-
-//     it('create card element', () => {
-//         expect(document.querySelector('#cards')).not.toBeNull();
-//     });
-// });
+test('create card element not-null', () => {
+    document.body.innerHTML = inner_html;
+    cardsDraw(store);
+    expect(document.body.querySelector('.cards')).not.toBeNull();
+});

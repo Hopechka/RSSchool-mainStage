@@ -52,7 +52,7 @@ function filterAll(value: string) {
             (store as RootObject)[item].brand.toLowerCase().includes(value)
         );
     });
-    console.log('articles search form: ', articles);
+    // console.log('articles search form: ', articles);
 
     setFilters(['searchForm', articles]);
 }

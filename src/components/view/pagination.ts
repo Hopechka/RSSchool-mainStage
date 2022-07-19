@@ -168,9 +168,15 @@ function showPrevCards(): void {
     numPage.innerHTML = count.toString();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    lastPage.addEventListener('click', showLastCards, false);
-    firstPage.addEventListener('click', showFirstCards, false);
-    nextNarrow.addEventListener('click', showNextCards, false);
-    prevNarrow.addEventListener('click', showPrevCards, false);
-});
+if (lastPage) {
+    lastPage.addEventListener('click', showLastCards);
+}
+if (firstPage) {
+    firstPage.addEventListener('click', showFirstCards);
+}
+if (nextNarrow) {
+    nextNarrow.addEventListener('click', showNextCards);
+}
+if (prevNarrow) {
+    prevNarrow.addEventListener('click', showPrevCards);
+}

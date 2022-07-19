@@ -6,6 +6,7 @@ export function cardsDraw(data: RootObject): void {
     const card = <HTMLTemplateElement>document.querySelector('#card');
     for (const key in data) {
         const cardClone = card.content.cloneNode(true) as HTMLElement;
+
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-art', key);
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-name', data[key].name);
         (cardClone.querySelector('.card') as HTMLElement).setAttribute('data-factory', data[key].factory);
@@ -21,6 +22,7 @@ export function cardsDraw(data: RootObject): void {
         (cardClone.querySelector('.card-material') as HTMLElement).textContent = `Материал: ${data[key].material}`;
         fragment.append(cardClone);
     }
+
     cards.innerHTML = '';
     cards.appendChild(fragment);
 }
