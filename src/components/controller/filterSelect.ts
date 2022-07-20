@@ -99,7 +99,7 @@ function filterCards() {
     const filteredData: FilteredData = getFilteredData();
 
     const result = filterOut(filteredData, checkboxesChecked);
-    console.log('result after filter: ', result);
+    // console.log('result after filter: ', result);
 
     result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
 
@@ -121,8 +121,8 @@ export function getFilteredData() {
 }
 
 export function filterOut(arr: FilteredData, filterObj: CheckBoxType) {
-    console.log('FilteredData: ', arr);
-    console.log('CheckBoxType: ', filterObj);
+    // console.log('FilteredData: ', arr);
+    // console.log('CheckBoxType: ', filterObj);
     return arr.filter((item) => {
         for (const field in filterObj) {
             if (filterObj[field].length != 0) {
