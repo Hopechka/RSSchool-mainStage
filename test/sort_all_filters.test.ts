@@ -19,6 +19,13 @@ describe("Check all filters sort's correct", () => {
             testArr: [['1', '2', '3', '4', '5'], [], [], ['4', '5']],
             expected: [],
         },
+        {
+            testArr: [
+                ['1', '2', '3', '4', '5'],
+                ['4', '5'],
+            ],
+            expected: ['4', '5'],
+        },
     ];
 
     testCase.forEach((test) => {

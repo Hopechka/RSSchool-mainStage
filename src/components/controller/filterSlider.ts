@@ -73,7 +73,7 @@ function getYear(values: (number | string)[]) {
     const articles: string[] = [];
     for (let i = 0; i < cards.children.length; i++) {
         const dataAtr = (cards.children[i] as HTMLElement).getAttribute('data-year')!;
-        if (+dataAtr >= minValue && +dataAtr < maxValue) {
+        if (+dataAtr >= minValue && +dataAtr <= maxValue) {
             articles.push((cards.children[i] as HTMLElement).getAttribute('data-art')!);
             (cards.children[i] as HTMLElement).style.display = '';
         } else {

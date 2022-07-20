@@ -4,7 +4,7 @@ import { getArr, showFirstCards } from './pagination';
 const filterHandlers: FilterHandlers = {};
 export function setFilters(articlesArray: [string, string[]]) {
     filterHandlers[articlesArray[0]] = articlesArray[1];
-
+    // console.log('filterHandlers: ', filterHandlers);
     setStorage();
     const articles = Object.values(filterHandlers);
 
@@ -13,8 +13,8 @@ export function setFilters(articlesArray: [string, string[]]) {
     const modal = document.getElementById('modal') as HTMLDivElement;
     modal.style.display = getModalWindow(res);
 
+    // console.log('RES: ', res);
     getArr(res);
-
     showFirstCards();
 }
 

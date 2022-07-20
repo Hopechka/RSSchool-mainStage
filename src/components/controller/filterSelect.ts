@@ -91,13 +91,24 @@ function getCheckedCheckBoxes() {
     return checkboxesChecked;
 }
 
-const arrContain = Object.keys(store);
-// const arrContain = containArr();
-// console.log('arrContain for select: ', containArr());
+// const arrContain = Object.keys(store);
 let articles: string[] = [];
 
 function filterCards() {
     const checkboxesChecked: CheckBoxType = getCheckedCheckBoxes();
+    const filteredData: FilteredData = getFilteredData();
+
+    const result = filterOut(filteredData, checkboxesChecked);
+    console.log('result after filter: ', result);
+
+    result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
+
+    setFilters(['selectFilter', articles]);
+    articles = [];
+}
+
+const arrContain = Object.keys(store);
+export function getFilteredData() {
     const filteredData: FilteredData = [];
     arrContain.forEach((item) => {
         for (const key in store) {
@@ -106,16 +117,12 @@ function filterCards() {
             }
         }
     });
-
-    const result = filterOut(filteredData, checkboxesChecked);
-
-    result.forEach((item) => articles.push((item as StoreInterface).id.toString()));
-
-    setFilters(['selectFilter', articles]);
-    articles = [];
+    return filteredData;
 }
 
-function filterOut(arr: FilteredData, filterObj: CheckBoxType) {
+export function filterOut(arr: FilteredData, filterObj: CheckBoxType) {
+    console.log('FilteredData: ', arr);
+    console.log('CheckBoxType: ', filterObj);
     return arr.filter((item) => {
         for (const field in filterObj) {
             if (filterObj[field].length != 0) {
