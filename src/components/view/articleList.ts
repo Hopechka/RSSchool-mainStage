@@ -3,35 +3,18 @@ import { getArr, showFirstCards } from './pagination';
 
 const filterHandlers: FilterHandlers = {};
 export function setFilters(articlesArray: [string, string[]]) {
-    // console.log(articlesArray);
-    // console.log('filterHandlers before: ', filterHandlers);
     filterHandlers[articlesArray[0]] = articlesArray[1];
-    // console.log('filterHandlers after: ', filterHandlers);
-    setStorage();
-    const arr = Object.values(filterHandlers);
-    const res: string[] = [];
-    // for (let key of arr) {
-    //   for (j of key) {
-    //     if(arr.every(item => item.includes(j))){res.push(j)}
-    //   }
-    // }
 
-    arr.forEach((item) =>
-        item.forEach((v) => {
-            if (arr.every((c) => c.includes(v))) res.push(v);
-        })
-    );
-    // console.log('RES: ', res);
+    setStorage();
+    const articles = Object.values(filterHandlers);
+
+    const res: string[] = sortAllFilters(articles);
 
     const modal = document.getElementById('modal') as HTMLDivElement;
     modal.style.display = getModalWindow(res);
-    // if (res.length === 0) {
-    //     modal.style.display = 'block';
-    // } else {
-    //     modal.style.display = 'none';
-    // }
 
-    getArr([...new Set(res)]);
+    getArr(res);
+
     showFirstCards();
 }
 
@@ -41,4 +24,15 @@ function setStorage() {
 
 export function getModalWindow(result: string[]): string {
     return result.length === 0 ? 'block' : 'none';
+}
+
+export function sortAllFilters(articles: string[][]): string[] {
+    const res: string[] = [];
+    articles.forEach((item) =>
+        item.forEach((v) => {
+            if (articles.every((c) => c.includes(v))) res.push(v);
+        })
+    );
+
+    return [...new Set(res)];
 }
