@@ -12,7 +12,8 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": ["./tsconfig.json"],
+        "project": "tsconfig.json",
+        // "project": ["./async-race/tsconfig.json"],
         // "project": "/Users/hopechka/PycharmProjects/VSCode/GitHub/hopechka-JSFE2022Q1/async-race/tsconfig.json",
         // "tsconfigRootDir": "async-race" ,
         "ecmaFeatures": {
@@ -20,7 +21,7 @@
         },
         "ecmaVersion": "latest",
         "sourceType": "module"
-    },
+    }, 
     "ignorePatterns": ["/*.*"],
     "plugins": [
         "react",

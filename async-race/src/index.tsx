@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import { ModalState } from "./context/ModalContext";
+import { ModalState } from './context/ModalContext';
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
@@ -10,8 +10,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    {/* <ModalState> */}
+    <ModalState>
     <App />
-    {/* </ModalState> */}
+    </ModalState>
   </BrowserRouter>,
 );

@@ -43,16 +43,32 @@
     /* justify-content: space-between; */
     padding: 0 5px;
     background: black;
+    z-index: 100;
     text-align: center;
     align-items: center;
     position: sticky;
     top: 0;
     gap: 10px;
+    margin: 0 40px;
 }
 .button{
-    background: yellow;
-    border: 1px solid white;
-    border-radius: 16px;
-    min-width: 100px;
-    padding: 10px;
+    border-radius: 5px;
+    min-width: 60px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+button:hover{
+    background: aquamarine;
+}
+.middle-btn-yellow{background: yellow;}
+.middle-btn-grey{background: grey;}
+
+.small-btn{
+    background: none;
+    border: 1px solid yellow;
+    color: yellow;
+    padding: 1px;
+    min-width: 25px;
+    margin: 10px 5px;
 }

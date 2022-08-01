@@ -1,5 +1,5 @@
 import React from 'react';
 
 export function ScorePage() {
-  return <div>ScorePage</div>;
+  return <div className='container'>ScorePage</div>;
 }
