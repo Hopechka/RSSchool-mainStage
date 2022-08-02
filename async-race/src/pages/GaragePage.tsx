@@ -7,6 +7,7 @@ import { CreateCar } from '../components/CreateCar';
 import { UpdateCar } from '../components/UpdateCar';
 import { ICar } from '../types';
 import { ModalContext } from '../context/ModalContext';
+import { CreateRandomCar } from '../components/CeateRandomCar';
 
 export function GaragePage() {
 
@@ -30,7 +31,7 @@ export function GaragePage() {
             <div className='forms'>
             {<CreateCar onCreate = {createHandler}/>}
             {<UpdateCar selectState={selectState} onUpdate = {updateHandler}/>}
-            <button className='button'>GENERATE CARS</button>
+            {<CreateRandomCar onCreate = {createHandler}/>}
             </div>
             <h1>Garage</h1>
             <h2>Page</h2>
