@@ -34,6 +34,7 @@ export function CreateCar({ onCreate }:CreateCarProps) {
     console.log('carData:', carData);
     const response = await axios.post<ICar>('http://127.0.0.1:3000/garage', carData);
     console.log('response.data:', response.data);
+    setValueText('');
     onCreate(response.data);
   }
 

@@ -17,19 +17,21 @@ interface CreateCarProps {
 export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
   console.log('selectState: ', selectState);
   
+  
   if (selectState === null) {
     return <CreateForm />;
   }
-    
+ 
   const [valueText, setValueText] = useState(selectState.name);
   const [valueColor, setValueColor] = useState(selectState.color);
   const [error, setError] = useState('');
-  
+
+  console.log('valueText: ', valueText);
+  console.log('valueColor: ', valueColor);
   
   async function submitHandler(event:React.FormEvent) {
     event.preventDefault();
-  
-  
+
     setError('');
   
     if (valueText.trim().length === 0) {
@@ -44,12 +46,17 @@ export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
     
     console.log('carData:', carData);
     const response = await axios.patch<ICar>(`http://127.0.0.1:3000/garage/${selectState?.id}`, carData);
-    console.log('response.data:', response.data);
+    console.log('response.data after patch:', response.data);
     onUpdate();
   }
   
-  function changeHandlerText(event:React.KeyboardEvent<HTMLInputElement>) {setValueText(event.target.value);}
-  function changeHandlerColor(event:React.KeyboardEvent<HTMLInputElement>) {setValueColor(event.target.value);}
+  function changeHandlerText(event:React.KeyboardEvent<HTMLInputElement>) {
+    setValueText(event.target.value);
+  }
+  function changeHandlerColor(event:React.KeyboardEvent<HTMLInputElement>) {
+    setValueColor(event.target.value);
+  }
+ 
   
   return (
       <form onSubmit={submitHandler}>

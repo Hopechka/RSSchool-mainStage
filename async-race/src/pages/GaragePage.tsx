@@ -10,33 +10,40 @@ import { ModalContext } from '../context/ModalContext';
 
 export function GaragePage() {
 
-  const { cars, loading, error, addCar, updateCar } = useCars();
-  const { selectState } = useContext(ModalContext);
+  const { cars, loading, error, addCar, updateCar, removeCar  } = useCars();
+  const { selectState, select } = useContext(ModalContext);
 
   function createHandler(car:ICar) {
     addCar(car);
   }
   function updateHandler() {
     updateCar();
+    {select(null);}
   }
-
-
+  console.log('cars: ', cars);
+ 
   return (
+    
     <div className='container'>
         <div className='main'>
             {/* <button className='button middle-btn-grey' onClick={addCar(car)}>CREATE</button> */}
             <div className='forms'>
             {<CreateCar onCreate = {createHandler}/>}
             {<UpdateCar selectState={selectState} onUpdate = {updateHandler}/>}
+            <button className='button'>GENERATE CARS</button>
             </div>
             <h1>Garage</h1>
             <h2>Page</h2>
-            {cars.map(car => <Car car = {car} key = {car.id}/>)}
+            {cars.map((car) => (
+          <Car car={car} removeCar={removeCar} key={car.id} />
+            ))}
             {loading && <Loader/>}
             {error && <ErrorMessage error={error}/>}
           
         </div>
         
     </div>
+    
   );
+  
 }

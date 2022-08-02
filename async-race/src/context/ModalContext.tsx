@@ -3,19 +3,20 @@ import React, { createContext, useState } from 'react';
 import { ICar } from '../types';
 
 interface IModalContext {
-  // updateCar:boolean
-  // updateCarWork: ()=>void
-  // updatedCar: ()=>void
+//   carState:boolean
+//   updateCarState: ()=>void
+//   updatedCarState: ()=>void
   selectState:ICar | null
   select: (car: ICar | null ) => void
+
 
 }
 
 
 export const ModalContext = createContext<IModalContext>({
-  // updateCar:false,
-  // updateCarWork:()=>{},
-  // updatedCar:()=>{},
+//   carState:false,
+//   updateCarState:()=>{},
+//   updatedCarState:()=>{},
 
   selectState:null,
   select:()=>{},
@@ -24,11 +25,13 @@ export const ModalContext = createContext<IModalContext>({
 
 export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
 
-  // const [updateCar, setUpdateCar] = useState(false)
-  // const updateCarWork = () => {setUpdateCar(true)}
-  // const updatedCar = () => {setUpdateCar(false)}
+  //   const [carState, setCarState] = useState(true);
+  //   const updateCarState = () => {setCarState(true);};
+  //   const updatedCarState = () => {setCarState(false);};
   const [selectState, setSelectState] = useState<ICar | null>(null);
   const select = (car:ICar | null) => {setSelectState(car);};
+
+
 
 
   return (
