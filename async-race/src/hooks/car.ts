@@ -29,6 +29,7 @@ export function useCars() {
       setLoading(false);
 
       console.log('response.headers[x-total-count]: ', response.headers['x-total-count']);
+     
       
       
   
