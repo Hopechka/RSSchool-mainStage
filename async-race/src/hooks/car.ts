@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ICar } from '../types';
 import axios, { AxiosError } from 'axios';
+// import { getPageCount } from  '../utils/pages';
 
 
 // Работа с логикой
@@ -8,6 +9,8 @@ export function useCars() {
   const [cars, setCars] = useState<ICar[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [totalCount, setTotalCount] = useState(0);
+  //   const [totalPages, setTotalPages] = useState(0);
 
   
 
@@ -22,15 +25,16 @@ export function useCars() {
   }
 
   
-  async function fetchCar() {
+  async function fetchCar(limit = 10, page = 1) {
     try {
       setError('');
       setLoading(true);
-      const response = await axios.get<ICar[]>('http://127.0.0.1:3000/garage?limit=5');
+      const response = await axios.get<ICar[]>('http://127.0.0.1:3000/garage', { params:{ _limit:limit, _page:page } });
       setCars(response.data);
+      setTotalCount(+response.headers['x-total-count']);
       setLoading(false);
 
-      console.log('response.data: ', response.data);
+      console.log('response.headers[x-total-count]: ', response.headers['x-total-count']);
       
       
   
@@ -47,6 +51,11 @@ export function useCars() {
     fetchCar();
  
   }
+
+  function changePage( page:number, limit = 10) {
+    fetchCar(limit, page);
+ 
+  }
   
 
   useEffect(()=>{
@@ -57,5 +66,5 @@ export function useCars() {
 
 
 
-  return { cars, error, loading, addCar, updateCar, removeCar };
+  return { cars, error, loading, addCar, updateCar, removeCar, totalCount, changePage };
 }

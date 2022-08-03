@@ -2,6 +2,7 @@ import React from 'react';
 
 export function Loader() {
   return (
-        <p className='loading'>Loading... </p>
+    <div className='loader-modal'> <p className='loading'>Loading... </p></div>
+       
   );
 }
