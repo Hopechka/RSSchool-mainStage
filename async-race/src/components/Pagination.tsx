@@ -1,59 +1,61 @@
 import React, { useState } from 'react';
 import { useCars } from '../hooks/car';
-import { getPageCount } from '../utils/pages';
 
 
 interface MyButtonProps {
   page:number, 
   onClick:()=>void,
   title:string
+  disabled:boolean
 }
 
-function MyButton({ page, onClick, title }:MyButtonProps) {
+function MyButton({ page, onClick, title, disabled }:MyButtonProps) {
   return (
-      <button className='button' onClick={onClick}>
+      <button className='button' disabled = {disabled} onClick={onClick}>
          {title}: {page} 
       </button>
   );
 }
 
 interface PaginationProps {
-//   totalPages:number, 
-//   page:number, 
-  changePage:(page:number)=>void
+  handlePages:(page:number)=>void
+  totalPages:number
+  totalCount:number
 }
 
 
-// export function Pagination({ totalPages, page, changePage }:PaginationProps) {
-export function Pagination({ changePage }:PaginationProps) {
-  const { totalCount } = useCars();
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
 
-   
-  console.log('totalPages: ', totalPages);
+export function Pagination({ handlePages, totalPages, totalCount }:PaginationProps) {
+  const { limit } = useCars();
+  const [page, setPage] = useState(1);
+ 
+
+  console.log('totalPages(Pag): ', totalPages);
+  
+  const hasPrev = page >= 2;
+  const hasNext = page < totalPages && totalCount > limit;
 
   function handleClickPlus() {
-    setTotalPages(getPageCount(totalCount, 10));
-    if (page < totalPages) {
+    if (hasNext) {
       setPage(page + 1);
     }
-    changePage(page);
+
+    handlePages(page + 1);
     
   }
   function handleClickMinus() {
-    setTotalPages(getPageCount(totalCount, 10));
-    if (page >= 2) {
+
+    if (hasPrev) {
       setPage(page - 1);
     }
-    changePage(page);
+
+    handlePages(page - 1);
   }
   
 
   return (<div>
-    <h2>{`Page (${page})`}</h2>
-    <MyButton title = {'PREVIOUS'} page={page} onClick={handleClickMinus} />
-    <MyButton title = {'NEXT'} page={page} onClick={handleClickPlus} />
+    <MyButton title = {'PREVIOUS'} page={page} disabled={!hasPrev} onClick={handleClickMinus} />
+    <MyButton title = {'NEXT'} page={page} disabled={!hasNext} onClick={handleClickPlus} />
     </div>
 
             

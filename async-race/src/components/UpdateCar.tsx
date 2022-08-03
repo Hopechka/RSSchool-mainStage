@@ -44,7 +44,7 @@ export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
   
  
     
-    console.log('carData:', carData);
+    console.log('carData(Update):', carData);
     const response = await axios.patch<ICar>(`http://127.0.0.1:3000/garage/${selectState?.id}`, carData);
     console.log('response.data after patch:', response.data);
     onUpdate();
