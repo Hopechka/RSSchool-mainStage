@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ICar } from '../types';
 import axios, { AxiosError } from 'axios';
 import { getPageCount } from '../utils/pages';
-// import { getPageCount } from  '../utils/pages';
+
 
 
 // Работа с логикой

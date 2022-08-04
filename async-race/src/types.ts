@@ -5,3 +5,9 @@ export interface ICar  {
     
 }
 
+export interface IEngine {
+  velocity: number,
+  distance: number
+}
+
+export type NextAnimationFrameHandler = (progress:number) => void; 

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { ModalContext } from '../context/ModalContext';
 import { ICar } from '../types';
-import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
+// import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
 import axios from 'axios';
-// import { useCars } from '../hooks/car';
+import { RaceCars } from './RaceCars';
+
 
 interface CarProps {
   car: ICar;
@@ -18,6 +19,8 @@ export function Car({ car, removeCar }:CarProps) {
     await axios.delete<ICar>(`http://127.0.0.1:3000/garage/${car.id}`);
     removeCar(car.id as number);
   }
+
+  
  
 
   return (
@@ -27,12 +30,7 @@ export function Car({ car, removeCar }:CarProps) {
                 <button className='button' onClick={handelRemove}>REMOVE</button>
                 <h3 className='h3'>{car.name}</h3>
             </div>
-            <div className='car-road'>
-                <button className='button small-btn'>A</button>
-                <button className='button small-btn'>B</button>
-            
-            <CarSvg className='car' style={{ fill: `${car.color}` }}/>
-            </div>
+            <RaceCars car = {car}/>
 
         </div>
   );

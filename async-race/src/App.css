@@ -69,7 +69,7 @@ button:hover{
     background: none;
     border: 1px solid yellow;
     color: yellow;
-    padding: 1px;
-    min-width: 25px;
+    padding: 3px;
+    min-width: 51px;
     margin: 10px 5px;
 }

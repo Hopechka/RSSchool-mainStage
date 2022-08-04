@@ -56,7 +56,7 @@ html {
 
 
 .container {
-  margin: 0 auto;
+  margin: 0 40px;
   padding-bottom: 40px;
   max-width: 1200px;
   display: flex;
@@ -90,16 +90,23 @@ h1,h2{
     position: relative;
 
 }
-
-.car{
-    width: 60px;
-    position: absolute;
-    bottom: 10px;
-}
 .car-road{
     border-bottom: 3px dashed rgb(162, 170, 197);
     margin: 10px 0;
+    display: flex;
 }
+
+.activeCar{
+    position: relative;
+    position: relative;
+    bottom: -15px;
+}
+.car-svg{
+    width: 60px;
+    /* position: absolute;
+    bottom: 10px; */
+}
+
 .h3{
     color: orange;
     display: inline-block;
@@ -129,4 +136,11 @@ h1,h2{
 form{
     display: flex;
     column-gap: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .car-road{
+        display: inline-block;
+        width: 100%;
+    }
 }
