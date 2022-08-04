@@ -12,6 +12,7 @@ export function useRaceCars() {
   const [duration, setDuration] = useState(0);
   const switchAnimationActiveRef = useRef(false);
 
+
   const getDurationTime = (data:IEngine) => setDuration(data.distance / data.velocity);
   console.log('durationTime: ', duration);
   

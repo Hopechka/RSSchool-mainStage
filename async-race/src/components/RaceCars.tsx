@@ -7,16 +7,32 @@ import { ICar } from '../types';
 interface RaceCarsProps {
   car: ICar;
 }
+interface MyButtonProps {
+  onClick:()=>void,
+  title:string
+  disabled:boolean
+}
+  
+function MyButton({ onClick, title, disabled }:MyButtonProps) {
+  return (
+        <button className='button small-btn' disabled = {disabled} onClick={onClick}>
+           {title}
+        </button>
+  );
+}
 
 export function RaceCars({ car }:RaceCarsProps) {
   const { useAnimationFrame, handelStart, handelStartDrive, handelStop, switchAnimationActiveRef } = useRaceCars();
 
   const carRef = useRef<HTMLDivElement>(null);
   const carRoadRef = useRef<null | HTMLDivElement>(null);
+  const [disabled, setDisabled] = useState(false);
+
 
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   async function handelStartProcess() {
+    setDisabled(true);
     await handelStart(car.id as number);
     await setShouldAnimate(true);
     handelStartDrive(car.id as number);
@@ -24,6 +40,8 @@ export function RaceCars({ car }:RaceCarsProps) {
   }
 
   function reset() {
+    // disabledRef.current = false;
+    setDisabled(false);
     handelStop(car.id as number);
     (carRef as MutableRefObject<HTMLDivElement>).current .style.left = '0';
     setShouldAnimate(false);
@@ -51,6 +69,7 @@ export function RaceCars({ car }:RaceCarsProps) {
       } else {
         setShouldAnimate(false);
         activeCar.style.left = `${carRoadWidth}px`;
+        console.log('normal point:', carRoadWidth);
       }
 
     }
@@ -69,8 +88,10 @@ export function RaceCars({ car }:RaceCarsProps) {
 
   return (
         <div className='car-road' ref={carRoadRef}>
-        <button className='button small-btn' onClick={handelStartProcess}>START</button>
-        <button className='button small-btn' onClick={() => reset()}>STOP</button>
+        {/* <button className='button small-btn' disabled = {disabledStartRef} onClick={handelStartProcess}>START</button> */}
+        {/* <button className='button small-btn' disabled = {disabledStopRef} onClick={() => reset()}>STOP</button> */}
+        <MyButton title = {'START'}  disabled={disabled} onClick={handelStartProcess} />
+        <MyButton title = {'STOP'}  disabled={!disabled} onClick={() => reset()} />
     <div className='activeCar' ref={carRef}  >
     <CarSvg className='car-svg'  style={{ fill: `${car.color}` }}/>
     </div>
@@ -81,3 +102,4 @@ export function RaceCars({ car }:RaceCarsProps) {
 
   );
 }
+
