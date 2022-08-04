@@ -98,13 +98,19 @@ h1,h2{
 
 .activeCar{
     position: relative;
-    position: relative;
     bottom: -15px;
+
 }
 .car-svg{
     width: 60px;
     /* position: absolute;
     bottom: 10px; */
+}
+.flag-svg{
+    width: 60px;
+    filter: invert(16%) sepia(94%) saturate(5593%) hue-rotate(357deg) brightness(95%) contrast(115%);
+    position: absolute;
+    right: 40px;
 }
 
 .h3{
@@ -138,9 +144,9 @@ form{
     column-gap: 10px;
 }
 
-@media screen and (max-width: 800px) {
-    .car-road{
+/* @media screen and (max-width: 600px) {
+     .car-road{
         display: inline-block;
         width: 100%;
-    }
-}
+    } 
+} */

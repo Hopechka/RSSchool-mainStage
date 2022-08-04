@@ -1,5 +1,6 @@
 import React, { MutableRefObject, useRef, useState } from 'react';
 import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
+import { ReactComponent as FlagSvg }  from '../assets/images/finish-line-flag.svg';
 import { useRaceCars } from '../hooks/race';
 import { ICar } from '../types';
 
@@ -35,7 +36,8 @@ export function RaceCars({ car }:RaceCarsProps) {
 
     const activeCar = (carRef  as MutableRefObject<HTMLDivElement>).current;
     const carRoad = (carRoadRef  as MutableRefObject<HTMLDivElement>).current;
-    const carRoadWidth = carRoad.clientWidth - (carRoad.clientWidth * 0.18);
+    // const carRoadWidth = carRoad.clientWidth - (carRoad.clientWidth * 0.20);
+    const carRoadWidth = carRoad.clientWidth - 180;
 
     if (car) {
       if (progress < 1) {
@@ -43,6 +45,7 @@ export function RaceCars({ car }:RaceCarsProps) {
         if (switchAnimationActiveRef.current) {
           activeCar.style.left = `${carRoadWidth * progress}px`;
           setShouldAnimate(false);
+          console.log('brocken point:', carRoadWidth * progress);
         }
         
       } else {
@@ -71,6 +74,7 @@ export function RaceCars({ car }:RaceCarsProps) {
     <div className='activeCar' ref={carRef}  >
     <CarSvg className='car-svg'  style={{ fill: `${car.color}` }}/>
     </div>
+    <FlagSvg className='flag-svg'/>
     
     </div>
 
