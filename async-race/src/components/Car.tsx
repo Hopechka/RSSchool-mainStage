@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ModalContext } from '../context/ModalContext';
 import { ICar } from '../types';
 // import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
@@ -9,17 +9,23 @@ import { RaceCars } from './RaceCars';
 interface CarProps {
   car: ICar;
   removeCar: (idCar: number) => void;
+  raceSwitcher:boolean;
 }
 
-export function Car({ car, removeCar }:CarProps) {
+export function Car({ car, removeCar, raceSwitcher }:CarProps) {
   const { select } = useContext(ModalContext);
+  const animateRaceSwitcherRef = useRef(false);
 
 
   async function handelRemove() {
     await axios.delete<ICar>(`http://127.0.0.1:3000/garage/${car.id}`);
     removeCar(car.id as number);
   }
-
+  function handleRaceSwitcher() {
+    animateRaceSwitcherRef.current = false;
+    if (raceSwitcher) {animateRaceSwitcherRef.current = true;}
+    return animateRaceSwitcherRef.current;
+  }
   
  
 
@@ -30,7 +36,7 @@ export function Car({ car, removeCar }:CarProps) {
                 <button className='button' onClick={handelRemove}>REMOVE</button>
                 <h3 className='h3'>{car.name}</h3>
             </div>
-            <RaceCars car = {car}/>
+            <RaceCars car = {car} handleRaceSwitcher ={handleRaceSwitcher }/>
 
         </div>
   );

@@ -83,6 +83,9 @@ h1,h2{
     margin: 40px 0;
 
 }
+.cars-btns{
+    display: inline-block;
+}
 .car-race{
     width: 100%;
     min-height: 100px;

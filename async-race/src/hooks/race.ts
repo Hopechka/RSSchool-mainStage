@@ -10,17 +10,17 @@ import { useEffect, useRef, useState } from 'react';
 // Работа с логикой
 export function useRaceCars() {  
   const [duration, setDuration] = useState(0);
-  const switchAnimationActiveRef = useRef(false);
+  const switchAnimationActiveRef = useRef(true);
 
 
   const getDurationTime = (data:IEngine) => setDuration(data.distance / data.velocity);
   console.log('durationTime: ', duration);
   
   async function handelStart(idCar:number) {
-    switchAnimationActiveRef.current = false;
     const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=started`);
     console.log('response handelStart: ', response.data);
     getDurationTime(response.data);
+    switchAnimationActiveRef.current = false;
   } 
 
   async function handelStop(idCar:number) {
@@ -43,6 +43,11 @@ export function useRaceCars() {
     
   }
   //   console.log('switchAnimationActive outside: ', switchAnimationActiveRef);
+
+
+
+
+
   
   interface IUseAnimationFrameProps {
     nextAnimationFrameHandler: NextAnimationFrameHandler
@@ -88,6 +93,25 @@ export function useRaceCars() {
       return () => cancelAnimationFrame(frame.current);
     }, [shouldAnimate]);
   };
+
+
+
+
+  //   function startAllCars(cars:ICar[]) {
+  //     // (async ()=>{
+  //     //   await Promise.any(cars.map(car => {
+  //     //     handelStart(car.id as number);
+  //     //     handelStartDrive(car.id as number);
+  //     //   })).then(result=>console.log('result:', result));
+  //     // })();
+  //     cars.map(car => {
+  //       handelStart(car.id as number);
+  //       handelStartDrive(car.id as number);
+  //       switchAnimationActiveRef.current = false;
+  //       console.log('switchAnimationActiveRef(startAllCars): ', switchAnimationActiveRef);
+  //     });
+   
+  //   }
 
   return { useAnimationFrame, handelStart, handelStartDrive, duration, handelStop, switchAnimationActiveRef };
 }
