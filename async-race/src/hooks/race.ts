@@ -1,5 +1,4 @@
-
-import { IEngine, NextAnimationFrameHandler } from '../types';
+import { IEngine, NextAnimationFrameHandler, IdAndTime } from '../types';
 import axios, { AxiosError } from 'axios';
 import { useEffect, useRef, useState } from 'react';
 
@@ -11,21 +10,29 @@ import { useEffect, useRef, useState } from 'react';
 export function useRaceCars() {  
   const [duration, setDuration] = useState(0);
   const switchAnimationActiveRef = useRef(true);
+  const idAndTimeRef = useRef<IdAndTime>({});
+  
+  
+
 
 
   const getDurationTime = (data:IEngine) => setDuration(data.distance / data.velocity);
-  console.log('durationTime: ', duration);
   
   async function handelStart(idCar:number) {
     const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=started`);
-    console.log('response handelStart: ', response.data);
+    // console.log('response handelStart: ', response.data);
     getDurationTime(response.data);
+    idAndTimeRef.current.id = idCar;
+    idAndTimeRef.current.time = (response.data.distance / response.data.velocity);  
+    console.log('idAndTimeRef(race):', idAndTimeRef.current);
+    
     switchAnimationActiveRef.current = false;
   } 
 
   async function handelStop(idCar:number) {
-    const response =  await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=stopped`);
-    console.log('response handelStop: ', response.data);
+    await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=stopped`);
+    // const response =  await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=stopped`);
+    // console.log('response handelStop: ', response.data);
     setDuration(0);
   }
 
@@ -95,23 +102,7 @@ export function useRaceCars() {
   };
 
 
-
-
-  //   function startAllCars(cars:ICar[]) {
-  //     // (async ()=>{
-  //     //   await Promise.any(cars.map(car => {
-  //     //     handelStart(car.id as number);
-  //     //     handelStartDrive(car.id as number);
-  //     //   })).then(result=>console.log('result:', result));
-  //     // })();
-  //     cars.map(car => {
-  //       handelStart(car.id as number);
-  //       handelStartDrive(car.id as number);
-  //       switchAnimationActiveRef.current = false;
-  //       console.log('switchAnimationActiveRef(startAllCars): ', switchAnimationActiveRef);
-  //     });
-   
-  //   }
-
-  return { useAnimationFrame, handelStart, handelStartDrive, duration, handelStop, switchAnimationActiveRef };
+  return { useAnimationFrame, handelStart, handelStartDrive, duration, handelStop, switchAnimationActiveRef, idAndTimeRef };
 }
+
+

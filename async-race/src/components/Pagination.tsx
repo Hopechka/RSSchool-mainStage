@@ -21,11 +21,12 @@ interface PaginationProps {
   handlePages:(page:number)=>void
   totalPages:number
   totalCount:number
+  raceSwitcherOff :()=>void
 }
 
 
 
-export function Pagination({ handlePages, totalPages, totalCount }:PaginationProps) {
+export function Pagination({ handlePages, totalPages, totalCount, raceSwitcherOff }:PaginationProps) {
   const { limit } = useCars();
   const [page, setPage] = useState(1);
  
@@ -41,6 +42,7 @@ export function Pagination({ handlePages, totalPages, totalCount }:PaginationPro
     }
 
     handlePages(page + 1);
+    raceSwitcherOff();
     
   }
   function handleClickMinus() {
@@ -50,6 +52,7 @@ export function Pagination({ handlePages, totalPages, totalCount }:PaginationPro
     }
 
     handlePages(page - 1);
+    raceSwitcherOff();
   }
   
 

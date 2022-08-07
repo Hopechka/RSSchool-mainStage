@@ -2,37 +2,28 @@ import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
 import { ReactComponent as FlagSvg }  from '../assets/images/finish-line-flag.svg';
 import { useRaceCars } from '../hooks/race';
-import { ICar } from '../types';
+import { ICar, IdAndTime } from '../types';
 import { RaceButton } from '../components/RaceButton';
 
 interface RaceCarsProps {
   car: ICar;
   handleRaceSwitcher : ()=>boolean
+  sendWinner:(winner:IdAndTime)=>void
+
 }
 
 
-export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
-  const { useAnimationFrame, handelStart, handelStartDrive, handelStop, switchAnimationActiveRef } = useRaceCars();
+export function RaceCars({ car, handleRaceSwitcher, sendWinner }:RaceCarsProps) {
+  const { useAnimationFrame, handelStart, handelStartDrive, handelStop, switchAnimationActiveRef, idAndTimeRef } = useRaceCars();
 
-  console.log('switchAnimationActive RaceCars: ', switchAnimationActiveRef.current);
+  // console.log('switchAnimationActive RaceCars: ', switchAnimationActiveRef.current);
+
 
   const carRef = useRef<HTMLDivElement>(null);
   const carRoadRef = useRef<null | HTMLDivElement>(null);
   const [disabled, setDisabled] = useState(false);
-
-
   const [shouldAnimate, setShouldAnimate] = useState(false);
-  
-
-  //   const some = ()=> switchAnimationActiveRef.current ? setShouldAnimate(false) : setShouldAnimate(true);
-  //   useEffect(()=>{
-  //     some();
-  //     console.log('HERE');
-    
-  //   }, [switchAnimationActiveRef.current]);
-
-
-  
+  //   const winnerRef = useRef('none');
 
   async function handelStartProcess() {
     setDisabled(true);
@@ -48,6 +39,7 @@ export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
     handelStop(car.id as number);
     (carRef as MutableRefObject<HTMLDivElement>).current .style.left = '0';
     setShouldAnimate(false);
+    // winnerRef.current = 'none';
   
   }
 
@@ -55,11 +47,7 @@ export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
     if (handleRaceSwitcher()) {
       handelStartProcess();
     } else {
-      reset();
-      //   setShouldAnimate(false);
-      //   (carRef as MutableRefObject<HTMLDivElement>).current .style.left = '0'; 
-      //   setDisabled(false);
-      
+      reset();  
     } 
   }, [handleRaceSwitcher()]);
   
@@ -77,6 +65,7 @@ export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
         if (switchAnimationActiveRef.current) {
           activeCar.style.left = `${carRoadWidth * progress}px`;
           setShouldAnimate(false);
+          //   winnerRef.current = 'none';
           console.log('brocken point:', carRoadWidth * progress);
         }
         
@@ -84,8 +73,11 @@ export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
         switchAnimationActiveRef.current = true;
         setShouldAnimate(false);
         activeCar.style.left = `${carRoadWidth}px`;
-        console.log('normal point:', carRoadWidth);
-        console.log('car id on finish:', car.id);
+        // winnerRef.current = 'inline-block';
+        sendWinner(idAndTimeRef.current);
+        // console.log('normal point:', carRoadWidth);
+        // console.log('car id on finish:', car.id);
+        // console.log('idAndTimeRef(after race):', idAndTimeRef.current);
       }
 
     }
@@ -104,10 +96,9 @@ export function RaceCars({ car, handleRaceSwitcher  }:RaceCarsProps) {
 
   return (
         <div className='car-road' ref={carRoadRef}>
-        {/* <button className='button small-btn' disabled = {disabledStartRef} onClick={handelStartProcess}>START</button> */}
-        {/* <button className='button small-btn' disabled = {disabledStopRef} onClick={() => reset()}>STOP</button> */}
         <RaceButton className = {'button small-btn'} title = {'START'}  disabled={disabled} onClick={handelStartProcess} />
         <RaceButton className = {'button small-btn'} title = {'STOP'}  disabled={!disabled} onClick={() => reset()} />
+        {/* <h3 className = 'h3 winner-message' style={{ display: `${winnerRef.current}` }}>`id: {idAndTimeRef.current.id} time: {Math.floor(idAndTimeRef.current.time)}`</h3> */}
     <div className='activeCar' ref={carRef}  >
     <CarSvg className='car-svg'  style={{ fill: `${car.color}` }}/>
     </div>

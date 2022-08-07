@@ -5,12 +5,13 @@ import { Loader } from '../components/Loader';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { CreateCar } from '../components/CreateCar';
 import { UpdateCar } from '../components/UpdateCar';
-import { ICar } from '../types';
+import { ICar, IdAndTime } from '../types';
 import { ModalContext } from '../context/ModalContext';
 import { CreateRandomCar } from '../components/CreateRandomCar';
 import { Pagination } from '../components/Pagination';
 import { RaceButton } from '../components/RaceButton';
-// import { useRaceCars } from '../hooks/race';
+import { ShowWinner } from '../components/ShowWinner';
+
 
 
 
@@ -22,15 +23,17 @@ export function GaragePage() {
   const { selectState, select } = useContext(ModalContext);
   const [pages, setPages] = useState(1);
   const [raceSwitcher, setRaceSwitcher] = useState(false);
-  //   const { startAllCars } = useRaceCars();
-
-
-
-
+  const [winner, setWinner] = useState<IdAndTime[]>([]);
   
-  //   const [limit, setLimit] = useState(10);
+  function sendWinner(value:IdAndTime) {
+    console.log('value: ', winner);
+    setWinner(prev=>[...prev, value]);
+  }
+  console.log('winner: ', winner);
+
+
+
   function handlePages(value:number) {
-    // console.log('value(Garage): ', value);
     setPages(value);
     changePage(value);
   }
@@ -45,13 +48,18 @@ export function GaragePage() {
   console.log('cars(Garage): ', cars);
   //   console.log('pages(Garage): ', pages);
 
-  async function handelStartAllCars() {
-    // startAllCars(cars);
+  function handelStartAllCars() {
     setRaceSwitcher(true);
+    setWinner([]);   
   }
 
   function handelResetAllCars() {
     setRaceSwitcher(false);
+    setWinner([]);
+  }
+  function raceSwitcherOff() {
+    setRaceSwitcher(false);
+    setWinner([]);
   }
  
   return (
@@ -68,15 +76,16 @@ export function GaragePage() {
             </div>
 
             </div>
+            
+            <ShowWinner winner = {winner} cars = {cars} raceSwitcher = {raceSwitcher}/>
             <h1>{`Garage (${totalCount})`}</h1>
             <h2>{`Page (${pages})`}</h2>
             {cars.map((car) => (
-          <Car car={car} removeCar={removeCar} raceSwitcher = {raceSwitcher} key={car.id} /> 
+          <Car car={car} removeCar={removeCar} raceSwitcher = {raceSwitcher} sendWinner={sendWinner} key={car.id} /> 
             ))}
             {loading && <Loader/>}
             {error && <ErrorMessage error={error}/>}
-            <Pagination  handlePages={handlePages} totalPages={totalPages} totalCount = {totalCount}/>
-          
+            <Pagination  handlePages={handlePages} totalPages={totalPages} totalCount = {totalCount} raceSwitcherOff = {raceSwitcherOff}/>
         </div>
         
     </div>

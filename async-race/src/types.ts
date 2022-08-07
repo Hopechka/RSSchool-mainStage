@@ -10,4 +10,9 @@ export interface IEngine {
   distance: number
 }
 
+export interface IdAndTime {
+  [key: string]: number 
+ 
+}
+
 export type NextAnimationFrameHandler = (progress:number) => void; 

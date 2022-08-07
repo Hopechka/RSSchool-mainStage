@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { ModalContext } from '../context/ModalContext';
-import { ICar } from '../types';
-// import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
+import { ICar, IdAndTime } from '../types';
 import axios from 'axios';
 import { RaceCars } from './RaceCars';
 
@@ -10,9 +9,11 @@ interface CarProps {
   car: ICar;
   removeCar: (idCar: number) => void;
   raceSwitcher:boolean;
+  sendWinner:(winner:IdAndTime)=>void
+//   winner:IdAndTime[]
 }
 
-export function Car({ car, removeCar, raceSwitcher }:CarProps) {
+export function Car({ car, removeCar, raceSwitcher, sendWinner }:CarProps) {
   const { select } = useContext(ModalContext);
   const animateRaceSwitcherRef = useRef(false);
 
@@ -23,12 +24,14 @@ export function Car({ car, removeCar, raceSwitcher }:CarProps) {
   }
   function handleRaceSwitcher() {
     animateRaceSwitcherRef.current = false;
-    if (raceSwitcher) {animateRaceSwitcherRef.current = true;}
+    if (raceSwitcher) {
+      animateRaceSwitcherRef.current = true;
+    }
     return animateRaceSwitcherRef.current;
   }
-  
- 
 
+ 
+  
   return (
         <div className='car-race'>
             <div>
@@ -36,7 +39,7 @@ export function Car({ car, removeCar, raceSwitcher }:CarProps) {
                 <button className='button' onClick={handelRemove}>REMOVE</button>
                 <h3 className='h3'>{car.name}</h3>
             </div>
-            <RaceCars car = {car} handleRaceSwitcher ={handleRaceSwitcher }/>
+            <RaceCars car = {car} handleRaceSwitcher ={handleRaceSwitcher } sendWinner={sendWinner}/>
 
         </div>
   );

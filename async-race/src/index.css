@@ -93,6 +93,14 @@ h1,h2{
     position: relative;
 
 }
+.car-race-winner{
+   font-style: italic;
+   font-weight: 700;
+   font-size: 2rem;
+   color: orange;
+   text-shadow: 1px 2px 3px rgb(247, 102, 5);
+    text-align: center;
+}
 .car-road{
     border-bottom: 3px dashed rgb(162, 170, 197);
     margin: 10px 0;
@@ -103,6 +111,12 @@ h1,h2{
     position: relative;
     bottom: -15px;
 
+}
+.winner-message{
+    position: absolute;
+    z-index: 110;
+    left: 50%;
+    top: 50%;
 }
 .car-svg{
     width: 60px;
