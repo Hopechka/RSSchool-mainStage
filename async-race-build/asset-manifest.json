@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.0546fb91.css",
-    "main.js": "/static/js/main.f13bf803.js",
-    "static/media/rs_school_js.svg": "/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
-    "static/media/car-05.svg": "/static/media/car-05.279577ccec9fdc43f648147f33cbcedc.svg",
-    "static/media/finish-line-flag.svg": "/static/media/finish-line-flag.ec94b26c913fcba15c4b179ea3f6439e.svg",
-    "index.html": "/index.html",
-    "main.0546fb91.css.map": "/static/css/main.0546fb91.css.map",
-    "main.f13bf803.js.map": "/static/js/main.f13bf803.js.map"
+    "main.css": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.0546fb91.css",
+    "main.js": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.f90c7d19.js",
+    "static/media/rs_school_js.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
+    "static/media/car-05.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/car-05.279577ccec9fdc43f648147f33cbcedc.svg",
+    "static/media/finish-line-flag.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/finish-line-flag.66f6bd88e88436964c3d49f362b29095.svg",
+    "index.html": "/hopechka-JSFE2022Q1/async-race-build/index.html",
+    "main.0546fb91.css.map": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.0546fb91.css.map",
+    "main.f90c7d19.js.map": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.f90c7d19.js.map"
   },
   "entrypoints": [
     "static/css/main.0546fb91.css",
-    "static/js/main.f13bf803.js"
+    "static/js/main.f90c7d19.js"
   ]
 }
