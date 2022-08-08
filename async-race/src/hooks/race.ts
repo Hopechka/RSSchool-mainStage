@@ -82,11 +82,6 @@ export function useRaceCars() {
     };
     
 
-    // useEffect(()=>{
-    //   handelStart(id);
-    
-    // }, []);
-
     useEffect(() => {
     //   console.log(shouldAnimate);
    
