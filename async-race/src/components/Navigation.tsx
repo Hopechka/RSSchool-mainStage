@@ -1,20 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { ModalContext } from '../context/ModalContext';
+// import { Link } from 'react-router-dom';
 
 // const localPath = '/hopechka-JSFE2022Q1/async-race-build';
-const localPath = '/';
+// const localPath = '/';
 
 export function Navigation() {
+  const { screenScoreOff, screenScoreOn, screenGarageOff, screenGarageOn  } = useContext(ModalContext);
+
+  
+  function handleScreenGarage(event:React.FormEvent) {
+    event.preventDefault();
+    screenGarageOn();
+    screenScoreOff();
+  
+  }
+  function handleScreenScore(event:React.FormEvent) {
+    event.preventDefault();
+    screenGarageOff();
+    screenScoreOn();
+  }
   return (
     <nav className="navigation">
-      <button className="button middle-btn-yellow">
-        <Link to={localPath} className="nav-span">
-          TO GARAGE
-        </Link>
-      </button>
-      <button className="button middle-btn-yellow">
-        <Link to={`${localPath}/score`}>TO WINNERS</Link>
-      </button>
-    </nav>
+        <button className="button middle-btn-yellow" onClick = {handleScreenGarage} > 
+        <a href="garage">TO GARAGE</a>
+        </button>
+        <button className="button middle-btn-yellow" onClick = {handleScreenScore} > 
+        <a href="score">TO WINNERS</a>
+        </button>
+      </nav>
   );
 }

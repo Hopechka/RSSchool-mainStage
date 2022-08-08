@@ -9,7 +9,12 @@ interface IModalContext {
   selectState:ICar | null
   select: (car: ICar | null ) => void
 
-
+  screenScore:string
+  screenScoreOff : ()=>void
+  screenScoreOn : ()=>void
+  screenGarage:string
+  screenGarageOff : ()=>void
+  screenGarageOn : ()=>void
 }
 
 
@@ -21,6 +26,13 @@ export const ModalContext = createContext<IModalContext>({
   selectState:null,
   select:()=>{},
 
+  screenScore:'none',
+  screenScoreOff :()=>{},
+  screenScoreOn :()=>{},
+  screenGarage:'flex',
+  screenGarageOff :()=>{},
+  screenGarageOn: ()=>{},
+
 });
 
 export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
@@ -31,11 +43,17 @@ export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
   const [selectState, setSelectState] = useState<ICar | null>(null);
   const select = (car:ICar | null) => {setSelectState(car);};
 
+  const [screenScore, setScreenScore] = useState('none');
+  const screenScoreOff = () => {setScreenScore('none');};
+  const screenScoreOn = () => {setScreenScore('flex');};
+  const [screenGarage, setScreenGarage] = useState('flex');
+  const screenGarageOff = () => {setScreenGarage('none');};
+  const screenGarageOn = () => {setScreenGarage('flex');};
 
 
 
   return (
-        <ModalContext.Provider value={{ selectState, select }}>
+        <ModalContext.Provider value={{ selectState, select, screenScore, screenScoreOff, screenScoreOn, screenGarage, screenGarageOff, screenGarageOn }}>
             { children}
         </ModalContext.Provider>
 

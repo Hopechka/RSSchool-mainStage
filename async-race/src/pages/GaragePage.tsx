@@ -22,7 +22,7 @@ import { Footer } from '../components/Footer';
 export function GaragePage() {
 
   const { cars, loading, error, addCar, updateCar, removeCar, totalCount, changePage, totalPages } = useCars();
-  const { selectState, select } = useContext(ModalContext);
+  const { selectState, select, screenGarage } = useContext(ModalContext);
   const [pages, setPages] = useState(1);
   const [raceSwitcher, setRaceSwitcher] = useState(false);
   const [winner, setWinner] = useState<IdAndTime[]>([]);
@@ -72,7 +72,7 @@ export function GaragePage() {
  
   return (
     
-    <div className='container'>
+    <div className='container' id='garage' style={{ display:`${screenGarage}` }}>
         {loading && <Loader/>}
         {error && <ErrorMessage error={error}/>}
         <div className='main'>
