@@ -21,7 +21,7 @@ interface PaginationProps {
   handlePages:(page:number)=>void
   totalPages:number
   totalCount:number
-  raceSwitcherOff :()=>void
+  raceSwitcherOff:()=>void
 }
 
 
@@ -31,7 +31,7 @@ export function Pagination({ handlePages, totalPages, totalCount, raceSwitcherOf
   const [page, setPage] = useState(1);
  
 
-  console.log('totalPages(Pag): ', totalPages);
+  //   console.log('totalPages(Pag): ', totalPages);
   
   const hasPrev = page >= 2;
   const hasNext = page < totalPages && totalCount > limit;

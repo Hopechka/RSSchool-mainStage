@@ -3,11 +3,6 @@ import { ICar } from '../types';
 import axios from 'axios';
 
 
-const carData:ICar = {
-  name:'',
-  color:'',
-};
-
 interface CreateCarProps {
   onCreate:(product:ICar) => void
 }
@@ -51,10 +46,8 @@ export function CreateRandomCar({ onCreate }:CreateCarProps) {
   
   async function addHandler() {
     for (const car of randomCars) {
-    
-      console.log('carData(random):', carData);
       const response = await axios.post<ICar>('http://127.0.0.1:3000/garage', car);
-      console.log('response.data(random):', response.data);
+      //   console.log('response.data(random):', response.data);
       onCreate(response.data);
     }
   }

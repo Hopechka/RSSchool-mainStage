@@ -66,7 +66,7 @@ export function RaceCars({ car, handleRaceSwitcher, sendWinner }:RaceCarsProps) 
           activeCar.style.left = `${carRoadWidth * progress}px`;
           setShouldAnimate(false);
           //   winnerRef.current = 'none';
-          console.log('brocken point:', carRoadWidth * progress);
+        //   console.log('brocken point:', carRoadWidth * progress);
         }
         
       } else {

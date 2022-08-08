@@ -160,6 +160,40 @@ form{
     display: flex;
     column-gap: 10px;
 }
+table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse; /* равномерные границы таблицы без дублирования */
+  }
+  td, th {
+    border: 1px solid rgb(171, 219, 11);
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+    .school-logo {
+        width: 90px;
+        filter: invert(96%) sepia(72%) saturate(1888%) hue-rotate(180deg) brightness(107%) contrast(95%);
+    }
+    .git-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 5px;
+    }
+    .git-link a {
+        text-decoration: none;
+    }
+    .git-link img {
+        width: 40px;
+    }
 
 /* @media screen and (max-width: 600px) {
      .car-road{

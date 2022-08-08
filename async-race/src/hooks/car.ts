@@ -28,7 +28,7 @@ export function useCars() {
       setTotalPages(getPageCount(+response.headers['x-total-count'], limit));
       setLoading(false);
 
-      console.log('response.headers[x-total-count]: ', response.headers['x-total-count']);
+      //   console.log('response.headers[x-total-count]: ', response.headers['x-total-count']);
      
       
       
@@ -61,7 +61,7 @@ export function useCars() {
   }
 
   function changePage( p:number) {
-    console.log('p: ', p);
+    // console.log('p: ', p);
     fetchCar(p);
   }
   

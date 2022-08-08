@@ -11,6 +11,8 @@ import { CreateRandomCar } from '../components/CreateRandomCar';
 import { Pagination } from '../components/Pagination';
 import { RaceButton } from '../components/RaceButton';
 import { ShowWinner } from '../components/ShowWinner';
+import { Footer } from '../components/Footer';
+
 
 
 
@@ -24,12 +26,15 @@ export function GaragePage() {
   const [pages, setPages] = useState(1);
   const [raceSwitcher, setRaceSwitcher] = useState(false);
   const [winner, setWinner] = useState<IdAndTime[]>([]);
+
+
   
   function sendWinner(value:IdAndTime) {
-    console.log('value: ', winner);
+    // console.log('value: ', winner);
     setWinner(prev=>[...prev, value]);
+
   }
-  console.log('winner: ', winner);
+  //   console.log('winner: ', winner);
 
 
 
@@ -45,12 +50,13 @@ export function GaragePage() {
     updateCar();
     {select(null);}
   }
-  console.log('cars(Garage): ', cars);
+  //   console.log('cars(Garage): ', cars);
   //   console.log('pages(Garage): ', pages);
 
-  function handelStartAllCars() {
+  async function handelStartAllCars() {
     setRaceSwitcher(true);
-    setWinner([]);   
+    setWinner([]); 
+  
   }
 
   function handelResetAllCars() {
@@ -61,6 +67,8 @@ export function GaragePage() {
     setRaceSwitcher(false);
     setWinner([]);
   }
+
+  
  
   return (
     
@@ -77,7 +85,7 @@ export function GaragePage() {
 
             </div>
             
-            <ShowWinner winner = {winner} cars = {cars} raceSwitcher = {raceSwitcher}/>
+            <ShowWinner winner = {winner} cars = {cars} raceSwitcher = {raceSwitcher} />
             <h1>{`Garage (${totalCount})`}</h1>
             <h2>{`Page (${pages})`}</h2>
             {cars.map((car) => (
@@ -87,7 +95,7 @@ export function GaragePage() {
             {error && <ErrorMessage error={error}/>}
             <Pagination  handlePages={handlePages} totalPages={totalPages} totalCount = {totalCount} raceSwitcherOff = {raceSwitcherOff}/>
         </div>
-        
+        <Footer/>
     </div>
     
   );

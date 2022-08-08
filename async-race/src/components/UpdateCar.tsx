@@ -15,7 +15,7 @@ interface CreateCarProps {
 }
 
 export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
-  console.log('selectState: ', selectState);
+//   console.log('selectState: ', selectState);
   
   
   if (selectState === null) {
@@ -26,8 +26,8 @@ export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
   const [valueColor, setValueColor] = useState(selectState.color);
   const [error, setError] = useState('');
 
-  console.log('valueText: ', valueText);
-  console.log('valueColor: ', valueColor);
+  //   console.log('valueText: ', valueText);
+  //   console.log('valueColor: ', valueColor);
   
   async function submitHandler(event:React.FormEvent) {
     event.preventDefault();
@@ -44,9 +44,10 @@ export function UpdateCar({ selectState, onUpdate }:CreateCarProps) {
   
  
     
-    console.log('carData(Update):', carData);
-    const response = await axios.patch<ICar>(`http://127.0.0.1:3000/garage/${selectState?.id}`, carData);
-    console.log('response.data after patch:', response.data);
+    // console.log('carData(Update):', carData);
+    // const response = await axios.patch<ICar>(`http://127.0.0.1:3000/garage/${selectState?.id}`, carData);
+    await axios.patch<ICar>(`http://127.0.0.1:3000/garage/${selectState?.id}`, carData);
+    // console.log('response.data after patch:', response.data);
     onUpdate();
   }
   

@@ -24,7 +24,7 @@ export function useRaceCars() {
     getDurationTime(response.data);
     idAndTimeRef.current.id = idCar;
     idAndTimeRef.current.time = (response.data.distance / response.data.velocity);  
-    console.log('idAndTimeRef(race):', idAndTimeRef.current);
+    // console.log('idAndTimeRef(race):', idAndTimeRef.current);
     
     switchAnimationActiveRef.current = false;
   } 
@@ -38,8 +38,9 @@ export function useRaceCars() {
 
   async function handelStartDrive(idCar:number) {
     try {
-      const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=drive`);
-      console.log('response handelStartDrive: ', response.data);
+      await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=drive`);
+    //   const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=drive`);
+    //   console.log('response handelStartDrive: ', response.data);
     } catch (e:unknown) {
       switchAnimationActiveRef.current = true;
       //   console.log('switchAnimationActive: ', switchAnimationActiveRef);
@@ -87,7 +88,7 @@ export function useRaceCars() {
     // }, []);
 
     useEffect(() => {
-      console.log(shouldAnimate);
+    //   console.log(shouldAnimate);
    
       if (shouldAnimate) {
         

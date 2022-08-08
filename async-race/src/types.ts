@@ -15,4 +15,8 @@ export interface IdAndTime {
  
 }
 
+export interface Winners {
+  [key: string]: number | string
+}
+
 export type NextAnimationFrameHandler = (progress:number) => void; 
