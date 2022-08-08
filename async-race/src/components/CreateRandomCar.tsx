@@ -40,7 +40,7 @@ export function CreateRandomCar({ onCreate }:CreateCarProps) {
 
   const randomCars : ICar[] = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     randomCars.push({ color:generateColor(), name:generateName() });
   }
   

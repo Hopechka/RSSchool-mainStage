@@ -15,7 +15,7 @@ export function useCars() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const limit = 5;
+  const limit = 10;
   
   async function fetchCar( p:number) {
     setPage(p);

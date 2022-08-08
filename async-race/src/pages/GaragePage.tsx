@@ -73,6 +73,8 @@ export function GaragePage() {
   return (
     
     <div className='container'>
+        {loading && <Loader/>}
+        {error && <ErrorMessage error={error}/>}
         <div className='main'>
             <div className='forms'>
             {<CreateCar onCreate = {createHandler}/>}
@@ -91,8 +93,7 @@ export function GaragePage() {
             {cars.map((car) => (
           <Car car={car} removeCar={removeCar} raceSwitcher = {raceSwitcher} sendWinner={sendWinner} key={car.id} /> 
             ))}
-            {loading && <Loader/>}
-            {error && <ErrorMessage error={error}/>}
+            
             <Pagination  handlePages={handlePages} totalPages={totalPages} totalCount = {totalCount} raceSwitcherOff = {raceSwitcherOff}/>
         </div>
         <Footer/>
