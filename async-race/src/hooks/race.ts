@@ -10,8 +10,9 @@ import { useEffect, useRef, useState } from 'react';
 export function useRaceCars() {  
   const [duration, setDuration] = useState(0);
   const switchAnimationActiveRef = useRef(true);
-  const idAndTimeRef = useRef<IdAndTime>({});
+  const idAndTimeRef = useRef<IdAndTime>({ wins: 1 });
   
+ 
   
 
 
@@ -23,7 +24,8 @@ export function useRaceCars() {
     // console.log('response handelStart: ', response.data);
     getDurationTime(response.data);
     idAndTimeRef.current.id = idCar;
-    idAndTimeRef.current.time = (response.data.distance / response.data.velocity);  
+    const time = response.data.distance / response.data.velocity;
+    idAndTimeRef.current.time = +(time / 2160).toFixed(2);  
     // console.log('idAndTimeRef(race):', idAndTimeRef.current);
     
     switchAnimationActiveRef.current = false;

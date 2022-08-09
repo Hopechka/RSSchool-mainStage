@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Car } from '../components/Car';
 import { useCars } from '../hooks/car';
 import { Loader } from '../components/Loader';
@@ -12,12 +12,7 @@ import { Pagination } from '../components/Pagination';
 import { RaceButton } from '../components/RaceButton';
 import { ShowWinner } from '../components/ShowWinner';
 import { Footer } from '../components/Footer';
-
-
-
-
-
-
+import { useWinnersTable } from '../hooks/winners';
 
 export function GaragePage() {
 
@@ -25,17 +20,23 @@ export function GaragePage() {
   const { selectState, select, screenGarage } = useContext(ModalContext);
   const [pages, setPages] = useState(1);
   const [raceSwitcher, setRaceSwitcher] = useState(false);
-  const [winner, setWinner] = useState<IdAndTime[]>([]);
+  const winnerValueRef = useRef<IdAndTime>({});
+  const winnersRef = useRef(true);
+  const { createWinner } = useWinnersTable();
+
 
 
   
   function sendWinner(value:IdAndTime) {
-    // console.log('value: ', winner);
-    setWinner(prev=>[...prev, value]);
-
+    if (winnersRef.current) {
+      winnersRef.current = false;
+      winnerValueRef.current = value;
+      createWinner(value);
+    }
   }
-  //   console.log('winner: ', winner);
+  
 
+  console.log('winner(GaragePage): ', winnerValueRef.current);
 
 
   function handlePages(value:number) {
@@ -50,23 +51,30 @@ export function GaragePage() {
     updateCar();
     {select(null);}
   }
-  //   console.log('cars(Garage): ', cars);
-  //   console.log('pages(Garage): ', pages);
+
 
   async function handelStartAllCars() {
     setRaceSwitcher(true);
-    setWinner([]); 
-  
+    winnersRef.current = true;
+    winnerValueRef.current = {};
+
+   
   }
 
   function handelResetAllCars() {
     setRaceSwitcher(false);
-    setWinner([]);
+    winnersRef.current = true;
+    winnerValueRef.current = {};
+
+
   }
   function raceSwitcherOff() {
     setRaceSwitcher(false);
-    setWinner([]);
+    winnersRef.current = true;
+    winnerValueRef.current = {};
+ 
   }
+
 
   
  
@@ -87,7 +95,7 @@ export function GaragePage() {
 
             </div>
             
-            <ShowWinner winner = {winner} cars = {cars} raceSwitcher = {raceSwitcher} />
+            <ShowWinner winner = {winnerValueRef.current} cars = {cars} raceSwitcher = {raceSwitcher}  winnersRef={winnersRef.current}/>
             <h1>{`Garage (${totalCount})`}</h1>
             <h2>{`Page (${pages})`}</h2>
             {cars.map((car) => (

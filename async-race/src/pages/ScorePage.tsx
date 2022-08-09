@@ -12,12 +12,12 @@ import { useWinnersTable } from '../hooks/winners';
 // }
 
 export function ScorePage() {
-  const { winners, loading, error, totalCount, totalPages, changePage  } = useWinnersTable();
+  const { winners, loading, error, totalCount, totalPages, changePage, allCarsList } = useWinnersTable();
   const [pages, setPages] = useState(1);
   const { screenScore } = useContext(ModalContext);
 
-  //   console.log('winners(ScorePage): ', winners);
-  console.log('screenScore(ScorePage): ', screenScore);
+  console.log('winners(ScorePage): ', winners);
+  //   console.log('screenScore(ScorePage): ', screenScore);
 
 
 
@@ -45,9 +45,12 @@ export function ScorePage() {
     <th>Best time(seconds)</th>
   </tr>
   </thead>
-    {winners.map((winner) => (
-          <TableWinners winner={winner} key={winner.id} /> 
-    ))}
+  <tbody>
+  {winners.map((winner) => (
+          <TableWinners winner={winner} allCarsList ={allCarsList } key={winner.id} /> 
+  ))}
+  </tbody> 
+   
     </table>
   {loading && <Loader/>}
   {error && <ErrorMessage error={error}/>}

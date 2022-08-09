@@ -30,8 +30,6 @@ export function Pagination({ handlePages, totalPages, totalCount, raceSwitcherOf
   const { limit } = useCars();
   const [page, setPage] = useState(1);
  
-
-  //   console.log('totalPages(Pag): ', totalPages);
   
   const hasPrev = page >= 2;
   const hasNext = page < totalPages && totalCount > limit;
