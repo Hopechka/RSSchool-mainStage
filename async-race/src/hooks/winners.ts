@@ -1,7 +1,8 @@
 import { ICar, IdAndTime, Winners } from '../types';
 import axios, { AxiosError } from 'axios';
-import { useEffect,  useRef,  useState } from 'react';
+import { useContext, useEffect,  useRef,  useState } from 'react';
 import { getPageCount } from '../utils/pages';
+import { ModalContext } from '../context/ModalContext';
 
 
 
@@ -19,20 +20,22 @@ export function useWinnersTable() {
   const [allCarsList, setAllCarsList] = useState<ICar[]>([]);
   //   const allCarsListRef = useRef<ICar[]>([]);
   const winnerRef = useRef<IdAndTime>({});
+  const {  putWinnersForTable } = useContext(ModalContext);
 
  
 
-  console.log('winners(useWinnersTable): ', winners);
+  //   console.log('winners(useWinnersTable): ', winners);
 
   const limit = 10;
     
-  async function fetchWinners( p:number) {
+  async function fetchWinners(p:number, sort = 'id', order = 'asc') {
     setPage(p);
     try {
       setError('');
       setLoading(true);
-      const response = await axios.get<Winners[]>(`http://127.0.0.1:3000/winners?_sort=id&_order=asc&_limit=${limit}&_page=${p}`);
+      const response = await axios.get<Winners[]>(`http://127.0.0.1:3000/winners?_sort=${sort}&_order=${order}&_limit=${limit}&_page=${p}`);
       setWinners(response.data);
+      putWinnersForTable(response.data);
       setTotalCount(+response.headers['x-total-count']);
       setTotalPages(getPageCount(+response.headers['x-total-count'], limit));
       setLoading(false);
@@ -48,11 +51,17 @@ export function useWinnersTable() {
   
   
   }
-
+  function sortByWins(sort:string, order:string) {
+    fetchWinners(page, sort, order);
+  }
+  function sortByTime(sort:string, order:string) {
+    fetchWinners(page, sort, order);
+  }
  
   
   function addWinner(winner:IdAndTime) {
     setWinners(prev=>[...prev, winner]);
+    putWinnersForTable(winners);
     fetchWinners(page); 
   }
 
@@ -64,8 +73,9 @@ export function useWinnersTable() {
       }
       return item;
     } );
-    console.log('newWinners: ', newWinners);
+    // console.log('newWinners: ', newWinners);
     setWinners(newWinners);
+    putWinnersForTable(newWinners);
 
     fetchWinners(page); 
   }
@@ -75,22 +85,23 @@ export function useWinnersTable() {
   //   return winner[0];
   // }
   //   }
-  //   async function deleteWinner(winner:IdAndTime) {
-  //     const repeatWin = winners.filter(item=> item.id === winner.id);
-  //     console.log('repeatWin: ', repeatWin);
-  //     if (repeatWin.length > 0) {
-  //       await axios.delete<IdAndTime>(`http://127.0.0.1:3000/winners/${winner.id}`);
-  //       const filteredWin = winners.filter(({ id }) => id !== winner.id);
-  //       setWinners(filteredWin);
-  //     }
+  async function deleteWinner(id:number) {
+    const repeatWin = winners.filter(item=> item.id === id);
+    console.log('repeatWin: ', repeatWin);
+    if (repeatWin.length > 0) {
+      await axios.delete<IdAndTime>(`http://127.0.0.1:3000/winners/${id}`);
+      const filteredWin = winners.filter(({ item }) => item !== id);
+      setWinners(filteredWin);
+      putWinnersForTable(filteredWin);
+    }
     
-  //   }
+  }
 
   const data = { wins: 0, time: 0 };
   async function updateWinnerOnServer(winner:IdAndTime, winnerFromData:Winners) {  
     data.wins = +winnerFromData.wins + 1;
     data.time = winner.time > winnerFromData.time ? +winnerFromData.time : winner.time;
-    console.log('data updateWinnerOnServer: ', data);
+    // console.log('data updateWinnerOnServer: ', data);
     const headers = {
       'Content-Type': 'application/json',
     };
@@ -133,7 +144,7 @@ export function useWinnersTable() {
     const response = await axios.get<ICar[]>('http://127.0.0.1:3000/garage');
     setAllCarsList(response.data);
     // allCarsListRef.current = response.data;
-    console.log('response.data(getAllCarsList): ', response.data);
+    // console.log('response.data(getAllCarsList): ', response.data);
     
   }
   useEffect(()=>{
@@ -143,7 +154,8 @@ export function useWinnersTable() {
 
 
   return { addWinner,  winners, loading, error, totalCount, totalPages, changePage, 
-    getAllCarsList, allCarsList, createWinner, winnerRef, updateTable };
+    getAllCarsList, allCarsList, createWinner, winnerRef, updateTable, deleteWinner,
+    sortByWins, sortByTime };
 }
 
  

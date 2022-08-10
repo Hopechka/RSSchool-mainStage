@@ -36,7 +36,7 @@ export function GaragePage() {
   }
   
 
-  console.log('winner(GaragePage): ', winnerValueRef.current);
+  //   console.log('winner(GaragePage): ', winnerValueRef.current);
 
 
   function handlePages(value:number) {
@@ -45,7 +45,9 @@ export function GaragePage() {
   }
 
   function createHandler(car:ICar) {
+    setRaceSwitcher(false);
     addCar(car);
+    
   }
   function updateHandler() {
     updateCar();

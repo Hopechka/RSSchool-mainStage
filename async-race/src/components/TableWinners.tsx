@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ICar, Winners } from '../types';
 import { ReactComponent as CarSvg }  from '../assets/images/car-05.svg';
 
@@ -6,35 +6,32 @@ interface TableWinnersProps {
   winner:Winners
  
   allCarsList:ICar[]
-
+  index:number
+  page:number
 }
 
-export function TableWinners({ winner, allCarsList }:TableWinnersProps) {
-  //   const numberRef = useRef(1);
+export function TableWinners({ winner, allCarsList, index, page }:TableWinnersProps) {
+  const numberRef = useRef('1');
 
-  
-  //   console.log('winner(TableWinners): ', winner);
-  //   console.log('allCarsList(TableWinners): ', allCarsList);
   const car = allCarsList.filter(item=>item.id === winner.id);
-  console.log('car in TableWinners', car);
 
-
+ 
+  if (page === 1) {numberRef.current = index.toString();} else {
+    if (index < 10) {numberRef.current = page.toString() + index.toString();} else {numberRef.current = page.toString() + '0';}
+  }
   
-  //   function plusNumber() {
-  //     numberRef.current += 1;
-  //   }
 
 
   return (
     
  <tr> 
-  <td>{winner.id}</td>
+  <td>{numberRef.current}</td>
   <td>
-  <CarSvg className='table-svg' style={{ fill: `${car[0].color}` }}/>
+  <CarSvg className='table-svg' style={{ fill: `${car[0].color}` || 'red' }}/>
     </td>
-  <td>{car[0].name}</td>
+  <td>{car[0].name || 'none'}</td>
   <td>{winner.wins}</td>
-  <td>{winner.time}</td>
+  <td >{winner.time}</td>
  </tr>
 
 

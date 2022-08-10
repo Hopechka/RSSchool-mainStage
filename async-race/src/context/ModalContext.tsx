@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 // import { garage } from '../data/garage';
-import { ICar } from '../types';
+import { ICar, Winners } from '../types';
 
 interface IModalContext {
 //   carState:boolean
@@ -15,6 +15,9 @@ interface IModalContext {
   screenGarage:string
   screenGarageOff : ()=>void
   screenGarageOn : ()=>void
+
+  winnersForTable:Winners[]
+  putWinnersForTable:(winners:Winners[])=>void
 }
 
 
@@ -33,6 +36,9 @@ export const ModalContext = createContext<IModalContext>({
   screenGarageOff :()=>{},
   screenGarageOn: ()=>{},
 
+  winnersForTable:[],
+  putWinnersForTable:()=>{},
+
 });
 
 export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
@@ -50,10 +56,15 @@ export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
   const screenGarageOff = () => {setScreenGarage('none');};
   const screenGarageOn = () => {setScreenGarage('flex');};
 
+  const [winnersForTable, setWinnersForTable] = useState<Winners[]>([]);
+  const putWinnersForTable = (winners:Winners[]) => {setWinnersForTable(winners);};
+
+
 
 
   return (
-        <ModalContext.Provider value={{ selectState, select, screenScore, screenScoreOff, screenScoreOn, screenGarage, screenGarageOff, screenGarageOn }}>
+        <ModalContext.Provider value={{ selectState, select, screenScore, screenScoreOff, screenScoreOn, 
+          screenGarage, screenGarageOff, screenGarageOn, winnersForTable, putWinnersForTable }}>
             { children}
         </ModalContext.Provider>
 

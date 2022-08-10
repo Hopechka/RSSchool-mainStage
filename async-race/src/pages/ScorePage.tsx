@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { Footer } from '../components/Footer';
 import { Loader } from '../components/Loader';
@@ -12,12 +12,14 @@ import { useWinnersTable } from '../hooks/winners';
 // }
 
 export function ScorePage() {
-  const { winners, loading, error, totalCount, totalPages, changePage, allCarsList } = useWinnersTable();
+  const { loading, error, totalCount, totalPages, 
+    changePage, allCarsList, sortByWins, sortByTime } = useWinnersTable();
   const [pages, setPages] = useState(1);
-  const { screenScore } = useContext(ModalContext);
+  const { screenScore, winnersForTable } = useContext(ModalContext);
+  const sortByWinsRef = useRef(false);
+  const sortByTimeRef = useRef(false);
+  const sortByOrderRef = useRef('ASC');
 
-  console.log('winners(ScorePage): ', winners);
-  //   console.log('screenScore(ScorePage): ', screenScore);
 
 
 
@@ -28,6 +30,29 @@ export function ScorePage() {
 
   function raceSwitcherOff() {
     // console.log('raceSwitcherOff');
+  }
+  function handleSortByWins() {
+    if (!sortByWinsRef.current) {
+      sortByOrderRef.current = 'desc';
+      sortByWinsRef.current = true;
+    } else {
+      sortByOrderRef.current = 'asc';
+      sortByWinsRef.current = false;
+      
+    }
+    sortByWins('wins', sortByOrderRef.current);
+    
+  }
+  function handleSortByTime() {
+    if (!sortByTimeRef.current) {
+      sortByOrderRef.current = 'desc';
+      sortByTimeRef.current = true;
+    } else {
+      sortByOrderRef.current = 'asc';
+      sortByTimeRef.current = false;
+        
+    }
+    sortByTime('time', sortByOrderRef.current);
   }
 
   return ( 
@@ -41,13 +66,14 @@ export function ScorePage() {
     <th>Number</th>
     <th>Car</th>
     <th>Name</th>
-    <th>Wins</th>
-    <th>Best time(seconds)</th>
+    <th  onClick={handleSortByWins} >Wins</th>
+    <th onClick={handleSortByTime}>Best time(seconds)</th>
   </tr>
   </thead>
   <tbody>
-  {winners.map((winner) => (
-          <TableWinners winner={winner} allCarsList ={allCarsList } key={winner.id} /> 
+  {winnersForTable.map((winner, index) => (
+          <TableWinners winner={winner} allCarsList ={allCarsList } 
+          index={index + 1} page={pages} key={winner.id} /> 
   ))}
   </tbody> 
    

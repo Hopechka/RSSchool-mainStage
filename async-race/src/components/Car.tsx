@@ -3,6 +3,7 @@ import { ModalContext } from '../context/ModalContext';
 import { ICar, IdAndTime } from '../types';
 import axios from 'axios';
 import { RaceCars } from './RaceCars';
+import { useWinnersTable } from '../hooks/winners';
 
 
 interface CarProps {
@@ -16,11 +17,14 @@ interface CarProps {
 export function Car({ car, removeCar, raceSwitcher, sendWinner }:CarProps) {
   const { select } = useContext(ModalContext);
   const animateRaceSwitcherRef = useRef(false);
+  const { deleteWinner } = useWinnersTable();
+  
 
 
   async function handelRemove() {
     await axios.delete<ICar>(`http://127.0.0.1:3000/garage/${car.id}`);
     removeCar(car.id as number);
+    deleteWinner(car.id as number);
   }
   function handleRaceSwitcher() {
     animateRaceSwitcherRef.current = false;
