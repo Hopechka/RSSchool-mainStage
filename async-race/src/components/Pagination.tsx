@@ -3,16 +3,16 @@ import { useCars } from '../hooks/car';
 
 
 interface MyButtonProps {
-  page:number, 
+//   page:number, 
   onClick:()=>void,
   title:string
   disabled:boolean
 }
 
-function MyButton({ page, onClick, title, disabled }:MyButtonProps) {
+function MyButton({ onClick, title, disabled }:MyButtonProps) {
   return (
       <button className='button' disabled = {disabled} onClick={onClick}>
-         {title}: {page} 
+         {title} 
       </button>
   );
 }
@@ -55,8 +55,8 @@ export function Pagination({ handlePages, totalPages, totalCount, raceSwitcherOf
   
 
   return (<div>
-    <MyButton title = {'PREVIOUS'} page={page} disabled={!hasPrev} onClick={handleClickMinus} />
-    <MyButton title = {'NEXT'} page={page} disabled={!hasNext} onClick={handleClickPlus} />
+    <MyButton title = {'PREVIOUS'} disabled={!hasPrev} onClick={handleClickMinus} />
+    <MyButton title = {'NEXT'} disabled={!hasNext} onClick={handleClickPlus} />
     </div>
 
             
