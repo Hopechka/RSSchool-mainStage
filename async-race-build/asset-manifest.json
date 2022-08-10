@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.a23671ba.css",
-    "main.js": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.9f79b23b.js",
+    "main.css": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.9228defb.css",
+    "main.js": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.e256e81c.js",
     "static/media/rs_school_js.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
     "static/media/car-05.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/car-05.279577ccec9fdc43f648147f33cbcedc.svg",
     "static/media/finish-line-flag.svg": "/hopechka-JSFE2022Q1/async-race-build/static/media/finish-line-flag.66f6bd88e88436964c3d49f362b29095.svg",
     "index.html": "/hopechka-JSFE2022Q1/async-race-build/index.html",
-    "main.a23671ba.css.map": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.a23671ba.css.map",
-    "main.9f79b23b.js.map": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.9f79b23b.js.map"
+    "main.9228defb.css.map": "/hopechka-JSFE2022Q1/async-race-build/static/css/main.9228defb.css.map",
+    "main.e256e81c.js.map": "/hopechka-JSFE2022Q1/async-race-build/static/js/main.e256e81c.js.map"
   },
   "entrypoints": [
-    "static/css/main.a23671ba.css",
-    "static/js/main.9f79b23b.js"
+    "static/css/main.9228defb.css",
+    "static/js/main.e256e81c.js"
   ]
 }
