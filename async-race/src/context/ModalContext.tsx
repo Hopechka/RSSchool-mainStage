@@ -3,9 +3,7 @@ import React, { createContext, useState } from 'react';
 import { ICar, Winners } from '../types';
 
 interface IModalContext {
-//   carState:boolean
-//   updateCarState: ()=>void
-//   updatedCarState: ()=>void
+
   selectState:ICar | null
   select: (car: ICar | null ) => void
 
@@ -22,9 +20,6 @@ interface IModalContext {
 
 
 export const ModalContext = createContext<IModalContext>({
-//   carState:false,
-//   updateCarState:()=>{},
-//   updatedCarState:()=>{},
 
   selectState:null,
   select:()=>{},
@@ -43,9 +38,6 @@ export const ModalContext = createContext<IModalContext>({
 
 export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
 
-  //   const [carState, setCarState] = useState(true);
-  //   const updateCarState = () => {setCarState(true);};
-  //   const updatedCarState = () => {setCarState(false);};
   const [selectState, setSelectState] = useState<ICar | null>(null);
   const select = (car:ICar | null) => {setSelectState(car);};
 

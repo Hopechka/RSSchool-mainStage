@@ -47,7 +47,6 @@ export function CreateRandomCar({ onCreate }:CreateCarProps) {
   async function addHandler() {
     for (const car of randomCars) {
       const response = await axios.post<ICar>('http://127.0.0.1:3000/garage', car);
-      //   console.log('response.data(random):', response.data);
       onCreate(response.data);
     }
   }

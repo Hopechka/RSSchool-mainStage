@@ -33,9 +33,7 @@ export function CreateCar({ onCreate }:CreateCarProps) {
     carData.name = valueText;
     carData.color = valueColor;
   
-    // console.log('carData(create):', carData);
     const response = await axios.post<ICar>('http://127.0.0.1:3000/garage', carData);
-    // console.log('response.data(create):', response.data);
     setValueText('');
     onCreate(response.data);
   }

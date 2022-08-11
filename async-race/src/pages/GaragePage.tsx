@@ -87,12 +87,12 @@ export function GaragePage() {
         {error && <ErrorMessage error={error}/>}
         <div className='main'>
             <div className='forms'>
-            {<CreateCar onCreate = {createHandler}/>}
-            {<UpdateCar selectState={selectState} onUpdate = {updateHandler}/>}
+            <CreateCar onCreate = {createHandler}/>
+            <UpdateCar selectState={selectState} onUpdate = {updateHandler}/>
             <div className='cars-btns'>
-            {<RaceButton className={'button'} title = {' RACE '}  disabled={raceSwitcher} onClick={handelStartAllCars} />}
-            {<RaceButton className={'button'} title = {'RESET'}  disabled={!raceSwitcher} onClick={handelResetAllCars} />}
-            {<CreateRandomCar onCreate = {createHandler}/>}
+            <RaceButton className={'button'} title = {' RACE '}  disabled={raceSwitcher} onClick={handelStartAllCars} />
+            <RaceButton className={'button'} title = {'RESET'}  disabled={!raceSwitcher} onClick={handelResetAllCars} />
+            <CreateRandomCar onCreate = {createHandler}/>
             </div>
 
             </div>
