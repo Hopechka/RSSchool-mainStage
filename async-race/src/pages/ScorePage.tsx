@@ -15,7 +15,7 @@ export function ScorePage() {
   const { loading, error, totalCount, totalPages, 
     changePage, allCarsList, sortByWins, sortByTime } = useWinnersTable();
   const [pages, setPages] = useState(1);
-  const { screenScore, winnersForTable } = useContext(ModalContext);
+  const {  winnersForTable } = useContext(ModalContext);
   const sortByWinsRef = useRef(false);
   const sortByTimeRef = useRef(false);
   const sortByOrderRef = useRef('ASC');
@@ -57,7 +57,7 @@ export function ScorePage() {
 
   return ( 
   
-  <div className='container' id='score' style={{ display:`${screenScore}` }}>
+  <div className='container' id='score'>
     <h1>{`Winners (${totalCount})`}</h1>
     <h2>{`Page (${pages})`}</h2>
     <table>

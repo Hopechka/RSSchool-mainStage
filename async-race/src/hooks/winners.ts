@@ -18,7 +18,6 @@ export function useWinnersTable() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [allCarsList, setAllCarsList] = useState<ICar[]>([]);
-  //   const allCarsListRef = useRef<ICar[]>([]);
   const winnerRef = useRef<IdAndTime>({});
   const {  putWinnersForTable } = useContext(ModalContext);
 
@@ -143,14 +142,12 @@ export function useWinnersTable() {
   async function getAllCarsList() { 
     const response = await axios.get<ICar[]>('http://127.0.0.1:3000/garage');
     setAllCarsList(response.data);
-    // allCarsListRef.current = response.data;
-    // console.log('response.data(getAllCarsList): ', response.data);
-    
+    return response.data; 
   }
   useEffect(()=>{
     getAllCarsList();
 
-  }, []);
+  }, [winners]);
 
 
   return { addWinner,  winners, loading, error, totalCount, totalPages, changePage, 

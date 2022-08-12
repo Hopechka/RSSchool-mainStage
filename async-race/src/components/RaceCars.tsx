@@ -51,7 +51,8 @@ export function RaceCars({ car, handleRaceSwitcher, sendWinner }:RaceCarsProps) 
 
     const activeCar = (carRef  as MutableRefObject<HTMLDivElement>).current;
     const carRoad = (carRoadRef  as MutableRefObject<HTMLDivElement>).current;
-    const carRoadWidth = carRoad.clientWidth - 180;
+    const WIDTH_BTNS_START_STOP_AND_CAR = 180;
+    const carRoadWidth = carRoad.clientWidth - WIDTH_BTNS_START_STOP_AND_CAR;
 
     if (car) {
       if (progress < 1) {

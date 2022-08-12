@@ -7,9 +7,10 @@ interface IModalContext {
   selectState:ICar | null
   select: (car: ICar | null ) => void
 
-  screenScore:string
-  screenScoreOff : ()=>void
-  screenScoreOn : ()=>void
+  showScreen:boolean
+  showScreenGarage: ()=>void
+  showScreenScore : ()=>void
+
   screenGarage:string
   screenGarageOff : ()=>void
   screenGarageOn : ()=>void
@@ -24,15 +25,18 @@ export const ModalContext = createContext<IModalContext>({
   selectState:null,
   select:()=>{},
 
-  screenScore:'none',
-  screenScoreOff :()=>{},
-  screenScoreOn :()=>{},
+  showScreen:true,
+  showScreenGarage: ()=>{},
+  showScreenScore : ()=>{},
+
   screenGarage:'flex',
   screenGarageOff :()=>{},
   screenGarageOn: ()=>{},
 
   winnersForTable:[],
   putWinnersForTable:()=>{},
+
+
 
 });
 
@@ -41,9 +45,10 @@ export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
   const [selectState, setSelectState] = useState<ICar | null>(null);
   const select = (car:ICar | null) => {setSelectState(car);};
 
-  const [screenScore, setScreenScore] = useState('none');
-  const screenScoreOff = () => {setScreenScore('none');};
-  const screenScoreOn = () => {setScreenScore('flex');};
+  const [showScreen, setShowScreen] = useState(true);
+  const showScreenGarage = ()=>{setShowScreen(true);};
+  const showScreenScore = ()=>{setShowScreen(false);};
+
   const [screenGarage, setScreenGarage] = useState('flex');
   const screenGarageOff = () => {setScreenGarage('none');};
   const screenGarageOn = () => {setScreenGarage('flex');};
@@ -55,8 +60,8 @@ export const ModalState = ({ children }:{ children:React.ReactNode }) =>{
 
 
   return (
-        <ModalContext.Provider value={{ selectState, select, screenScore, screenScoreOff, screenScoreOn, 
-          screenGarage, screenGarageOff, screenGarageOn, winnersForTable, putWinnersForTable }}>
+        <ModalContext.Provider value={{ selectState, select, winnersForTable, putWinnersForTable, 
+          showScreen, showScreenGarage, showScreenScore, screenGarageOff, screenGarageOn, screenGarage }}>
             { children}
         </ModalContext.Provider>
 

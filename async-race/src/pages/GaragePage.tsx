@@ -17,7 +17,7 @@ import { useWinnersTable } from '../hooks/winners';
 export function GaragePage() {
 
   const { cars, loading, error, addCar, updateCar, removeCar, totalCount, changePage, totalPages } = useCars();
-  const { selectState, select, screenGarage } = useContext(ModalContext);
+  const { selectState, select, screenGarage  } = useContext(ModalContext);
   const [pages, setPages] = useState(1);
   const [raceSwitcher, setRaceSwitcher] = useState(false);
   const winnerValueRef = useRef<IdAndTime>({});
@@ -25,8 +25,6 @@ export function GaragePage() {
   const { createWinner } = useWinnersTable();
 
 
-
-  
   function sendWinner(value:IdAndTime) {
     if (winnersRef.current) {
       winnersRef.current = false;
@@ -46,9 +44,9 @@ export function GaragePage() {
 
   function createHandler(car:ICar) {
     setRaceSwitcher(false);
-    addCar(car);
-    
+    addCar(car);  
   }
+
   function updateHandler() {
     updateCar();
     {select(null);}
@@ -78,8 +76,6 @@ export function GaragePage() {
   }
 
 
-  
- 
   return (
     
     <div className='container' id='garage' style={{ display:`${screenGarage}` }}>
@@ -92,12 +88,12 @@ export function GaragePage() {
             <div className='cars-btns'>
             <RaceButton className={'button'} title = {' RACE '}  disabled={raceSwitcher} onClick={handelStartAllCars} />
             <RaceButton className={'button'} title = {'RESET'}  disabled={!raceSwitcher} onClick={handelResetAllCars} />
-            <CreateRandomCar onCreate = {createHandler}/>
+            <CreateRandomCar refreshGaragePage = {updateHandler}/>
             </div>
 
             </div>
             
-            <ShowWinner winner = {winnerValueRef.current} cars = {cars} raceSwitcher = {raceSwitcher}  winnersRef={winnersRef.current}/>
+           {!winnersRef.current && raceSwitcher && <ShowWinner winner = {winnerValueRef.current} cars = {cars} raceSwitcher = {raceSwitcher} />}
             <h1>{`Garage (${totalCount})`}</h1>
             <h2>{`Page (${pages})`}</h2>
             {cars.map((car) => (

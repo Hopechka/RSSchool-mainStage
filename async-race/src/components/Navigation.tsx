@@ -6,20 +6,21 @@ import { ModalContext } from '../context/ModalContext';
 // const localPath = '/';
 
 export function Navigation() {
-  const { screenScoreOff, screenScoreOn, screenGarageOff, screenGarageOn  } = useContext(ModalContext);
+  const { showScreenGarage, showScreenScore, screenGarageOn, screenGarageOff } = useContext(ModalContext);
   
   
   function handleScreenGarage(event:React.FormEvent) {
     event.preventDefault();
+    showScreenGarage();
     screenGarageOn();
-    screenScoreOff();
+    
 
   
   }
   function handleScreenScore(event:React.FormEvent) {
     event.preventDefault();
+    showScreenScore();
     screenGarageOff();
-    screenScoreOn();
  
   }
 

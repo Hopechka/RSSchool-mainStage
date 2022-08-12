@@ -4,10 +4,10 @@ import axios from 'axios';
 
 
 interface CreateCarProps {
-  onCreate:(product:ICar) => void
+  refreshGaragePage:()=>void
 }
 
-export function CreateRandomCar({ onCreate }:CreateCarProps) {
+export function CreateRandomCar({ refreshGaragePage }:CreateCarProps) {
 
   const carBrand = [
     'Acura', 'Alfa Romeo', 'Alpine', 'Apollo', 'Apple', 'Aston Martin', 'Audi', 'Automobili Pininfarina', 'Bentley', 'BMW', 'Bollinger', 
@@ -28,7 +28,8 @@ export function CreateRandomCar({ onCreate }:CreateCarProps) {
   ];
 
   function generateColor() {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    const HIGHEST_NUMBER_FOR_HEXADECIMAL_CONVERSION = 16777215;
+    return '#' + Math.floor(Math.random() * HIGHEST_NUMBER_FOR_HEXADECIMAL_CONVERSION).toString(16);
   }
   function generateName() {
     return [carBrand, carModal].map(arr=>{
@@ -39,21 +40,26 @@ export function CreateRandomCar({ onCreate }:CreateCarProps) {
   }
 
   const randomCars : ICar[] = [];
+  const RANDOM_CARS_NUMBER = 100;
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < RANDOM_CARS_NUMBER; i++) {
     randomCars.push({ color:generateColor(), name:generateName() });
   }
   
-  async function addHandler() {
-    for (const car of randomCars) {
-      const response = await axios.post<ICar>('http://127.0.0.1:3000/garage', car);
-      onCreate(response.data);
-    }
+  async function addHandler(car:ICar) {
+    await axios.post<ICar>('http://127.0.0.1:3000/garage', car);
   }
+    
+  async function addRandomCars() {
+    const arrNew = randomCars.map((car) => new Promise((resolve) => { resolve(addHandler(car)); }));
+    return Promise.all(arrNew).then(() => refreshGaragePage());
+  }
+
   
+
   return (
 
-   <button className='button' onClick= {()=>{addHandler();}}>GENERATE CARS</button> 
+   <button className='button' onClick= {()=>{addRandomCars();}}>GENERATE CARS</button> 
        
   );
   
