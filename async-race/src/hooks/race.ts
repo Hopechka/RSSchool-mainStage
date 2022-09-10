@@ -1,0 +1,106 @@
+import { IEngine, NextAnimationFrameHandler, IdAndTime } from '../types';
+import axios, { AxiosError } from 'axios';
+import { useEffect, useRef, useState } from 'react';
+
+
+
+
+
+// Работа с логикой
+export function useRaceCars() {  
+  const [duration, setDuration] = useState(0);
+  const switchAnimationActiveRef = useRef(true);
+  const idAndTimeRef = useRef<IdAndTime>({ wins: 1 });
+  
+ 
+  
+
+
+
+  const getDurationTime = (data:IEngine) => setDuration(data.distance / data.velocity);
+  
+  async function handelStart(idCar:number) {
+    const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=started`);
+    // console.log('response handelStart: ', response.data);
+    getDurationTime(response.data);
+    idAndTimeRef.current.id = idCar;
+    const time = response.data.distance / response.data.velocity;
+    idAndTimeRef.current.time = +(time / 2160).toFixed(2);  
+    // console.log('idAndTimeRef(race):', idAndTimeRef.current);
+    
+    switchAnimationActiveRef.current = false;
+  } 
+
+  async function handelStop(idCar:number) {
+    await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=stopped`);
+    // const response =  await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=stopped`);
+    // console.log('response handelStop: ', response.data);
+    setDuration(0);
+  }
+
+  async function handelStartDrive(idCar:number) {
+    try {
+      await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=drive`);
+    //   const response = await axios.patch<IEngine>(`http://127.0.0.1:3000/engine?id=${idCar}&status=drive`);
+    //   console.log('response handelStartDrive: ', response.data);
+    } catch (e:unknown) {
+      switchAnimationActiveRef.current = true;
+      //   console.log('switchAnimationActive: ', switchAnimationActiveRef);
+      const err = e as AxiosError;
+      console.log('server error: ', err.message);
+      handelStop(idCar);
+    }
+    
+  }
+  //   console.log('switchAnimationActive outside: ', switchAnimationActiveRef);
+
+
+
+
+
+  
+  interface IUseAnimationFrameProps {
+    nextAnimationFrameHandler: NextAnimationFrameHandler
+    shouldAnimate:boolean,
+  }
+    
+  const useAnimationFrame = ({
+    nextAnimationFrameHandler,
+    shouldAnimate = true,
+  }:IUseAnimationFrameProps) => {
+    const frame = useRef(0);
+    const firstFrameTime = useRef(performance.now());
+
+    const animate = (now:number) => {
+      let timeFraction = (now - firstFrameTime.current) / duration;
+      if (timeFraction > 1) {
+        timeFraction = 1;
+      }
+
+      if (timeFraction <= 1 ) {
+        nextAnimationFrameHandler(timeFraction);
+        if (timeFraction != 1 ) frame.current = requestAnimationFrame(animate);
+      }
+    };
+    
+
+    useEffect(() => {
+    //   console.log(shouldAnimate);
+   
+      if (shouldAnimate) {
+        
+        firstFrameTime.current = performance.now();
+        frame.current = requestAnimationFrame(animate);
+      } else {
+        cancelAnimationFrame(frame.current);
+      }
+
+      return () => cancelAnimationFrame(frame.current);
+    }, [shouldAnimate]);
+  };
+
+
+  return { useAnimationFrame, handelStart, handelStartDrive, duration, handelStop, switchAnimationActiveRef, idAndTimeRef };
+}
+
+
